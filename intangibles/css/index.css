@@ -1,0 +1,16 @@
+.recuadro {
+    text-align: center;
+    border-radius: 7px;
+    background: transparent;
+}
+
+.img_header{
+    width: 100%;
+}
+
+.img_header2{
+    width: 40%;
+    margin-top: 100px;
+    margin: auto;
+}
+
