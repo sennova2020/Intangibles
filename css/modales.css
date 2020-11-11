@@ -1,0 +1,185 @@
+/*********modal*********************/
+.fondo_actualizaciones {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100%;
+  z-index: 2500;
+  overflow: scroll;
+} 
+
+.especificaciones_actualizacion {
+  position: absolute;
+  top: 1px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  width: 100%;
+  margin: 1.75rem auto;
+  z-index: 1600;
+  overflow: hidden;
+  max-width: 600px;
+  box-shadow: 0 0 10px #000;
+  border-radius: 5px;
+  overflow-x: hidden;
+  height: 2000px;
+}
+
+#especificaciones_investigacion,
+#especificaciones_investigacion2,
+#especificaciones_investigacion3 {
+  height: 2250px;
+}
+#especificaciones_servicios_tec {
+  height: 3700px;
+}
+
+#especificaciones_mixto {
+  height: 4200px;
+}
+
+#especificaciones_innovacion {
+  height: 2000px;
+  max-height: 2000px;
+}
+
+.e_innovacion {
+  height: 20px;
+  max-height: 20px;
+}
+
+.margin_arriba {
+  height: 100px;
+  padding: 50px;
+  top: 20px;
+}
+
+.caja_boton2 {
+  max-width: 400px;
+  float: right;
+  position: relative;
+  margin-right: 1%;
+}
+
+.caja_boton3 {
+  float: right;
+  position: relative;
+  margin-right: 5%;
+  width: 200px;
+  max-width: 200px;
+}
+
+.body_modal1 {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 2rem;
+}
+.ul_especificaciones_actualizacion {
+  width: 100%;
+  list-style: none;
+}
+
+.li_especificaciones_actualizacion {
+  width: 100%;
+  float: left;
+  margin: 18px auto;
+  padding: 0;
+  position: relative;
+}
+
+.li_especificaciones_actualizacion input,
+.li_especificaciones_actualizacion select {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgb(200, 200, 200);
+  font-size: 1.3rem;
+}
+
+.li_especificaciones_actualizacion input:focus,
+.li_especificaciones_actualizacion select:focus {
+  border: 1px solid #1fa5b7;
+  outline: 0px;
+}
+
+.ul_especificaciones_actualizacion p {
+  color: #555;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.h2_especificaciones {
+  text-align: center;
+  color: #333;
+  margin: 0;
+  font-family: Helvetica;
+  font-size: 1.4rem;
+}
+
+.boton_carga2 {
+  float: right;
+  width: 50%;
+  max-width: 200px;
+  margin-right: 10%;
+  border: none;
+  cursor: pointer;
+}
+
+.boton_modal {
+  background: #087381;
+  padding: 15px 25px;
+  width: 200px;
+  box-shadow: inset -5px -5px 10px #087381, 5px 5px 10px rgb(50, 50, 50);
+  border: none;
+  font-size: 1.1rem;
+  color: #fff;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+/***********modal imagen tabla******/
+/***********modal imagen tabla******/
+/***********modal imagen tabla******/
+
+.fondo_imagen_tabla {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 1600;
+}
+
+.fondo_imagen_tabla img {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  margin: auto;
+  height: 90vh;
+  max-height: 100vh;
+}
+
+
+/****************cerrar modal*********/
+
+.cerrar_modal{
+  float: right;
+  font-size: 35px;
+  color: #000;
+  width: 100%;
+  text-align: right;
+  cursor:pointer;
+}
+
+#boton_aliada, #boton_aliada2{
+    position: absolute;
+    height: 50px;
+    bottom: 30px;
+    width: 300px;
+    margin: auto;
+    left: 150px;
+}

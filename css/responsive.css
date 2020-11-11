@@ -1,0 +1,85 @@
+/*********responsive design********/
+
+@media screen and (max-width: 700px) {
+  input,
+  select {
+    width: 90%;
+  }
+  .titulo,
+  .formulario_c {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  input,
+  select,
+  textarea {
+    width: 90%;
+  }
+
+  .titulo_formulario {
+    font-size: 20px;
+  }
+
+  .texto_banner {
+    padding: 30px;
+  }
+
+  main{
+    padding: 0vh;
+  }
+
+  main > a > img {
+    width: 100%;
+    border: none;
+    border-radius: 0vw;
+  }
+
+  .footer_contenido {
+    padding: 2vh 3vh 3.5vh 1vh;
+    font-size: 0.5rem;
+  }
+
+  .etiqueta_carga {
+    width: 100%;
+    max-width: 1000px;
+  }
+  .boton_carga {
+    width: 100%;
+    margin: 30px auto;
+    float: right;
+    margin: 0;
+    max-width: 400px;
+  }
+  .caja_cargas {
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+  }
+  .cargar_archivo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: auto;
+    float: left;
+    padding: 20px;
+  }
+
+  .car1,
+  .car2 {
+    margin: 0;
+    padding: 0;
+    float: none;
+    margin-top: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .radicar_proyecto {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 50px;
+  }
+}

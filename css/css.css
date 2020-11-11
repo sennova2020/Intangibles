@@ -1,0 +1,379 @@
+@import url("https://fonts.googleapis.com/css?family=Heebo&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+.todo {
+  position: relative;
+}
+
+textarea {
+  text-align: justify;
+}
+.todo input,
+.todo select,
+.todo textarea {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-radius: 5px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgb(200, 200, 200);
+  font-size: 1rem;
+  outline: 0px;
+}
+option {
+  font-family: "Heebo", sans-serif;
+  font-size: 18px;
+}
+
+.header {
+  width: 100%;
+  position: relative;
+  margin: auto;
+  background: #087381;
+  color: #fff;
+  font-size: 16px;
+}
+
+.titulo_formulario {
+  font-size: 25px;
+  margin: 30px 0;
+  width: 100%;
+}
+
+.texto_banner {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  text-align: justify;
+  padding-bottom: 70px;
+}
+
+.titulo_introduccion {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mensaje_bienvenida {
+  font-weight: normal;
+  text-align: center;
+}
+
+.banner {
+  width: 100%;
+  position: relative;
+  margin: auto;
+}
+
+.img_banner {
+  width: 100%;
+}
+
+main {
+  padding: 2vh;
+  text-align: center;
+  margin: auto;
+  width: 100%;
+  max-width: 1000px;
+}
+
+main > a > img {
+  width: 100%;
+  border: 1vw solid #e56727;
+  border-radius: 2vw;
+  cursor: url(../images/icon_sena.png), auto;
+}
+
+input,
+select,
+textarea {
+  color: #333;
+  padding: 5px;
+  font-size: 16px;
+  width: 80%;
+}
+
+li {
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+li.entidades {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+/*************************************/
+
+.mil {
+  max-width: 1000px;
+  margin: auto;
+}
+.etiquetas {
+  font-size: 0.8em;
+  margin-bottom: 5px;
+  color: #fff;
+}
+.form_formulario {
+  margin: auto;
+  width: 100%;
+  font-family: "Heebo", sans-serif;
+  font-size: 17px;
+}
+
+.caja_formulario {
+  position: relative;
+  float: left;
+  background: white;
+  width: 100%;
+  margin: 20px auto;
+  background: white;
+}
+
+.titulo {
+  position: relative;
+  float: left;
+  background: #087381;
+  width: 23%;
+  padding: 10px;
+  font-size: 0.9em;
+  box-shadow: 2px 2px 10px rgb(150, 150, 150);
+  text-align: left;
+  min-height: 50px;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.formulario_c {
+  position: relative;
+  background: #087381;
+  width: 75%;
+  float: right;
+  padding: 10px 60px 50px 60px;
+  box-shadow: 2px 2px 10px rgb(150, 150, 150);
+  border-radius: 10px;
+}
+
+.cargar_archivo {
+  width: 100%;
+  height: 100px;
+  background: #087381;
+}
+
+#cargar1,
+#cargar2 {
+  display: none;
+}
+
+.caja_cargas {
+  padding: 50px;
+  background: #087381;
+}
+
+.boton_carga {
+  position: relative;
+  float: left;
+  background: rgb(239, 149, 23);
+  margin-top: 20px;
+  width: 26%;
+  text-align: center;
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 5px;
+  box-shadow: inset -5px -5px 10px rgb(215, 130, 13),
+    5px 5px 10px rgb(50, 50, 50);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.etiqueta_carga {
+  color: #fff;
+  position: relative;
+  float: left;
+  margin-top: 10px;
+  width: 20%;
+}
+
+.radicar_proyecto {
+  position: relative;
+  float: right;
+  background: rgb(239, 149, 23);
+  margin-top: 20px;
+  width: 25%;
+  text-align: center;
+  color: #fff;
+  padding: 20px 35px;
+  border: none;
+  cursor: pointer;
+  box-shadow: inset -5px -5px 10px rgb(215, 130, 13),
+    5px 5px 10px rgb(50, 50, 50);
+  margin: 30px;
+  transition: all 0.3s;
+}
+
+.radicar_proyecto:hover,
+.boton_carga:hover {
+  background: rgb(255, 164, 38);
+}
+
+.aviso {
+  padding: 17px 0;
+  width: 100%;
+  text-align: center;
+}
+
+#car1,
+#car2 {
+  position: relative;
+  float: left;
+  color: #fff;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/***************footer*************/
+
+.footer {
+  width: 100%;
+  background: #fff;
+  float: left;
+}
+
+.footer_contenido {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  padding: 3vh;
+  color: rgb(150, 150, 150);
+}
+
+.footer_contenido > p:hover {
+  color: #333;
+}
+
+.footer_contenido a {
+  color: rgb(106, 168, 74);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+.footer_contenido a:hover {
+  color: rgb(45, 133, 128);
+}
+
+.cabecera_modal {
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  width: 100%;
+}
+
+.cerrar {
+  float: right;
+  font-size: 1.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-shadow: 0 1px 0 #ffffff;
+  margin: 0;
+  color: #dfdfdf;
+}
+
+.caja_boton {
+  text-align: center;
+  width: 100%;
+}
+
+.link_anexo {
+  color: rgb(239, 149, 23);
+}
+
+.link_anexo_des {
+  position: relative;
+  float: left;
+  padding: 20px;
+  margin-top: 15px;
+  color: rgb(239, 149, 23);
+}
+
+/**************quitar bordes de los input number*******/
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.tabla_introduccion {
+  max-height: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.4s;
+  margin-left: 5px;
+  color: rgb(255, 164, 38);
+  text-decoration: underline;
+}
+
+.tabla_introduccion:hover {
+  color: #fff;
+}
+
+/******************/
+
+#aviso_texto {
+  background: #ffdbd3;
+  border-radius: 10px;
+  color: #555;
+  position: relative;
+  padding: 30px 50px;
+  box-shadow: 2px 2px 10px rgb(150, 150, 150);
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 1.5em;
+}
+
+/**************agregar entidad************************/
+
+#boton_agregar_entidad {
+  background: rgb(255, 164, 38);
+  margin: 1.5rem 0 0 0;
+  padding: 5px 20px;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: bolder;
+  width: 150px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+#boton_agregar_entidad:hover {
+  background: rgb(255, 180, 75);
+}
+
+li.entidades > p {
+  text-align: center;
+  font-weight: bold;
+}
+
+.cargando_select {
+  width: 40px;
+}
+
+.fondo{
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.invisible{
+  display: none;
+}

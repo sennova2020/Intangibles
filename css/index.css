@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;    
+}
+
+body{
+    overflow: hidden;
+    background: rgb(250,250,250);
+}
+
+label{
+    color: #555;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+input{
+    width: 100%;
+    padding: 10px;
+    margin: 8px auto 20px auto; 
+    font-size: 18px;
+    color: #444444;
+    box-shadow: 0 0 10px rgb(220,220,220);
+    border: 1px solid rgb(220,220,220);
+    border-radius: 5px;
+}
+/******************cabecera + imagen***************/
+#header{
+    width: 100%;
+    background: #087381;    
+}
+
+#header img{
+    width: 100%;
+}
+/*****************formulario*****************/
+#formulario_inicio_evaluador{
+    
+    margin: 50px auto;    
+    background: #FFF;
+    height: 470px;
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgb(220,220,220);
+    border-radius: 5px;
+}
+ 
+#boton_inicio{
+    background: #ff7625;
+    cursor: pointer;
+    font-size: 16px;
+    color: #ffffff;
+    border: none;
+    transition: all .4s;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgb(200,200,200);
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
+}
+
+#boton_inicio:hover{
+    background: #E16922;
+}
+
+#formulario_inicio_evaluador h2{
+    width: 100%;
+    color: #333;
+    text-align: center;
+}
+
+#formulario_inicio_evaluador p{
+    color: rgb(100, 100, 100);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.aviso{
+    color: red;
+    
+}
