@@ -7,7 +7,7 @@
 ?>
 
 <!------------------INCLUIR FUNCIONES------------------>
-<?php include('../funciones/funciones.php'); ?>
+<?php include('../../funciones/funciones.php'); ?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -16,12 +16,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SENNOVA | Intangibles </title>
-    <link rel="icon" href="images/icon_sena.png">
-    <link rel="stylesheet" href="../css/css.css">
-    <link rel="stylesheet" href="../css/modales.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-    <link rel="stylesheet" href="../css/loading.css">
-    <script src="../js/jquery.js"></script>
+    <link rel="icon" href="../images/icon_sena.png">
+    <link rel="stylesheet" href="../../css/css.css">
+    <link rel="stylesheet" href="../../css/modales.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/loading.css">
+    <script src="../../js/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!-- CSS only -->
@@ -36,7 +36,7 @@
 <body>
     <div class="header">
         <div class="banner">
-            <img src="../images/banner1.png" alt="banner" class="img_header" style="width:100%">
+            <img src="../../images/banner1.png" alt="banner" class="img_header" style="width:100%">
         </div>
     </div>
   
@@ -97,7 +97,7 @@
         <div class="radicar_proyecto" id="boton_volver">VOLVER</div>
     </div>
 
-    <script src="../js/jquery.redirect.js"></script>
+    <script src="../../js/jquery.redirect.js"></script>
 
 <script>
 

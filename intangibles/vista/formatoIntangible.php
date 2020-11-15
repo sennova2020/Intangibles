@@ -7,7 +7,9 @@
 ?>
 
 <!------------------INCLUIR FUNCIONES ADICIONALES------------------>
-<?php include('../funciones/funciones.php'); ?>
+<?php include('../../funciones/funciones.php'); 
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -18,11 +20,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SENNOVA | Intangibles </title>
-        <link rel="icon" href="images/icon_sena.png">
-        <link rel="stylesheet" href="../css/css.css">
-        <link rel="stylesheet" href="../css/modales.css">
-        <link rel="stylesheet" href="../css/responsive.css">
-        <link rel="stylesheet" href="../css/loading.css">
+        <link rel="icon" href="../images/icon_sena.png">
+        <link rel="stylesheet" href="../../css/css.css">
+        <link rel="stylesheet" href="../../css/modales.css">
+        <link rel="stylesheet" href="../../css/responsive.css">
+        <link rel="stylesheet" href="../../css/loading.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
@@ -47,11 +49,11 @@
 <body>
     <div class="header">
         <div class="banner">
-            <img src="../images/banner1.png" alt="banner" class="img_header" style="width:100%">
+            <img src="../../images/banner1.png" alt="banner" class="img_header" style="width:100%">
         </div>
     </div>
     <?php
-      $data = $_GET['id'];
+      $data = trim($_POST['id']);
       $results = getDataIntangible($data); 
       if($results != false)
       {
@@ -81,7 +83,7 @@
         </div>
     </div>
 
-    <form action="../funciones/inserta_datos4.php" class="form_formulario" enctype="multipart/form-data" method="post"
+    <form action=".././funciones/inserta_datos4.php" class="form_formulario" enctype="multipart/form-data" method="post"
         id="formulario_principal">
         <input type="hidden" name="cod_intangible" value="<?php echo($data)?>">
         <input type="hidden" name="centro" value="<?php echo($info->codigo_centro) ?>">
@@ -343,7 +345,7 @@
         </div>
 
 
-        <script src="../js/jquery.redirect.js"></script>
+        <script src="../../js/jquery.redirect.js"></script>
         <script>
         function setSeleccion(object) {
             var seleccion = $(object).val();
@@ -674,7 +676,7 @@
         }
 
         $("#boton_volver").click(function() {
-            $.redirect('intangibles.php', {
+            $.redirect('../index.php', {
                 'centro': '<?php echo($info->codigo_centro) ?>'
             }, "POST");
         });

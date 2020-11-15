@@ -163,7 +163,7 @@
   <script>
 
     $("#boton_volver").click(function(){
-      $.redirect('../intangibles/intangibles.php', {'centro': '<?php echo($_POST["centro"]) ?>'}, "POST");
+      $.redirect('../intangibles/vista/intangibles.php', {'centro': '<?php echo($_POST["centro"]) ?>'}, "POST");
     });
 
    </script>

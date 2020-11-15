@@ -36,7 +36,7 @@ if (isset($_SESSION['id'])) {
                         if (data == "-1") {
                             alert("Documento o contraseña incorrectos, por favor revisar nuevamente");
                         } else {
-                            $.redirect('intangibles.php', {'centro': data}, "POST");
+                            $.redirect('vista/intangibles.php', {'centro': data}, "POST");
                         }
                     });
                 }

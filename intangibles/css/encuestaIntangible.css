@@ -1,0 +1,10 @@
+span {
+	text-decoration: underline;
+	color: orange;
+}
+
+span:hover{
+	cursor: pointer;
+	text-decoration: underline;
+	color: gray;
+}

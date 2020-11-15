@@ -8,15 +8,18 @@
 			function __construct(){
 				$this->ruta       ="localhost";
 				$this->usuario    ="root"; 
-				$this->contrasena ="*s3nn0v4Wz"; 
+				$this->contrasena =""; 
 				$this->baseDatos  ="sennova_formulario";
 			}
 
 			function conectarse(){
-				@$enlace = mysqli_connect($this->ruta, $this->usuario, $this->contrasena, $this->baseDatos);
-				mysqli_set_charset($enlace, "utf8");
-				if(!$enlace){
+				$base = new PDO("mysql:host=$this->ruta;dbname=$this->baseDatos", $this->usuario, $this->contrasena);
+        		$base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+				if(!$base){
 				die('Error de Conexión' /*(' . mysqli_connect_errno() . ') '.mysqli_connect_error()'*/);
 				}
-				return($enlace);}
+				return($base);
 			}
+		
+		}
+		
