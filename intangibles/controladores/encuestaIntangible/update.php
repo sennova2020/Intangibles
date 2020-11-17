@@ -36,6 +36,7 @@ function createIntangible()
     $project = trim($_POST['project']);
     $state= trim($_POST['state']);
     $negativo = trim($_POST['negativo']);
+    $codeIntangible = trim($_POST['codIntangible']);
 
     //Variable with all the answers of yes or no7
     $yesNo = $resourceControl.$potencial.$reliably.$identification.$isMonetary.$duration.$buyActivity.$physicalAppearance;
@@ -43,12 +44,12 @@ function createIntangible()
     $acceptValidation = verificationIsNull($dateFinish,$dateBudgetClosing,$typeIntangible,$classIntangible,$nameIntangible,$resourceControl,$observationResource,$potencial,$observationPotencial,$reliably,$identification,$observationReliably,$observationIdentification,$isMonetary,$physicalAppearance,$duration,$observationMonetary,$observationAppearance,$observationDuration,$buyActivity,$observationBuyActivity);
 
     //Asignación de codigo intangible
-    $codeIntangible = newCodIntangible();
+
     if ($acceptValidation === true) {
     	if (isAllYes($yesNo) != false) {
     		if (!is_null($project)) {
                  $model = new intangible();
-                $consulta = $model -> create($dateFinish,$dateBudgetClosing,$typeIntangible,$classIntangible,$nameIntangible,$resourceControl,$observationResource,$potencial,$observationPotencial,$reliably,$identification,$observationReliably,$observationIdentification,$isMonetary,$physicalAppearance,$duration,$observationMonetary,$observationAppearance,$observationDuration,$buyActivity,$observationBuyActivity,$state,$project,$codeIntangible,$negativo);
+                $consulta = $model -> update($dateFinish,$dateBudgetClosing,$typeIntangible,$classIntangible,$nameIntangible,$resourceControl,$observationResource,$potencial,$observationPotencial,$reliably,$identification,$observationReliably,$observationIdentification,$isMonetary,$physicalAppearance,$duration,$observationMonetary,$observationAppearance,$observationDuration,$buyActivity,$observationBuyActivity,$state,$codeIntangible,$negativo);
 
                 $respuesta = $consulta;
     		} else {

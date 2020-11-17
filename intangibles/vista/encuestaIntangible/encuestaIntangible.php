@@ -1,6 +1,6 @@
 <?php 
-    require_once '../modelo/proyectoConsecutivo/proyectoConsecutivoModel.php';
-    require_once '../modelo/conexion/conexion.php';
+    require_once '../../modelo/proyectoConsecutivo/proyectoConsecutivoModel.php';
+    require_once '../../modelo/conexion/conexion.php';
     $model = new consecutiveProject();
     
     session_start();
@@ -11,7 +11,7 @@
 ?>
 
 <!------------------INCLUIR FUNCIONES ADICIONALES------------------>
-<?php include('../../funciones/funciones.php'); 
+<?php include('../../../funciones/funciones.php'); 
 ?>
 
 
@@ -24,11 +24,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>SENNOVA | Intangibles </title>
-        <link rel="icon" href="../images/icon_sena.png">
-        <link rel="stylesheet" href="../../css/css.css">
-        <link rel="stylesheet" href="../../css/modales.css">
-        <link rel="stylesheet" href="../../css/responsive.css">
-        <link rel="stylesheet" href="../../css/loading.css">
+        <link rel="icon" href="../../images/icon_sena.png">
+        <link rel="stylesheet" href="../../../css/css.css">
+        <link rel="stylesheet" href="../../../css/modales.css">
+        <link rel="stylesheet" href="../../../css/responsive.css">
+        <link rel="stylesheet" href="../../../css/loading.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
@@ -46,7 +46,7 @@
         </script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             crossorigin="anonymous">
-        <link rel="stylesheet" href="../css/encuestaIntangible.css">
+        <link rel="stylesheet" href="../../css/encuestaIntangible.css">
 
     </head>
 </head>
@@ -54,7 +54,7 @@
 <body>
     <div class="header">
         <div class="banner">
-            <img src="../../images/banner1.png" alt="banner" class="img_header" style="width:100%">
+            <img src="../../../images/banner1.png" alt="banner" class="img_header" style="width:100%">
         </div>
     </div>
     <?php
@@ -87,7 +87,7 @@
                 <?php
                 
                 foreach ($projects as $project ) {
-                    echo $project['proyecto_titulo'];
+                    echo utf8_encode($project['proyecto_titulo']);
                 }
                 
                 ?>
@@ -326,9 +326,9 @@
             </div>
           </div>
         </div>
-        <script src="../../js/jquery.redirect.js"></script>
+        <script src="../../../js/jquery.redirect.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        <script src="../js/encuestaIntangible.js"></script>
+        <script src="../../js/encuestaIntangible.js"></script>
 </body>
 
 </html>

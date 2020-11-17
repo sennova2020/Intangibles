@@ -1,14 +1,13 @@
 <?php 
- require_once '../modelo/conexion/conexion.php';
- require_once '../modelo/centroInformation/centroModel.php';
- require_once '../modelo/centroInformation/informacionCentro.php';
- require_once '../modelo/proyectoConsecutivo/proyectoConsecutivoModel.php';
- require_once '../modelo/intangible/intangibleModelo.php';
- require_once '../controladores/centroProyecto/read.php';
+ require_once '../../modelo/conexion/conexion.php';
+ require_once '../../modelo/intangible/intangibleModelo.php';
+ require_once '../../modelo/claseIntangibleModelo.php';
+ require_once '../../controladores/encuestaIntangible/read.php';
 session_start();
 if (!isset($_SESSION['id'])) {
     header("Location:index.php");
 }
+$project = trim($_POST['project']);
 ?>
 
 <!doctype html>
@@ -21,17 +20,26 @@ if (!isset($_SESSION['id'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="../../imagenes/icon_sena.png">
+    <link rel="icon" href="../../../imagenes/icon_sena.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>INTANGIBLES | Sennova</title>
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/intangible.css">
-    
+    <link rel="stylesheet" href="../../css/index.css">
+    <style>
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+    </style>
 </head>
 
 <body>
     <div id="header">
-        <img src="../../images/banner1.png" alt="banner" class="img_header">
+        <img src="../../../images/banner1.png" alt="banner" class="img_header">
     </div>
 
     <?php
@@ -42,7 +50,7 @@ if (!isset($_SESSION['id'])) {
                         <h4>Medición de Saldos Iniciales de los Activos Intangibles Adquiridos y Desarrollados en los proyectos de investigación Sennova</h4>
                     </div>
                     <div class="col-12 text-left" style="margin:15px">
-                        <a href="../session/logout.php">SALIR</a>
+                        <a href="../../session/logout.php">SALIR</a>
                     </div>
                     <div class="col-12 text-center" style="margin:15px">
                         <p style="text-align: justify;text-justify: inter-word;">En aplicación a la resolución 533 de 2015 de la Contaduría General de la Nación, modificada por la resolución 484 de 2017 y la Resolución número 425 de 2019, por la cual se modifican las Normas para el Reconocimiento, Medición, Revelación y Presentación de los Hechos Económicos del Marco Normativo para Entidades de Gobierno y siguientes, desde el 1° de enero de 2018 debemos reconocer los activos intangibles adquiridos y desarrollados por la entidad y que cumplan con los criterios establecidos en la norma.</p>
@@ -56,24 +64,36 @@ if (!isset($_SESSION['id'])) {
                     </div>
                 </div>';
 
-                echo '
-                    <table border="1" style="width:100%; margin:auto; border-collapse:collapse; border:1px solid rgb(200,200,200); box-sizing:border-box;">
-                        <tr style="background-color:#D9E1F2; color:#203696;" align="center">
-                            <th>C&oacutedigo proyecto</th>                 
-                            <th>Nombre de proyecto</th>    
-                            <th>Ver intangibles</th>   
-                            <th>Agregar intangibles</th>           
-                        </tr>
-                    ';
-        
-                echo utf8_encode(readProject());
-                echo "</table>";
+                
     ?>
+   
+    <table border="1" style="width:100%; margin:auto; border-collapse:collapse; border:1px solid rgb(200,200,200); box-sizing:border-box;">
+        <thead>
+            <tr style="background-color:#D9E1F2; color:#203696;" align="center">
+                <th>C&oacute;digo del intangible</th>                 
+                <th>Nombre del intangible</th>    
+                <th>Tipo de intangible</th>   
+                <th>Clase de intangible</th>
+                <th>Terminar</th>           
+            </tr>
+        </thead>   
+        <tbody>
+            <?php
+               echo utf8_encode(readIntangibleNotSave($project));
+            ?>
+        </tbody>
+    </table>
+        <br><br>
+        <?php
+            echo '<input type="hidden" id="project" value="'.$project.'">';
+        ?>
+    
+    <a href="../intangibles.php"> <button class="btn" style="background-color:#639cc7;">Volver</button></a>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <script src="../../js/jquery.redirect.js"></script>
-    <script src="../js/intangible.js"></script>
+    <script src="../../../js/jquery.redirect.js"></script>
+    <script src="../../js/encuestaIntangible/encuestaSinTerminar.js"></script>
     <br>
     <br>
     <br>

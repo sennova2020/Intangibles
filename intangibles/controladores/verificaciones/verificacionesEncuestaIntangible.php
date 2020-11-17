@@ -136,7 +136,44 @@ function validateClassIntangible($tipo, $classIntangible)
 
 function isAllYes($value)
 {
-	return false === strpos($value, "no"); 
+	return (false !== strpos($value, "no") || false !== strpos($value,"si")); 
+}
+
+function newCodIntangible()
+{
+    $resultado = null;
+    $model = new intangible();
+    $result = $model -> newCodeIntangible();
+
+    foreach ($result as $key) {
+        $number =intval(substr( $key['cod_intangible'],4,7));
+    }
+
+    if($number < 100){
+        $resultado = 'INT-0100';
+    }else{
+
+        if ($number < 999) {
+            $number++;
+            $resultado ='INT-0'.$number;
+        } else {
+            
+            if ($number == 999) {
+                $resultado ='INT-1000';
+            }else{
+                if ($number >=1000) {
+                    $number++;
+                    $resultado = 'INT-'.$number;
+                }
+            }
+            
+            
+        }
+        
+
+    }
+
+    return $resultado;
 }
 
 

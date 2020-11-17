@@ -48,7 +48,7 @@
 
        
         $("#boton_volver").click(function() {
-            $.redirect('intangibles.php', {
+            $.redirect('../intangibles.php', {
                 'centro': '<?php echo($info->codigo_centro) ?>'
             }, "POST");
         });
@@ -57,7 +57,8 @@
             
             if (z.id == 'boton_registro') {
               state = 1;
-            } else if(z.id == 'boton_TEMPORAL'){
+            } 
+             if(z.id == 'boton_TEMPORAL'){
               state = 0;
             }
 
@@ -87,15 +88,22 @@
                 var observationBuyActivity = $("#observationBuyActivity").val();
                 var project = $("#project").val();
 
+                var allSelect = resourceControl+potencial+reliably+identification+isMonetary+duration+buyActivity+physicalAppearance;
+
+                if (allSelect.includes('no')==true) {
+                  var negativo = 0;
+                } else {
+                    var negativo = 1;
+                }
 
                 $.confirm({
                     title: 'Confirmación de envío',
                     content: 'Esta seguro de enviar esta información',
                     buttons: {
-                        confirm: function() {
+                        confirmar: function() {
                             $.ajax({
                                 type: 'POST',
-                                url: '../controladores//encuestaIntangible/create.php',
+                                url: '../../controladores/encuestaIntangible/create.php',
                                 data: {
                                     'dateFinish':dateFinish,
                                     'dateBudgetClosing':dateBudgetClosing,
@@ -119,7 +127,8 @@
                                     'buyActivity':buyActivity,
                                     'observationBuyActivity':observationBuyActivity,
                                     'project':project,
-                                    'state':state
+                                    'state':state,
+                                    'negativo': negativo
                                 }
 
                             })
@@ -127,7 +136,7 @@
                             .done(function(respuesta) {
                                 if (respuesta == true) {
 
-                                    if (state == 1) {
+                                    if (state == 1 && negativo == 1) {
                                       
                                         $.confirm({
                                             title: 'Registro exitoso.',
@@ -138,7 +147,7 @@
                                                 },
                                                 Continuar: function () {
                                                     $.redirect(
-                                                        'formatoIntangible.php',
+                                                        '../formatoIntangible.php',
                                                         {
                                                             'project': project
                                                         }, 
@@ -146,12 +155,12 @@
                                                     );
                                                 },
                                                 Finalizar: function () {
-                                                    $.redirect('../index.php')
+                                                    $.redirect('../../index.php')
                                                 }
                                             }
                                         });
 
-                                    } else if(state == 0){
+                                    } else {
                                       
                                         $.confirm({
                                             title: 'Registro exitoso.',
@@ -161,7 +170,7 @@
                                                     $('#formulario_principal')[0].reset();
                                                 },
                                                 Finalizar: function () {
-                                                    $.redirect('../index.php')
+                                                    $.redirect('../../index.php')
                                                 }
                                             }
                                         });
@@ -170,17 +179,9 @@
                                     
                                 } else {
                                     if (respuesta == 'false') {
-                                        $.confirm({
-                                            title: '¿Desea agregar un nuevo intangible?',
-                                            content: '',
-                                            buttons: {
-                                                Agregar: function() {
-                                                    $('#formulario_principal')[0].reset();
-                                                },
-                                                Cancelar: function () {
-                                                    $.redirect('../index.php');
-                                                }
-                                            }
+                                        $.alert({
+                                            title: 'Error',
+                                            content: 'Ups ha ocurrido un error!'
                                         });
                                     }else{
                                         if (respuesta === 'Invalid') {
@@ -189,10 +190,19 @@
                                                 content: 'Ups ha ocurrido un error!'
                                             });
                                         } else {
-                                            $.alert({
-                                                title: 'Error',
-                                                content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+respuesta
-                                            });
+                                            
+                                            if (respuesta == 'existNegative') {
+                                                
+                                                
+                                            } else {
+                                                
+                                                $.alert({
+                                                    title: 'Error',
+                                                    content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+respuesta
+                                                });
+
+                                            }
+
                                         }
                                         
                                     }
@@ -207,7 +217,7 @@
                             })
 
                         },
-                        cancel: function() {
+                        cancelar: function() {
 
                         },
                     }
@@ -460,7 +470,7 @@
             if (typeIntangible != 'none') {
                 $.ajax({
                     type: 'POST',
-                    url: '../controladores/ajax/encuestaIntangibles/claseIntangible.php',
+                    url: '../../controladores/ajax/encuestaIntangibles/claseIntangible.php',
                     data: {'typeIntangible': typeIntangible}
                   })
                   .done(function(listas_rep){

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['id'])) {
-    header("Location:intangibles.php");
+    header("Location:vista/intangibles.php");
 }
 ?>
 <!DOCTYPE html>
