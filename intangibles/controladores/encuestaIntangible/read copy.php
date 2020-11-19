@@ -418,9 +418,6 @@
         $resultado = null;
         $model =  new intangible();
         $modelClass = new claseIntangible();
-        $modelCenter = new proyectoEvaluarIntangible();
-        $centers = $modelCenter->readNameCenter($_SESSION['centro']);
-        
         $intangibles = $model -> readFinishedDetails($codIntangible);
 
         foreach($intangibles as $intangible)
@@ -430,54 +427,33 @@
                 <div class="formulario1 formulario_c" style="color:white">
                     <h2 class="titulo_formulario">Nombre del Intangible: '.$intangible['pregunta3'].'</h2>
                     <table class="table table-striped" style="color:white">
-                        <tr><td><strong>Codigo Centro:</strong></td><td>'.$_SESSION['centro'].'</td></tr>';
+                        <tr><td><strong>Codigo Centro:</strong></td><td>'.$_SESSION['centro'].'</td></tr>
+                        <tr><td><strong>Nombre Centro:</strong>
 
-                        foreach($centers as $center){
-                            $resultado .= '<tr><td><strong>Nombre Centro:</strong></td><td>'.utf8_encode($center['centro_nombre']).'</td></tr>';
-                        }
-
-                        $resultado .= '
-                        <tr><td><strong>Tipo Intangible:</strong></td><td>'.$intangible['pregunta1'].'</td></tr>';
-                        $nameClass = $modelClass -> readDenomination($intangible['pregunta2']);
-                        foreach ($nameClass as $class)
-                        {
-                            $resultado .= '
-                            <tr><td><strong>Clase intangible:</strong></td><td>'.utf8_encode($class['denominacion']).'</td></tr>
-                            ';
-                        }
-
-                       $resultado .= '
+                        </td><td>Centro de FormaciÓn en Diseño, ConfecciÓn y Moda.</td></tr>
+                        <tr><td><strong>Tipo Intangible:</strong></td><td>'.$intangible['pregunta1'].'</td></tr>
+                        <tr><td><strong>Clase Intangible:</strong></td><td>'.$intangible['pregunta2'].'</td></tr>
                         <tr><td><strong>Fecha de cierre del proyecto técnicamente en la vigencia 2020:</strong></td><td>'.$intangible['fecha_cierre'].'</td></tr>
                         <tr><td><strong>Fecha de cierre del proyecto presupuestalmente en la vigencia 2020:</strong></td><td>'.$intangible['fecha_vigencia'].'</td></tr>
-                        <tr><td><strong>Nombre Intangible:</strong></td><td>'.utf8_encode( $intangible['pregunta3']).'</td></tr>
-                        <tr><td><strong>El Intangible es un Recurso Contralado?:</strong></td><td>'.ucwords($intangible['pregunta4']).'</td></tr>
+                        <tr><td><strong>Nombre Intangible:</strong></td><td>'.$intangible['pregunta3'].'</td></tr>
+                        <tr><td><strong>El Intangible es un Recurso Contralado?:</strong></td><td>'.$intangible['pregunta4'].'</td></tr>
+                        <tr><td><strong>Observaci&oacute;n:</strong></td><td>'.$intangible['pregunta5'].'</td></tr>
+                        <tr><td><strong>¿Del intangible se espera obtener un potencial de servicios?:</strong></td><td>'.$intangible['pregunta6'].'</td></tr>
+                        <tr><td><strong>Observaciones:</strong></td><td>'.$intangible['pregunta7'].'</td></tr>
+                        <tr><td><strong>¿El intangible se puede medir fiablemente?:</strong></td><td>'.$intangible['pregunta8'].'</td></tr>
+                        <tr><td><strong>Observaciones:</strong></td><td>'.$intangible['pregunta9'].'</td></tr>
+                        <tr><td><strong>¿El intangible se puede identificar? :</strong></td><td>'.$intangible['pregunta10'].'</td></tr>
+                        <tr><td><strong>Observaciones:</strong></td><td>'.$intangible['pregunta11'].'</td></tr>
+                        <tr><td><strong>¿El intangible NO es considerado monetario? El intangibles es monetario cuando es un CDT, un bono o títulos valores y es no monetario en caso contrario:</strong></td><td>'.$intangible['pregunta12'].'</td></tr>
+                        <tr><td><strong>Observaciones:</strong></td><td>'.$intangible['pregunta13'].'</td></tr>
+                        <tr><td><strong>¿El intangible es sin apariencia física?:</strong></td><td>'.$intangible['pregunta14'].'</td></tr>
+                        <tr><td><strong>Observaciones:</strong></td><td>'.$intangible['pregunta15'].'</td></tr>
+                        <tr><td><strong>¿El intangible se va a utilizar por más de un año?:</strong></td><td>'.$intangible['pregunta16'].'</td></tr>
                         <tr><td><strong>Observaciones:</strong></td><td></td></tr>
-                        <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta5']).'</div></td><td></td></tr>
-                        <tr><td><strong>¿Del intangible se espera obtener un potencial de servicios?:</strong></td><td>'.ucwords($intangible['pregunta6']).'</td></tr>
+                        <tr><td><div disabled class="bg-white text-dark p-3 border overflow-auto w-100" style="height:150px;" >'.$intangible['pregunta17'].'</div></td><td></td></tr>
+                        <tr><td><strong>¿No se espera vender en el curso de las actividades de la entidad?:</strong></td><td>'.$intangible['pregunta18'].'</td></tr>
                         <tr><td><strong>Observaciones:</strong></td><td></td></tr>
-                        <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta7']).'</div></td><td></td></tr>
-                        <tr><td><strong>¿El intangible se puede medir fiablemente?:</strong></td><td>'. ucwords( $intangible['pregunta8']).'</td></tr>
-                        <tr><td><strong>Observaciones:</strong></td><td></td></tr>
-                        <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta9']).'</div></td><td></td></tr>
-                        <tr><td><strong>¿El intangible se puede identificar? :</strong></td><td>'. ucwords( $intangible['pregunta10']).'</td></tr>
-                        <tr><td><strong>Observaciones:</strong></td><td></td></tr>
-                        <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta11']).'</div></td><td></td></tr>
-                        <tr><td><strong>¿El intangible NO es considerado monetario? El intangibles es monetario cuando es un CDT, un bono o títulos valores y es no monetario en caso contrario:</strong></td><td>'. ucwords( $intangible['pregunta12']).'</td></tr>
-                        <tr><td><strong>Observaciones:</strong></td><td></td></tr>
-                        <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta13']).'</div></td><td></td></tr>
-                        <tr><td><strong>¿El intangible es sin apariencia física?:</strong></td><td>'. ucwords( $intangible['pregunta14']).'</td></tr>
-                        <tr><td><strong>Observaciones:</strong></td><td></td></tr>
-                        <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta15']).'</div></td><td></td></tr>
-                        <tr><td><strong>¿El intangible se va a utilizar por más de un año?:</strong></td><td>'. ucwords( $intangible['pregunta16']).'</td></tr>
-                        <tr><td><strong>Observaciones:</strong></td><td></td></tr>
-                        <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta17']).'</div></td><td></td></tr>
-                        <tr><td><strong>¿No se espera vender en el curso de las actividades de la entidad?:</strong></td><td>'. ucwords( $intangible['pregunta18']).'</td></tr>
-                        <tr><td><strong>Observaciones:</strong></td><td></td></tr>
-                        <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta19']).'</div></td><td></td></tr>
-                        <tr><td><strong>Porcentaje de contrapartida del SENA:</strong></td><td>'.$intangible['pregunta20'].'%</td></tr>
-                        <tr><td><strong>Vida útil en meses:</strong></td><td>'.$intangible['pregunta22'].'</td></tr>
-                        <tr><td><strong>Vida útil transcurrida en meses:</strong></td><td>'.$intangible['pregunta23'].'</td></tr>
-                        <tr><td><strong>Vida útil remanente en meses:</strong></td><td>'.$intangible['pregunta24'].'</td></tr>
+                        <tr><td><div disabled class="bg-white text-dark p-3 border overflow-auto w-100" style="height:150px;" >'.$intangible['pregunta19'].'</div></td><td></td></tr>
                         
                         
                     </table>

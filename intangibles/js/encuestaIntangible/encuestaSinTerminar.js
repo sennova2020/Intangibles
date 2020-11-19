@@ -1,10 +1,12 @@
 function finish(e) {
     id = e.id;
-
+    project = $("#project").val();
     $.redirect(
         '../formatoIntangible.php',
         {
-            'id': id
+            'id': id,
+            'project':project,
+            'volver':'finish'
         }, 
         "POST"
     );
@@ -19,6 +21,7 @@ function seeSave(e) {
         {
             'id': id,
             'project' : project
+            
         }, 
         "GET"
     );

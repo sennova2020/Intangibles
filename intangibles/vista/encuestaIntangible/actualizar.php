@@ -131,6 +131,7 @@
             </div>
           </div>
         </div>
+        
         <script src="../../../js/jquery.redirect.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../../js/encuestaIntangible/update.js"></script>

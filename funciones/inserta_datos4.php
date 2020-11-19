@@ -1,6 +1,6 @@
 <?php
   require "conexionpdo.php";
-
+  
   class insertar extends Conexion{
 
     public function __construct(){
@@ -9,21 +9,13 @@
 
     public function insertar_preguntas(){
         $cod_intangible ="";
-        $consulta = "INSERT INTO x_intangibles_preguntas(
-          pregunta1, pregunta2, pregunta3, pregunta4, pregunta5, pregunta6, pregunta7, pregunta8, pregunta9,
-          cod_intangible, fecha) VALUES (
-            :pregunta1, :pregunta2, :pregunta3, :pregunta4, :pregunta5, :pregunta6, :pregunta7, :pregunta8, :pregunta9,
-            :cod_intangible,
-            now()
-            )";
+        $consulta = "UPDATE x_intangibles_preguntas SET  pregunta20=:pregunta3, pregunta21=:pregunta4, pregunta22=:pregunta6, pregunta23=:pregunta7, pregunta24=:pregunta8, pregunta25=:pregunta9, fecha= now() 
+        WHERE  cod_intangible=:cod_intangible";
 
             $preparada = $this->conexion_db->prepare($consulta); 
-
-            $pregunta1 = isset($_POST["pregunta1"])?$_POST["pregunta1"]:"";
-            $pregunta2 = isset($_POST["pregunta2"])?$_POST["pregunta2"]:"";
+            
             $pregunta3 = isset($_POST["pregunta3"])?$_POST["pregunta3"]:"";
             $pregunta4 = isset($_POST["pregunta4"])?$_POST["pregunta4"]:"";
-            $pregunta5 = isset($_POST["pregunta5"])?$_POST["pregunta5"]:"";
             $pregunta6 = isset($_POST["pregunta6"])?$_POST["pregunta6"]:"";
             $pregunta7 = isset($_POST["pregunta7"])?$_POST["pregunta7"]:"";
             $pregunta8 = isset($_POST["pregunta8"])?$_POST["pregunta8"]:"";
@@ -31,11 +23,8 @@
 
             $cod_intangible = $_POST["cod_intangible"];
 
-            $preparada->bindValue(":pregunta1", $pregunta1);
-            $preparada->bindValue(":pregunta2", $pregunta2);
             $preparada->bindValue(":pregunta3", $pregunta3);
             $preparada->bindValue(":pregunta4", $pregunta4);
-            $preparada->bindValue(":pregunta5", $pregunta5);
             $preparada->bindValue(":pregunta6", $pregunta6);
             $preparada->bindValue(":pregunta7", $pregunta7);
             $preparada->bindValue(":pregunta8", $pregunta8);
@@ -54,27 +43,39 @@
            if($pregunta9 == "si")
            {
             $facturaTabla = isset($_POST["facturas"])?$_POST["facturas"]:"";
+            
             $filas = explode("|", $facturaTabla);
-
+            
             foreach($filas as $fila)
             {
+              
               if($fila != '')
               {
-                $consulta = "INSERT INTO intangible_pregunta_factura(
+
+                $columnas = explode("^", $fila);
+
+                
+
+                
+                  $consulta = "INSERT INTO intangible_pregunta_factura(
                   numero_factura, factura_a_nombre_sena, fecha_factura, valor_total, tiene_iva, iva, concepto,  valor_concepto, es_necesario, cod_intangible, fase_intangible, fecha) VALUES (
                   :numero_factura, :factura_a_nombre_sena, :fecha_factura, :valor_total, :tiene_iva, :iva, :concepto,  :valor_concepto, :es_necesario, :cod_intangible, :fase_intangible, now() )";
-                  $columnas = explode("^", $fila);
-
-                  $numero_factura= $columnas[1];
-                  $factura_a_nombre_sena= $columnas[2] == "si"? true: false;
-                  $fecha_factura= $columnas[3];
-                  $valor_total= $columnas[4];
-                  $tiene_iva= $columnas[5]== "si"? true: false;
-                  $iva= $columnas[6];
-                  $concepto= $columnas[7];
-                  $valor_concepto= $columnas[8];
-                  $es_necesario= $columnas[9]== "si"? true: false;
-                  $fase_intangible = $columnas[10];      
+                  
+                /* foreach($columna as $columnas)
+                { */
+                  
+                  $numero_factura= $columnas['1'];
+                  
+                  $factura_a_nombre_sena= $columnas['2'] == "si"? 1 : 0;
+                  //var_dump($factura_a_nombre_sena);
+                  $fecha_factura= $columnas['3'];
+                  $valor_total= $columnas['4'];
+                  $tiene_iva= $columnas['5']== "si"? true: false;
+                  $iva= $columnas['6'];
+                  $concepto= $columnas['7'];
+                  $valor_concepto= $columnas['8'];
+                  $es_necesario= $columnas['9']== "si"? true: false;
+                  $fase_intangible = $columnas['10'];      
                   $preparada3 = $this->conexion_db->prepare($consulta);
                   $preparada3->bindValue(":numero_factura", $numero_factura);
                   $preparada3->bindValue(":factura_a_nombre_sena", $factura_a_nombre_sena);
@@ -89,8 +90,8 @@
                   $preparada3->bindValue(":fase_intangible", $fase_intangible);
                   $preparada3->execute();   
                   $preparada3->closeCursor();
-
-              }
+                //}
+              } 
             }
            }
 
@@ -117,7 +118,7 @@
   }
   else
   {
-      header("Location:index.php");
+      header("Location:../intagibles/index.php");
   }
   
 ?>

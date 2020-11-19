@@ -163,13 +163,15 @@ function envioDatos(z) {
                                 
                                 $.confirm({
                                     title: 'Registro exitoso.',
-                                    content: '¿Desea agregar un nuevo intangible?',
+                                    content: '¿Desea continuar?',
                                     buttons: {
                                         Continuar: function () {
                                             $.redirect(
                                                 '../formatoIntangible.php',
                                                 {
-                                                    'project': project
+                                                    'id':codIntangible,
+                                                    'project': project,
+                                                    'volver':'seeSave'
                                                 }, 
                                                 "POST"
                                             );

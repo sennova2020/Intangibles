@@ -1,5 +1,7 @@
 <?php 
     require_once '../../modelo/proyectoConsecutivo/proyectoConsecutivoModel.php';
+    require_once '../../modelo/proyectoEvaluarIntangible.php';
+    require_once '../../controladores/encuestaIntangible/read.php';
     require_once '../../modelo/conexion/conexion.php';
     $model = new consecutiveProject();
     
@@ -60,39 +62,13 @@
     <?php
       $data = $_GET['project'];
       $projects = $model-> readTitle($data);
-      $results = getDataIntangible($data); 
-      if($results != false)
-      {
-        $info = $results->fetch_object();
-      }
-      else
-      {
-        $info = "no encontrado";
-      }
+      
     ?>
     <div class="caja_formulario">
         <h2 id="timeToLife"></h2>
-        <div class="titulo"><?php echo($info->nombre_intangible) ?></div>
-        <div class="formulario1 formulario_c" style="color:white">
-            <h2 class="titulo_formulario">Nuevo intangible</h2>
-            <p><strong>Centro:</strong>
-                <?php echo($_SESSION['centro']) ?>
-            </p>
-            <br />
-            <p><strong>Código del proyecto:</strong>
-                <?php echo($data) ?>
-            </p>
-            <br />
-            <p><strong>T&iacute;itulo del proyecto:</strong>
-                <?php
-                
-                foreach ($projects as $project ) {
-                    echo utf8_encode($project['proyecto_titulo']);
-                }
-                
-                ?>
-            </p>
-        </div>
+        <?php
+         echo projectInformation($data);
+        ?>
     </div>
 
     <form  class="form_formulario" enctype="multipart/form-data" method="post"

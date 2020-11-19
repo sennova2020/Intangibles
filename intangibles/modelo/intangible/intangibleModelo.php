@@ -40,7 +40,7 @@ class intangible
             $resultado = 'Invalid';
         } else {
             $result -> execute();
-            $resultado = true;
+            $resultado = $codeIntangible ;
         }
         
         return $resultado;
@@ -228,6 +228,85 @@ class intangible
             $resultado = true;
         }
         
+        return $resultado;
+    }
+
+    public function readIntangibleFormato($codeIntangible)
+    {
+        $resultado= null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql ="SELECT pregunta1,pregunta3 FROM x_intangibles_preguntas WHERE cod_intangible=:codeIntangible";
+
+        $result = $conexion ->prepare($sql);
+
+        $result -> bindParam(':codeIntangible',$codeIntangible);
+
+        $result -> execute();
+
+        while ($f = $result->fetch()){
+            $resultado [] = $f;
+        }
+
+        return $resultado;
+    }
+
+    public function readFinished($project)
+    {
+        $negativo = 1;
+        $estado = 1;
+        $resultado = null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "SELECT cod_intangible,pregunta3,pregunta2,pregunta1 FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo=:negativo AND pregunta20 IS NOT NULL";
+        
+        $result = $conexion -> prepare($sql);
+
+        $result -> bindParam(':project',$project);
+        $result -> bindParam(':estado',$estado);
+        $result -> bindParam(':negativo',$negativo);
+
+        if ($result) {
+            $result->execute();
+
+            while ($f=$result->fetch()) {
+                $resultado [] = $f;
+            }
+        }else{
+            $resultado = false;
+        }
+
+        return $resultado;
+    }
+
+    public function readFinishedDetails($codeIntangible)
+    {
+        $negativo = 1;
+        $estado = 1;
+        $resultado = null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "SELECT * FROM x_intangibles_preguntas WHERE cod_intangible=:codeIntangible AND estado=:estado AND negativo=:negativo AND pregunta20 IS NOT NULL";
+        
+        $result = $conexion -> prepare($sql);
+
+        $result -> bindParam(':codeIntangible',$codeIntangible);
+        $result -> bindParam(':estado',$estado);
+        $result -> bindParam(':negativo',$negativo);
+
+        if ($result) {
+            $result->execute();
+
+            while ($f=$result->fetch()) {
+                $resultado [] = $f;
+            }
+        }else{
+            $resultado = false;
+        }
+
         return $resultado;
     }
 }

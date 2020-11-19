@@ -134,7 +134,7 @@
                             })
 
                             .done(function(respuesta) {
-                                if (respuesta == true) {
+                                if (respuesta.includes('INT-') == true) {
 
                                     if (state == 1 && negativo == 1) {
                                       
@@ -149,6 +149,7 @@
                                                     $.redirect(
                                                         '../formatoIntangible.php',
                                                         {
+                                                            'id':respuesta,
                                                             'project': project
                                                         }, 
                                                         "POST"

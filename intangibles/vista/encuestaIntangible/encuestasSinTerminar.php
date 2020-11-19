@@ -53,14 +53,16 @@ $project = trim($_POST['project']);
                         <a href="../../session/logout.php">SALIR</a>
                     </div>
                     <div class="col-12 text-center" style="margin:15px">
-                        <p style="text-align: justify;text-justify: inter-word;">En aplicación a la resolución 533 de 2015 de la Contaduría General de la Nación, modificada por la resolución 484 de 2017 y la Resolución número 425 de 2019, por la cual se modifican las Normas para el Reconocimiento, Medición, Revelación y Presentación de los Hechos Económicos del Marco Normativo para Entidades de Gobierno y siguientes, desde el 1° de enero de 2018 debemos reconocer los activos intangibles adquiridos y desarrollados por la entidad y que cumplan con los criterios establecidos en la norma.</p>
-                        <p style="text-align: justify;text-justify: inter-word;">Es de suma importancia que se registre toda información solicitada ya que debemos presentar este proceso a los entes de control y cumplir con lo establecido en la norma y con los compromisos que tiene la entidad de realizar correctamente el reconocimiento de los intangibles en la información financiera de la entidad.</p>
-                        <p style="text-align: justify;text-justify: inter-word;">Este reconocimiento se realizará en varias fases debido a la magnitud del proceso, siendo la primera fase la medición de saldos iniciales de los activos intangibles, seguido de una medición posterior y finalmente una medición de indicios de deterioro.</p>
-                        <p style="text-align: justify;text-justify: inter-word;">Por lo anterior, solicitamos continuar con la medición de saldos iniciales en lo concerniente a la estimación de costo de los bienes intangibles adquiridos y desarrollado por los proyectos de investigación en su Centro de Formación.</p>
+                        <p>Posible Descripción</p>
                     </div>
-                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Código de centro:</label>
+                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">C&oacute;digo de centro:</label>
                     <div class="col-12 col-md-7">
                         <h2><strong>'. $_SESSION['centro'].'</strong></h2>
+                    </div>
+
+                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">C&oacute;digo de proyecto:</label>
+                    <div class="col-12 col-md-7">
+                        <h2><strong>'.$project.'</strong></h2>
                     </div>
                 </div>';
 
@@ -79,11 +81,15 @@ $project = trim($_POST['project']);
         </thead>   
         <tbody>
             <?php
-               echo readIntangible($project)
+               echo utf8_encode(readIntangible($project));
             ?>
         </tbody>
     </table>
         <br><br>
+        <?php
+            echo '<input type="hidden" id="project" value="'.$project.'">';
+        ?>
+        
     <a href="../intangibles.php"> <button class="btn" style="background-color:#639cc7;">Volver</button></a>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

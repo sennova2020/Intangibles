@@ -7,7 +7,7 @@ session_start();
 if (!isset($_SESSION['id'])) {
     header("Location:index.php");
 }
-$project = trim($_POST['project']);
+$project = trim($_GET['project']);
 ?>
 
 <!doctype html>
@@ -53,9 +53,9 @@ $project = trim($_POST['project']);
                         <a href="../../session/logout.php">SALIR</a>
                     </div>
                     <div class="col-12 text-center" style="margin:15px">
-                        <p>Descripci&oacute;n</p>
+                        <p>Posible Descripción</p>
                     </div>
-                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Código de centro:</label>
+                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">C&oacute;digo de centro:</label>
                     <div class="col-12 col-md-7">
                         <h2><strong>'. $_SESSION['centro'].'</strong></h2>
                     </div>
@@ -81,22 +81,21 @@ $project = trim($_POST['project']);
         </thead>   
         <tbody>
             <?php
-               echo utf8_encode(readIntangibleNotSave($project));
+               echo utf8_encode(readIntangibleFinished($project));
             ?>
         </tbody>
     </table>
         <br><br>
         <?php
             echo '<input type="hidden" id="project" value="'.$project.'">';
-            
         ?>
-    
+        
     <a href="../intangibles.php"> <button class="btn" style="background-color:#639cc7;">Volver</button></a>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="../../../js/jquery.redirect.js"></script>
-    <script src="../../js/encuestaIntangible/encuestaSinTerminar.js"></script>
+    <script src="../../js/encuestaIntangible/encuestasTerminadas.js"></script>
     <br>
     <br>
     <br>
