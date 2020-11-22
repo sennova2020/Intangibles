@@ -1,3 +1,59 @@
+$("#tiempoVida").change(function(){
+
+    var tiempoVida = $("#tiempoVida").val();
+
+    if(tiempoVida == 'finita')
+    {
+        var contenido = `
+    
+            <li class="li_formulario">
+                <p class="etiquetas">Si el proyecto se desarrolló con un aliado externo, indicar cuál es el
+                    Porcentaje de contrapartida del SENA</p>
+                <p id="percent3" style="font-size:20px">0%</p>
+                <br />
+                <input id="pregunta3" name="pregunta3" type="number" style="font-size:20px;color:black"
+                    placeholder="0" step="any" onkeyup="updateMagnitud(this.value, 'percent3', '%');">
+            </li>
+            <input type="hidden" id="pregunta4" value="si">
+            <li class="li_formulario">
+                <p class="etiquetas">VIDA ÚTIL TOTAL EN MESES, SI ES FINITA. (Tenga en cuenta los términos
+                    del contrato o del concepto de quien lo fabricó). Número de meses</p>
+                <br />
+                <input id="pregunta6" name="pregunta6" type="number" style="font-size:20px;color:black"
+                    placeholder="0" step="any" onchange="validaPregunta6()">
+            </li>
+
+            <li class="li_formulario">
+                <p class="etiquetas">VIDA ÚTIL TRANSCURRIDA, SI ES FINITA (con fecha 31/12/2019), Número en
+                    meses</p>
+                <br />
+                <input id="pregunta7" name="pregunta7" type="number" style="font-size:20px;color:black"
+                    placeholder="0" step="any" onchange="validaPregunta6()">
+            </li>
+
+            <li class="li_formulario">
+                <p class="etiquetas">VIDA ÚTIL REMANENTE, SI ES FINITA (resta entre la vida útil total y la
+                    transcurrida). Número en meses</p>
+                <br />
+                <input id="pregunta8" name="pregunta8" type="number" style="font-size:20px;color:black"
+                    placeholder="0" step="any" onchange="validaPregunta6()">
+            </li>
+        
+        
+        `;
+
+        $("#contenidoFinito").html(contenido);
+    }else{
+
+        $("#contenidoFinito").html('');
+
+    }
+
+});
+
+
+
+
 function setSeleccion(object) {
     var seleccion = $(object).val();
     if (seleccion ===
@@ -111,7 +167,7 @@ function validaTabla() {
         });
 
         if (valorTotal !== sumaTotal) {
-            contenido = contenido + "| La factura " + elem + "por valor de  "+ valorTotal +
+            contenido = contenido + "| El documento contable" + elem + "por valor de  "+ valorTotal +
                 " no coincide con el valor de "+ sumaTotal + "  total de la suma de sus conceptos \r\n";
         }
     });
@@ -218,9 +274,48 @@ $("#pregunta4").change(function() {
 $("#pregunta9").change(function() {
     var pregunta9 = $("#pregunta9").val();
     if (pregunta9 === "si") {
-        $("#tabla_facturas").show();
+        var contenido = `
+
+            <div class="formulario1 formulario_c" style="color:white;width:100%!important">
+                <h2>Registrar documentos contables</h2>
+                <div style="background-color:white">
+                    <table id="detTbl" class="table table-striped table-hover table-bordered"
+                        style="font-size:12px!important">
+                        <thead>
+                            <tr>
+                                <th style="width: 7%;">N&uacute;mero de documento contable</th>
+                                <th style="width: 8%;">El documento contable está a nombre del SENA</th>
+                                <th style="width: 10%;">Fecha del documento contable, contrato o documento</th>
+                                <th style="width: 7%;">Valor total del documento contable</th>
+                                <th style="width: 7%;">Tiene IVA?</th>
+                                <th style="width: 10%;">IVA</th>
+                                <th style="width: 20%;">Concepto relacionado con el activo adquirido</th>
+                                <th style="width: 10%;">Valor de concepto</th>
+                                <th style="width: 7%;">Es necesario este concepto para poner en funcionamiento el
+                                    intangible?</th>
+                                <th style="width: 7%;">La documento contable que esta registrando corresponde a la fase de?</th>
+                                <th style="width: 10%;">
+                                    <div class="btn btn-sm btn-warning" data-toggle="modal" data-target="#mdlCtrl">
+                                        Agregar Documento Contable
+                                        <i class="fa fa-plus"></i>
+                                    </div>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="detalleFactura_tbody">
+
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        
+        `;
+        $("#tabla_facturas").html(contenido);
     } else {
-        $("#tabla_facturas").hide();
+        $("#tabla_facturas").html('');
     }
 });
 
@@ -234,6 +329,7 @@ function eliminarFase(object) {
 }
 
 function agregarFactura() {
+    var tipoDocumento = $("#tipoDoc").val();
     var cantidad = parseInt($("#cantidad").val());
     var factura = $("#factura").val();
     var fecha = $("#fecha").val();
@@ -244,33 +340,40 @@ function agregarFactura() {
     var fase = $("#fase").val();
 
     var resultado = "";
+    if(tipoDocumento !== "factura" && tipoDocumento !== "contratos" && tipoDocumento !== "resolucion"){
+        resultado = "<br> <br> * Debe ingresar el tipo de documento contable";
+    }
+
     if ($("#cantidad").val() === "") {
-        resultado = "| Debe ingresar la cantidad de items de factura";
+        resultado = "<br> <br> * Debe ingresar la cantidad de items del documento contable";
     }
 
     if ($("#factura").val() === "") {
-        resultado = resultado + "| Debe ingresar el número de factura";
+        resultado = resultado + "<br> <br> * Debe ingresar el número del documento contable";
     }
 
     if ($("#fecha").val() === "") {
-        resultado = resultado + "| Debe ingresar fecha de factura";
+        resultado = resultado + "<br> <br> * Debe ingresar fecha del documento contable";
     }
 
     if ($("#valor").val() === "") {
-        resultado = resultado + "| Debe ingresar valor de factura";
+        resultado = resultado + "<br> <br> * Debe ingresar valor del documento contable";
     }
 
     if ($("#facturaDeSena").val() === "undefined") {
-        resultado = resultado + "| Debe seleccionar si la factura esta al nombre del SENA";
+        resultado = resultado + "<br> <br> * Debe seleccionar si el documento contable esta a nombre del SENA";
     }
 
     if(tieneIVA === "si" && valorIVA ==="")
     {
-        resultado = resultado + "| Debe ingresar el IVA";
+        resultado = resultado + "<br> <br> * Debe ingresar el IVA";
     }
 
     if (resultado !== "") {
-        $.alert(resultado);
+        $.alert({
+            title: 'Error',
+            content: resultado
+        });
         return;
     }
 
@@ -356,27 +459,70 @@ $("#boton_volver").click(function() {
 });
 
 $("#boton_registro").click(function() {
-    convertirTablaFactura();
-    var result = validarEnvioDatos();
-    if (result === "") {
-        $.confirm({
-            title: 'Confirmación de envío',
-            content: 'Esta seguro de enviar esta información',
-            buttons: {
-                confirm: function() {
-                    $("#formulario_principal").submit();
-                },
-                cancel: function() {
+    var tiempoVida = $("#tiempoVida").val();
+    if (tiempoVida == 'indefinida') {
 
-                },
-            }
-        });
+        convertirTablaFactura();
+
+        var result = validarEnvioDatosIndefinidos();
+        if (result ==="" && tiempoVida == 'indefinida') {
+            $.confirm({
+                title: 'Confirmación de envío',
+                content: '¿Esta seguro de enviar esta información?',
+                buttons: {
+                    confirm: function() {
+                        $("#formulario_principal").submit();
+                    },
+                    cancel: function() {
+
+                    },
+                }
+            });
+        } else {
+            $.alert({
+                title: 'Error',
+                content: result
+            });
+        }
+
     } else {
-        $.alert({
-            title: 'Error',
-            content: result,
-        });
+        if(tiempoVida == 'finita')
+        {
+            convertirTablaFactura();
+            var result = validarEnvioDatos();
+            var errores = validarEnvioDatosFinitos();
+            if (result === "" && errores === "") {
+                $.confirm({
+                    title: 'Confirmación de envío',
+                    content: '¿Esta seguro de enviar esta información?',
+                    buttons: {
+                        confirm: function() {
+                            $("#formulario_principal").submit();
+                        },
+                        cancel: function() {
+
+                        },
+                    }
+                });
+            } else {
+                
+                    $.alert({
+                        title: 'Error',
+                        content: 'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+errores+result
+                    });
+                
+                
+            }
+        }else{
+            $.alert({
+                title: 'Error',
+                content: 'Los siguientes campos no se han diligenciado correctamente: <br> <br> 2)No ha determinado el tiempo de vida &uacute;til del intangible'
+            });
+        }
+        
+
     }
+    
 });
 
 function duplicarFase(object) {
@@ -399,55 +545,121 @@ function duplicarFase(object) {
 
 function validarEnvioDatos() {
 
-    var pregunta1 = $("#pregunta1").val();
-    var pregunta2 = $("#pregunta2").val();
-    var pregunta3 = parseFloat($("#pregunta3").val());
-    var pregunta4 = $("#pregunta4").val();
-    var pregunta6 = parseInt($("#pregunta6").val());
-    var pregunta7 = parseInt($("#pregunta7").val());
-    var pregunta8 = parseInt($("#pregunta8").val());
+    var pregunta3 = $("#pregunta3").val();
+    var pregunta6 = $("#pregunta6").val();
+    var pregunta7 = $("#pregunta7").val();
+    var pregunta8 = $("#pregunta8").val();
     var pregunta9 = $("#pregunta9").val();
+
+    //Estado de validaciones de numeros enteros
+    var enteros= true;
 
 
     //VALIDACIONES
     var results = "";
 
+    
 
     results = validaTabla(); 
     
-    if(results !== "")
-    {
-        results = results + "-||-";
-    }
+    
 
-    if ((pregunta7 + pregunta8) > pregunta6) {
-        results = results + " la suma de la pregunta 7 y 8 supera el valor de la pregunta 6";
-    }
-
-    if (pregunta1 === '') {
-        results = results + " Debe escribir el código del proyecto SGPS - ";
-    }
-
-    if (pregunta2 === 'undefined') {
-        results = results + " Debe seleccionar una linea programatica para la  pregunta 2 - ";
-    }
-
-    if (isNaN(pregunta3)) {
-        $("#" + label).text('0' + mag);
-        pregunta3 = 0;
+   
+    if (pregunta3 === '') {
+        results += "4)No determin&oacute; el porcentaje de contrapartida del SENA Debe ser un porcentaje positivo y menor o igual a 100%.<br><br> ";
     } else {
-        if (pregunta3 < 0 || pregunta3 > 100) {
-            results = results + " Debe ser un porcentaje positivo y menor o igual a 100% para la pregunta 3 - ";
+        if (isNaN(pregunta3)) {
+            results += "4)No determin&oacute; el porcentaje de contrapartida del SENA Debe ser un porcentaje positivo y menor o igual a 100%.<br><br> ";
+        } else {
+            pregunta3 = parseFloat(pregunta3)
+            if (pregunta3 < 0 || pregunta3 > 100) {
+                results += "4)El porcentaje de contrapartida del SENA Debe ser un porcentaje positivo y menor o igual a 100%.<br><br> ";
+            }
         }
     }
 
+    
 
+    if (pregunta6 == '') {
+
+        results += "5)No determin&oacute; la vida &uacute;til en meses del intangible.<br><br>";
+        enteros = false
+        
+    } else{
+
+        if (isNaN(pregunta6)) {
+            results += "5)No determin&oacute; la vida &uacute;til en meses del intangible.<br><br>";
+            enteros = false;
+        } else {
+
+            pregunta6 = parseFloat(pregunta6);
+
+            
+
+            if ((!Number.isInteger(pregunta6)) || (pregunta6 < 0) ) {
+                results += "5)La vida &uacute;til en meses del intangible, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                enteros = false;
+            }
+          
+        }
+    } 
+
+    if (pregunta7 == '') {
+
+        results += "6)No determin&oacute; la vida &uacute;til transcurrida en meses del intangible.<br><br>";
+        enteros = false
+        
+    } else{
+
+        if (isNaN(pregunta7)) {
+            results += "6)No determin&oacute; la vida &uacute;til transcurrida en meses del intangible.<br><br>";
+            enteros = false;
+        } else {
+
+            pregunta7 = parseFloat(pregunta7);
+
+            if (!Number.isInteger(pregunta7) || (pregunta7 < 0 )) {
+                results += "6)La vida &uacute;til transcurrida en meses del intangible, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                enteros = false;
+            }
+          
+        }
+        
+    } 
+
+    if (pregunta8 == '') {
+
+        results += "7)No determin&oacute; la vida &uacute;til remanente en meses del intangible.<br><br>";
+        enteros = false
+        
+    } else{
+
+        if (isNaN(pregunta8)) {
+            results += "7)No determin&oacute; la vida &uacute;til remanente en meses del intangible.<br><br>";
+            enteros = false;
+        } else {
+
+            pregunta8 = parseFloat(pregunta8);
+
+            if (!Number.isInteger(pregunta8) || (pregunta8 < 0)) {
+                results += "7)La vida &uacute;til remanente en meses del intangible, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                enteros = false;
+            }
+          
+        }
+        
+    }
+    
+    if(pregunta9 !== 'si' && pregunta9 !== 'no')
+    {
+        results += "9)No eligi&oacute; una opci&oacute;n en la pregunta, ¿Tiene facturas para registrar?.<br><br>";
+    }
 
     return results;
 }
 
 function updateMagnitud(value, label, mag) {
-    $("#" + label).text(value + mag);
+   return $("#" + label).text(value + mag);
 }
 
 $(document).ready(function() {
@@ -489,3 +701,35 @@ var x = setInterval(function() {
         $(".radicar_proyecto").remove();
     }
 }, 1000);
+
+function validarEnvioDatosIndefinidos()
+{
+    var tiempoVida = $("#tiempoVida").val();
+    var fechaInicio = $("#fechaInicio").val();
+    var errores = '';
+    if( fechaInicio === ''){
+        errores +='3)No ha diligenciado la fecha de inicio.<br><br>';
+    }
+
+    if(tiempoVida != 'finita' && tiempoVida != 'indefinida'){
+        errores +='2)No ha determinado el tiempo de vida &uacute;til del intangible.<br><br>';
+    }
+
+    return errores;
+}
+
+function validarEnvioDatosFinitos()
+{
+    var tiempoVida = $("#tiempoVida").val();
+    var fechaInicio = $("#fechaInicio").val();
+    var errores = "";
+    if( fechaInicio === ''){
+        errores +='3)No ha diligenciado la fecha de inicio.<br><br>';
+    }
+
+    if(tiempoVida != 'finita' && tiempoVida != 'indefinida'){
+        errores +='2)No ha determinado el tiempo de vida &uacute;til del intangible.<br><br>';
+    }
+
+    return errores;
+}

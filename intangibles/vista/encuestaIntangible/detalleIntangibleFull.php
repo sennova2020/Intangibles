@@ -57,7 +57,7 @@
         ?>
         <div class="radicar_proyecto" id="boton_volver">VOLVER</div>
     </div>
-
+    
     <script src="../../../js/jquery.redirect.js"></script>
 
 <script>

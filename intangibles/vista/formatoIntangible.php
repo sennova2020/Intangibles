@@ -81,52 +81,37 @@ require_once '../controladores/formatoIntangible/read.php';
                     <hr /><br />
 
 
-                    <li class="li_formulario">
-                        <p class="etiquetas">Código del Proyecto SGPS</p>
-                        <br />
-                        <?php
-                            echo '<input id="pregunta1"  type="text" value="'.$project.'" disabled style="font-size:20px;color:black"
-                            step="any">';
-                        ?>
-                        
-                    </li>
+                        <li class="li_formulario">
+                            <p class="etiquetas">Código del Proyecto SGPS</p>
+                            <br />
+                            <?php
+                                echo '<input id="pregunta1"  type="text" value="'.$project.'" disabled style="font-size:20px;color:black"
+                                step="any">';
+                            ?>
+                            
+                        </li>
+
+                        <div class="container">
+                            <div class="row">
+                                <li class="li_formulario col-lg-6">
+                                    <p class="etiquetas">¿La vida &uacute;til es finita o indefinida?</p>
+                                    <select name="tiempoVida" id="tiempoVida" class="selects" required>
+                                        <option value="" selected>Seleccione...</option>
+                                        <option value="finita">Finita</option>
+                                        <option value="indefinida">Indefinida</option>
+                                    </select>
+                                </li>
+
+                                <li class="li_formulario col-lg-6">
+                                    <p class="etiquetas">Fecha de inicio.</p>
+                                    <input type="date" name="fechaInicio" id="fechaInicio" required>
+                                </li>
+                                
+                            </div>
+                        </div>
+
+                        <div id="contenidoFinito"></div>
                     
-                    <li class="li_formulario">
-                        <p class="etiquetas">Si el proyecto se desarrolló con un aliado externo, indicar cuál es el
-                            Porcentaje de contrapartida del SENA</p>
-                        <p id="percent3" style="font-size:20px">0%</p>
-                        <br />
-                        <input id="pregunta3" name="pregunta3" type="number" style="font-size:20px;color:black"
-                            value="0.0" step="any" onkeyup="updateMagnitud(this.value, 'percent3', '%');">
-                    </li>
-                            <input type="hidden" id="pregunta4" value="si">
-                    
-                    <div id="ocultarPreg">
-                        
-
-                        <li class="li_formulario">
-                            <p class="etiquetas">VIDA ÚTIL TOTAL EN MESES, SI ES FINITA. (Tenga en cuenta los términos
-                                del contrato o del concepto de quien lo fabricó). Número de meses</p>
-                            <br />
-                            <input id="pregunta6" name="pregunta6" type="number" style="font-size:20px;color:black"
-                                value="0.0" step="any" onchange="validaPregunta6()">
-                        </li>
-
-                        <li class="li_formulario">
-                            <p class="etiquetas">VIDA ÚTIL TRANSCURRIDA, SI ES FINITA (con fecha 31/12/2019), Número en
-                                meses</p>
-                            <br />
-                            <input id="pregunta7" name="pregunta7" type="number" style="font-size:20px;color:black"
-                                value="0.0" step="any" onchange="validaPregunta6()">
-                        </li>
-
-                        <li class="li_formulario">
-                            <p class="etiquetas">VIDA ÚTIL REMANENTE, SI ES FINITA (resta entre la vida útil total y la
-                                transcurrida). Número en meses</p>
-                            <br />
-                            <input id="pregunta8" name="pregunta8" type="number" style="font-size:20px;color:black"
-                                value="0.0" step="any" onchange="validaPregunta6()">
-                        </li>
                         <li class="li_formulario">
                             <p class="etiquetas">Vínculo para ingresar todas sus evidencias, facturas, contratos,
                                 documentos y todo lo que constituye evidencia para el Intangible.</p>
@@ -135,56 +120,25 @@ require_once '../controladores/formatoIntangible/read.php';
                                 echo linkSharepoint($project);
                             ?>
                         </li>
+                        
                         <li class="li_formulario">
-                            <p class="etiquetas">¿Tiene facturas para registrar?</p>
+                            <p class="etiquetas">¿Tiene documentos contables para registrar?</p>
                             <select name="pregunta9" id="pregunta9" class="selects">
-                                <option value="si">si</option>
-                                <option value="no">no</option>
+                                <option value="" selected>Seleccione...</option>
+                                <option value="si">Si</option>
+                                <option value="no">No</option>
                             </select>
                         </li>
-                    </div>
 
                 </ol>
             </div>
         </div>
     
-
-        <div class="caja_formulario" id="tabla_facturas">
-            <div class="formulario1 formulario_c" style="color:white;width:100%!important">
-                <h2>Registrar facturas</h2>
-                <div style="background-color:white">
-                    <table id="detTbl" class="table table-striped table-hover table-bordered"
-                        style="font-size:12px!important">
-                        <thead>
-                            <tr>
-                                <th style="width: 7%;">Número de factura</th>
-                                <th style="width: 8%;">La factura está a nombre del SENA</th>
-                                <th style="width: 10%;">Fecha de la factura, contrato o documento</th>
-                                <th style="width: 7%;">Valor total de la factura</th>
-                                <th style="width: 7%;">Tiene IVA?</th>
-                                <th style="width: 10%;">IVA</th>
-                                <th style="width: 20%;">Concepto relacionado con el activo adquirido</th>
-                                <th style="width: 10%;">Valor de concepto</th>
-                                <th style="width: 7%;">Es necesario este concepto para poner en funcionamiento el
-                                    intangible?</th>
-                                <th style="width: 7%;">La factura que esta registrando corresponde a la fase de?</th>
-                                <th style="width: 10%;">
-                                    <div class="btn btn-sm btn-warning" data-toggle="modal" data-target="#mdlCtrl">
-                                        Agregar Factura
-                                        <i class="fa fa-plus"></i>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-
-                        <tbody id="detalleFactura_tbody">
-
-                        </tbody>
-
-                    </table>
-                </div>
-
-            </div>
+        
+        
+        
+        <div class="caja_formulario" id="tabla_facturas" >
+            
 
         </div>
     
@@ -205,26 +159,35 @@ require_once '../controladores/formatoIntangible/read.php';
                             <div class="col-md-6">
                                 <div class="btn btn-lg btn-warning" id="btnAgregadoFactura"
                                     onclick="agregarFactura();"><i class="fa fa-check"
-                                        style="font-size:40px"></i>Agregar factura</div>
+                                        style="font-size:40px"></i>Agregar documento Contable</div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
-                                <strong>Numero de factura:</strong>
-                                <input type="text" id="factura" placeholder="Número de factura" class="form-control" />
+                            <div class="col-md-6">
+                                <strong>Tipo de documento contable:</strong>
+                                <select  id="tipoDoc" required class="form-control" >
+                                    <option value="" selected>Seleccione...</option>
+                                    <option value="factura">Factura</option>
+                                    <option value="contratos">contratos</option>
+                                    <option value="resolucion">Resoluci&oacute;n de apertura</option>
+                                </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <strong>Numero de documento contable:</strong>
+                                <input type="text" id="factura" placeholder="Número del documento contable" class="form-control" />
+                            </div>
+                            <div class="col-md-6">
                                 <strong>Fecha de facturación:</strong>
                                 <input type="date" id="fecha" class="form-control" />
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <strong>Valor total:</strong>
                                 <input type="number" id="valor" placeholder="$" class="form-control" />
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <strong>Número de items de factura:</strong>
+                                <strong>N&uacute;mero de items del documento contable:</strong>
                                 <select class="form-control" id="cantidad">
                                     <option value="1">1</option>
                                     <option value="2">2</option>
@@ -249,7 +212,7 @@ require_once '../controladores/formatoIntangible/read.php';
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <strong>La factura está a nombre del SENA:</strong>
+                                <strong>El documento contable está a nombre del SENA:</strong>
                                 <select class="form-control" id="facturaDeSena">
                                     <option value="undefined">Seleccionar</option>
                                     <option value="Si">Si</option>
@@ -270,7 +233,7 @@ require_once '../controladores/formatoIntangible/read.php';
                                 <input class="form-control" type="number" id="valorIVA"></input></td>                               
                             </div>
                             <div class="col-md-12">
-                                    <p><strong>La factura que esta registrando corresponde a la fase de?</strong></p>     
+                                    <p><strong>El documento contable que esta registrando corresponde a la fase de?</strong></p>     
                                     <input type="hidden" value="No Aplica">
                                     <select class="form-control" style="width:100%" onchange="cambioVal(this);" id="fase">
                                         <option value="Adquirido">Adquirido</option>

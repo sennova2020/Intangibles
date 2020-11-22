@@ -9,11 +9,13 @@
 
     public function insertar_preguntas(){
         $cod_intangible ="";
-        $consulta = "UPDATE x_intangibles_preguntas SET  pregunta20=:pregunta3, pregunta21=:pregunta4, pregunta22=:pregunta6, pregunta23=:pregunta7, pregunta24=:pregunta8, pregunta25=:pregunta9, fecha= now() 
+        $consulta = "UPDATE x_intangibles_preguntas SET pregunta20=:tiempoVida, pregunta21=:pregunta3, pregunta22=:pregunta4, pregunta23=:pregunta6, pregunta24=:pregunta7, pregunta25=:pregunta8, pregunta26=:pregunta9, fecha= now(),fecha_inicio=:fechaInicio 
         WHERE  cod_intangible=:cod_intangible";
 
             $preparada = $this->conexion_db->prepare($consulta); 
             
+            $fechaInicio = isset($_POST["fechaInicio"])?$_POST["fechaInicio"]:"";
+            $tiempoVida = isset($_POST["tiempoVida"])?$_POST["tiempoVida"]:"";
             $pregunta3 = isset($_POST["pregunta3"])?$_POST["pregunta3"]:"";
             $pregunta4 = isset($_POST["pregunta4"])?$_POST["pregunta4"]:"";
             $pregunta6 = isset($_POST["pregunta6"])?$_POST["pregunta6"]:"";
@@ -23,6 +25,8 @@
 
             $cod_intangible = $_POST["cod_intangible"];
 
+            $preparada->bindValue(":fechaInicio", $fechaInicio);
+            $preparada->bindValue(":tiempoVida", $tiempoVida);
             $preparada->bindValue(":pregunta3", $pregunta3);
             $preparada->bindValue(":pregunta4", $pregunta4);
             $preparada->bindValue(":pregunta6", $pregunta6);
