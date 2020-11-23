@@ -140,7 +140,7 @@
                                       
                                         $.confirm({
                                             title: 'Registro exitoso.',
-                                            content: '<p>¿Desea agregar un nuevo intangible?</p><p>Agregar: Agregar nuevo intangible.</p><p>Continuar: Seguir al formulario de vida útil.</p><p>Finalizar: Terminar el registro.</p>',
+                                            content: '<p>¿Desea agregar un nuevo intangible?<p>Dada las respuestas diligenciadas en el formulario son todas positivas, debe seguir con el proceso al formulario del costo del intangible y diligenciar los formatos seg&uacute;n los procesos de compromiso.</p></p><p>Agregar: Agregar nuevo intangible.</p><p>Continuar: Seguir al formulario del costo del intangible.</p><p>Finalizar: Terminar el registro.</p>',
                                             buttons: {
                                                 Agregar: function() {
                                                     $('#formulario_principal')[0].reset();
