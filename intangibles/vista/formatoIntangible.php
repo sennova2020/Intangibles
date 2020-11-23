@@ -3,6 +3,8 @@ require_once '../modelo/intangible/intangibleModelo.php';
 require_once '../modelo/proyectoEvaluarIntangible.php';
 require_once '../modelo/conexion/conexion.php';
 require_once '../controladores/formatoIntangible/read.php';
+
+require_once '../controladores/verificaciones/fechaLimite.php';
     session_start();
     if (!isset($_SESSION['id'])) {
         header("Location:../index.php");
@@ -70,9 +72,7 @@ require_once '../controladores/formatoIntangible/read.php';
 
     <form action="../../funciones/inserta_datos4.php" class="form_formulario" enctype="multipart/form-data" method="post"
         id="formulario_principal">
-        <input type="hidden" name="cod_intangible" value="<?php echo($data)?>">
-        <input type="hidden" name="centro" value="<?php echo($_SESSION['centro']) ?>">
-        <input type="hidden" id="facturas" name="facturas" value="">
+        
         <div class="caja_formulario">
             <div class="titulo">VALIDACIÓN DE PREGUNTAS</div>
             <div class="formulario1 formulario_c">
@@ -168,7 +168,7 @@ require_once '../controladores/formatoIntangible/read.php';
                                 <select  id="tipoDoc" required class="form-control" >
                                     <option value="" selected>Seleccione...</option>
                                     <option value="factura">Factura</option>
-                                    <option value="contratos">contratos</option>
+                                    <option value="contratos">Contratos</option>
                                     <option value="resolucion">Resoluci&oacute;n de apertura</option>
                                 </select>
                             </div>
@@ -236,9 +236,7 @@ require_once '../controladores/formatoIntangible/read.php';
                                     <p><strong>El documento contable que esta registrando corresponde a la fase de?</strong></p>     
                                     <input type="hidden" value="No Aplica">
                                     <select class="form-control" style="width:100%" onchange="cambioVal(this);" id="fase">
-                                        <option value="Adquirido">Adquirido</option>
-                                        <option value="Desarrollo">Desarrollo</option>
-                                        <option value="Investigación">Investigación</option>
+                                        
                                     </select>
                                 </div>
                         </div>
@@ -246,6 +244,9 @@ require_once '../controladores/formatoIntangible/read.php';
                 </div>
             </div>
         </div>
+        <input type="hidden" id="cod_intangible" name="cod_intangible" value="<?php echo($data)?>">
+        <input type="hidden" name="centro" value="<?php echo($_SESSION['centro']) ?>">
+        <input type="hidden" id="facturas" name="facturas" value="">
     </form>
       <?php
         echo '<input type="hidden" id="volver" value="'.trim($_POST['volver']).'">';
@@ -253,6 +254,24 @@ require_once '../controladores/formatoIntangible/read.php';
       ?>
         <script src="../../js/jquery.redirect.js"></script>
         <script src="../js/formatoIntangible.js"></script>
+        <?php
+            if(enabledOperations() === false)
+            {
+                deleteIntangibleLimitDate();
+
+                echo "<script>
+                $.confirm({
+                    title: 'Informaci&oacute;n',
+                    content:'Haz alcanzado la fecha limite, por lo tanto no puede hacer mas registros.',
+                    buttons: {
+                        Ok: function () {
+                            $.redirect('../index.php')
+                        }
+                    }
+                });
+                    </script>";
+            }
+        ?>
 </body>
 
 </html>

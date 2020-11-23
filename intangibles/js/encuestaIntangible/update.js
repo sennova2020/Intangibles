@@ -84,6 +84,7 @@ function envioDatos(z) {
     }
 
     var result = validarEnvioDatos();
+    limite ();
     if (result === '') {
         
         var dateFinish = $("#dateFinish").val();
@@ -163,7 +164,7 @@ function envioDatos(z) {
                                 
                                 $.confirm({
                                     title: 'Registro exitoso.',
-                                    content: '¿Desea continuar?',
+                                    content: '<p>¿Desea continuar?</p><p>Continuar: Seguir al formulario de vida útil.</p><p>Finalizar: Terminar el registro.</p>',
                                     buttons: {
                                         Continuar: function () {
                                             $.redirect(
@@ -186,16 +187,22 @@ function envioDatos(z) {
 
                             } else {
                                 
+                                if(state == 0)
+                                {
+                                    titulo='Registro temporal exitoso';
+                                    contenido= 'Recuerde que solo podra registrarlo oficialemente hasta la fecha limite';
+                                }else{
+                                    titulo='Registro exitoso';
+                                    contenido =  'Tiene una respuesta con valor "No", por lo tanto el registro no se considera intangible.';
+                                }
+                                
                                 $.confirm({
-                                    title: 'Registro exitoso.',
-                                    content: '',
+                                    title: titulo,
+                                    content:contenido,
                                     buttons: {
+                                        
                                         Finalizar: function () {
-                                            $.redirect(
-                                                'encuestasSinGuardar.php',
-                                                {'project':project},
-                                                'POST'
-                                            );
+                                            $.redirect('../../index.php')
                                         }
                                     }
                                 });
@@ -216,8 +223,17 @@ function envioDatos(z) {
                                     });
                                 } else {
                                     
-                                    if (respuesta == 'existNegative') {
+                                    if (respuesta == 'limite') {
                                         
+                                        $.confirm({
+                                            title: 'Informaci&oacute;n',
+                                            content:'Haz alcanzado la fecha limite, por lo tanto no puede hacer mas registros.',
+                                            buttons: {
+                                                Ok: function () {
+                                                    $.redirect('../../index.php')
+                                                }
+                                            }
+                                        });
                                         
                                     } else {
                                         
@@ -545,4 +561,16 @@ $.alert({
 });
 }
 
-//Functions for delete inputs of the form encuestaIntangible
+function limite ()
+{
+    $.ajax({
+        url: '../../controladores/ajax/fechaLimite/obtenerFechaLimite.php'
+    })
+
+    .done(function(respuesta){
+        if(respuesta == false)
+        {
+            location.reload();
+        }
+    })
+}

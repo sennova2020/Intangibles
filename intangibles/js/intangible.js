@@ -1,5 +1,5 @@
 function sinTerminar (e) { 
-
+    limite ();
     var id = e.id;
 
     $.redirect(
@@ -13,7 +13,7 @@ function sinTerminar (e) {
 }
 
 function sinGuardar (e) { 
-
+    limite ();
     var project = e.id;
     
 
@@ -25,4 +25,18 @@ function sinGuardar (e) {
         "POST"
     );
 
+}
+
+function limite ()
+{
+    $.ajax({
+        url: '../controladores/ajax/fechaLimite/obtenerFechaLimite.php'
+    })
+
+    .done(function(respuesta){
+        if(respuesta == false)
+        {
+            location.reload();
+        }
+    })
 }

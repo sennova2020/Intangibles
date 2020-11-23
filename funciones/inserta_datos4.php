@@ -62,25 +62,27 @@
 
                 
                   $consulta = "INSERT INTO intangible_pregunta_factura(
-                  numero_factura, factura_a_nombre_sena, fecha_factura, valor_total, tiene_iva, iva, concepto,  valor_concepto, es_necesario, cod_intangible, fase_intangible, fecha) VALUES (
+                  tipo_documento_contable,numero_factura, factura_a_nombre_sena, fecha_factura, valor_total, tiene_iva, iva, concepto,  valor_concepto, es_necesario, cod_intangible, fase_intangible, fecha) VALUES (:tipo_documento,
                   :numero_factura, :factura_a_nombre_sena, :fecha_factura, :valor_total, :tiene_iva, :iva, :concepto,  :valor_concepto, :es_necesario, :cod_intangible, :fase_intangible, now() )";
                   
-                /* foreach($columna as $columnas)
-                { */
+                
+                  $tipo_documento = $columnas['1'];
+                  $numero_factura= $columnas['2'];
                   
-                  $numero_factura= $columnas['1'];
-                  
-                  $factura_a_nombre_sena= $columnas['2'] == "si"? 1 : 0;
-                  //var_dump($factura_a_nombre_sena);
-                  $fecha_factura= $columnas['3'];
-                  $valor_total= $columnas['4'];
-                  $tiene_iva= $columnas['5']== "si"? true: false;
-                  $iva= $columnas['6'];
-                  $concepto= $columnas['7'];
-                  $valor_concepto= $columnas['8'];
-                  $es_necesario= $columnas['9']== "si"? true: false;
-                  $fase_intangible = $columnas['10'];      
+                  $factura_a_nombre_sena= $columnas['3'] == "si"? 1 : 0;
+                  $fecha_factura= $columnas['4'];
+                  $valor_total= $columnas['5'];
+                  $tiene_iva= $columnas['6']== "si"? 1: 0;
+                  echo $tiene_iva;
+                  $iva= $columnas['6']== "si" ? $columnas['7'] : 0;
+                  $concepto= $columnas['8'];
+                  $valor_concepto= $columnas['9'];
+                  $es_necesario= $columnas['10']== "si"? 1: 0;
+                  $fase_intangible = $columnas['11']; 
+
                   $preparada3 = $this->conexion_db->prepare($consulta);
+
+                  $preparada3->bindValue(":tipo_documento", $tipo_documento);
                   $preparada3->bindValue(":numero_factura", $numero_factura);
                   $preparada3->bindValue(":factura_a_nombre_sena", $factura_a_nombre_sena);
                   $preparada3->bindValue(":fecha_factura", $fecha_factura);
@@ -94,7 +96,7 @@
                   $preparada3->bindValue(":fase_intangible", $fase_intangible);
                   $preparada3->execute();   
                   $preparada3->closeCursor();
-                //}
+                
               } 
             }
            }

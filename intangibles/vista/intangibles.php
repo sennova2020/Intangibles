@@ -6,10 +6,12 @@
  require_once '../modelo/intangible/intangibleModelo.php';
  require_once '../modelo/proyectoEvaluarIntangible.php';
  require_once '../controladores/centroProyecto/read.php';
+ require_once '../controladores/verificaciones/fechaLimite.php';
 session_start();
 if (!isset($_SESSION['id'])) {
     header("Location:../index.php");
 }
+deleteIntangibleLimitDate();
 ?>
 
 <!doctype html>
@@ -57,7 +59,11 @@ if (!isset($_SESSION['id'])) {
                         <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=Requerimiento-Intangibles.docx" class="documents">Documento 1</a>
                         <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=excel.xlsx" class="documents">Documento 2</a>
                     </div>
-                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Código de centro:</label>
+                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Fecha limite:</label>
+                    <div class="col-12 col-md-7">
+                        <h2><strong>'. getLimitDate().'</strong></h2>
+                    </div>
+                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">C&oacute;digo de centro:</label>
                     <div class="col-12 col-md-7">
                         <h2><strong>'. $_SESSION['centro'].'</strong></h2>
                     </div>
@@ -83,7 +89,9 @@ if (!isset($_SESSION['id'])) {
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="../../js/jquery.js"></script>
     <script src="../../js/jquery.redirect.js"></script>
+    
     <script src="../js/intangible.js"></script>
     <br>
     <br>

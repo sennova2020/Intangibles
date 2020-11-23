@@ -474,17 +474,87 @@
                         <tr><td><strong>¿No se espera vender en el curso de las actividades de la entidad?:</strong></td><td>'. ucwords( $intangible['pregunta18']).'</td></tr>
                         <tr><td><strong>Observaciones:</strong></td><td></td></tr>
                         <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta19']).'</div></td><td></td></tr>
-                        <tr><td><strong>Porcentaje de contrapartida del SENA:</strong></td><td>'.$intangible['pregunta20'].'%</td></tr>
-                        <tr><td><strong>Vida útil en meses:</strong></td><td>'.$intangible['pregunta22'].'</td></tr>
-                        <tr><td><strong>Vida útil transcurrida en meses:</strong></td><td>'.$intangible['pregunta23'].'</td></tr>
-                        <tr><td><strong>Vida útil remanente en meses:</strong></td><td>'.$intangible['pregunta24'].'</td></tr>
+                        <tr><td><strong>Vida &uacute;til:</strong></td><td>'.ucwords($intangible['pregunta20']).'</td></tr>
+                        <tr><td><strong>Porcentaje de contrapartida del SENA:</strong></td><td>'.$intangible['pregunta21'].'%</td></tr>
+                        <tr><td><strong>Vida útil en meses:</strong></td><td>'.$intangible['pregunta23'].'</td></tr>
+                        <tr><td><strong>Vida útil transcurrida en meses:</strong></td><td>'.$intangible['pregunta24'].'</td></tr>
+                        <tr><td><strong>Vida útil remanente en meses:</strong></td><td>'.$intangible['pregunta25'].'</td></tr>
                         
                         
                     </table>
                 </div>
             ';
         }
+
         return $resultado;
     }
 
+    function readFactura($codIntangible)
+    {
+        $resultado = null;
+        
+        $modelFactura = new factura();
+        $infoFactura = $modelFactura -> readCodeIntangible($codIntangible);
+
+        if(isset($infoFactura))
+        {
+            $resultado .= '
+            
+                <div class="formulario1 formulario_c" style="color:white;width:100%!important">
+                <h2 class="text-white">Información del documento contable</h2>
+                <table class="table table-striped bg-white h6">
+                    <thead>
+                        <tr>
+                            <th scope="col">Tipo de documento contable</th>
+                            <th scope="col">Número de documento contable</th>
+                            <th scope="col">El documento contable está a nombre del SENA</th>
+                            <th scope="col">Fecha del documento contable, contrato o documento</th>
+                            <th scope="col">Valor total del documento contable</th>
+                            <th scope="col">Tiene IVA?</th>
+                            <th scope="col">IVA</th>
+                            <th scope="col">Concepto relacionado con el activo adquirido</th>
+                            <th scope="col">Valor de concepto</th>
+                            <th scope="col">Es necesario este concepto para poner en funcionamiento el intangible?</th>
+                            <th scope="col">La documento contable que esta registrando corresponde a la fase de?</th>
+                        </tr>
+                    </thead>
+                    <tbody class="" style="color:gray;">
+            
+            ';
+            foreach($infoFactura as $key)
+            {
+                $resultado .='
+                
+                        <tr>
+                        <th scope="">'.utf8_encode($key['tipo_documento_contable']).'</th>
+                        <th scope="">'.$key['numero_factura'].'</th>
+                        <th scope="">'.$key['factura_a_nombre_sena'].'</th>
+                        <th scope="">'.$key['fecha_factura'].'</th>
+                        <th scope="">'.$key['valor_total'].'</th>
+                        <th scope="">'.ucwords($key['tiene_iva']).'</th>
+                        <th scope="">'.$key['iva'].'</th>
+                        <th scope="">'.utf8_encode($key['concepto']).'</th>
+                        <th scope="">'.$key['valor_concepto'].'</th>
+                        <th scope="">'.$key['es_necesario'].'</th>
+                        <th scope="">'.$key['fecha'].'</th>
+                    </tr>
+                
+                ';
+            }
+
+            $resultado .= '
+            
+                      
+                    </tbody>
+                    </table>
+                </div>
+            
+            ';
+
+        }else{
+            $resultado ='';
+        }
+
+        return $resultado;
+    }
 ?>

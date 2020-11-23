@@ -54,7 +54,7 @@
         });
 
         function envioDatos(z) { 
-            
+            limite ();
             if (z.id == 'boton_registro') {
               state = 1;
             } 
@@ -140,7 +140,7 @@
                                       
                                         $.confirm({
                                             title: 'Registro exitoso.',
-                                            content: '¿Desea agregar un nuevo intangible?',
+                                            content: '<p>¿Desea agregar un nuevo intangible?</p><p>Agregar: Agregar nuevo intangible.</p><p>Continuar: Seguir al formulario de vida útil.</p><p>Finalizar: Terminar el registro.</p>',
                                             buttons: {
                                                 Agregar: function() {
                                                     $('#formulario_principal')[0].reset();
@@ -150,7 +150,8 @@
                                                         '../formatoIntangible.php',
                                                         {
                                                             'id':respuesta,
-                                                            'project': project
+                                                            'project': project,
+                                                            'volver':23
                                                         }, 
                                                         "POST"
                                                     );
@@ -162,10 +163,19 @@
                                         });
 
                                     } else {
+
+                                        if(state == 0)
+                                        {
+                                            titulo='Registro temporal exitoso';
+                                            contenido= 'Recuerde que solo podra registrarlo oficialemente hasta la fecha limite';
+                                        }else{
+                                            titulo='Registro exitoso';
+                                            contenido =  '¿Desea agregar un nuevo intangible?<br><br>Tiene una respuesta con valor "No", por lo tanto el registro no se considera intangible.';
+                                        }
                                       
                                         $.confirm({
-                                            title: 'Registro exitoso.',
-                                            content: '¿Desea agregar un nuevo intangible?',
+                                            title: titulo,
+                                            content:contenido,
                                             buttons: {
                                                 Agregar: function() {
                                                     $('#formulario_principal')[0].reset();
@@ -192,8 +202,17 @@
                                             });
                                         } else {
                                             
-                                            if (respuesta == 'existNegative') {
+                                            if (respuesta == 'limite') {
                                                 
+                                                $.confirm({
+                                                    title: 'Informaci&oacute;n',
+                                                    content:'Haz alcanzado la fecha limite, por lo tanto no puede hacer mas registros.',
+                                                    buttons: {
+                                                        Ok: function () {
+                                                            $.redirect('../../index.php')
+                                                        }
+                                                    }
+                                                });
                                                 
                                             } else {
                                                 
@@ -234,28 +253,7 @@
 
         }
 
-        /* $("#boton_registro").click(function() {
-            
-            if (result === "") {
-                $.confirm({
-                    title: 'Confirmación de envío',
-                    content: 'Esta seguro de enviar esta información',
-                    buttons: {
-                        confirm: function() {
-                            $("#formulario_principal").submit();
-                        },
-                        cancel: function() {
-
-                        },
-                    }
-                });
-            } else {
-                $.alert({
-                    title: 'Error',
-                    content: result,
-                });
-            }
-        }); */
+       
 
        
 
@@ -493,7 +491,7 @@
 
         if (object == "resourceControlNote") {
             message = 'Control implica la capacidad del SENA para usar un recurso o definir el uso que un tercero debe darle, para las funciones administrativas o de formación profesional, al igual si se dispone de proceso o procedimiento al cual beneficia la utilización del producto. Al evaluar si existe o no control la entidad debe tener en cuenta, si el derecho de uso lo define un contrato, factura,entrada a almacén, certificado de licenciamiento, convenio o donaciones, igualmente se debe verificar el acceso al recurso o la capacidad de un tercero para negar o restringir el uso. ';
-        }else if (object == "nameIntangibleNote ") {
+        }else if (object == "nameIntangibleNote") {
             message = 'Cuando el intangible es un software adquirido registrar el nombre como está en la factura; si es un desarrollado indicar el nombre del producto como lo registra en el GrupLac';
         } else if(object == "observationResourceNote"){
             message = 'Aclare si el SENA tiene el control del uso del intangible, es decir, en que proceso de la entidad se utiliza.';
@@ -521,4 +519,17 @@
         });
     }
 
+    function limite ()
+    {
+        $.ajax({
+            url: '../../controladores/ajax/fechaLimite/obtenerFechaLimite.php'
+        })
+
+        .done(function(respuesta){
+            if(respuesta == false)
+            {
+                location.reload();
+            }
+        })
+    }
     //Functions for delete inputs of the form encuestaIntangible

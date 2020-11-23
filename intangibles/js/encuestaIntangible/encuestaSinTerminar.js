@@ -13,6 +13,7 @@ function finish(e) {
 }
 
 function seeSave(e) {
+    limite ();
     id = e.id;
     project = $("#project").val();
 
@@ -25,4 +26,19 @@ function seeSave(e) {
         }, 
         "GET"
     );
+}
+
+
+function limite ()
+{
+    $.ajax({
+        url: '../../controladores/ajax/fechaLimite/obtenerFechaLimite.php'
+    })
+
+    .done(function(respuesta){
+        if(respuesta == false)
+        {
+            location.reload();
+        }
+    })
 }

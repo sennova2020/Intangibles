@@ -309,6 +309,35 @@ class intangible
 
         return $resultado;
     }
+
+    public function deleteIncompleteIntangible()
+    {
+        $estado = 1;
+        $negativo = 1;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql="DELETE FROM x_intangibles_preguntas WHERE estado=:estado AND negativo=:negativo AND pregunta20 IS NULL ";
+
+        $result = $conexion -> prepare($sql);
+        $result -> bindParam(':estado',$estado);
+        $result -> bindParam(':negativo',$negativo);
+        $result -> execute();
+    }
+
+    public function deleteUnsaveIntangible()
+    {
+        $estado = 0;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql="DELETE FROM x_intangibles_preguntas WHERE estado=:estado ";
+
+        $result = $conexion -> prepare($sql);
+        $result -> bindParam(':estado',$estado);
+        $result -> execute();
+    }
+    
 }
 
 

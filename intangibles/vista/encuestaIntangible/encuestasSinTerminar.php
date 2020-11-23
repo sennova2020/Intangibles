@@ -3,11 +3,20 @@
  require_once '../../modelo/intangible/intangibleModelo.php';
  require_once '../../modelo/claseIntangibleModelo.php';
  require_once '../../controladores/encuestaIntangible/read.php';
+ require_once '../../controladores/verificaciones/fechaLimite.php';
+require_once '../../modelo/intangible/intangibleModelo.php';
 session_start();
 if (!isset($_SESSION['id'])) {
-    header("Location:index.php");
+    header("Location:../../index.php");
 }
-$project = trim($_POST['project']);
+if(isset($_POST['project']))
+{
+    $project = trim($_POST['project']);
+}else{
+    header("Location:../../index.php"); 
+}
+
+
 ?>
 
 <!doctype html>
@@ -94,6 +103,7 @@ $project = trim($_POST['project']);
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="../../../js/jquery.js"></script>
     <script src="../../../js/jquery.redirect.js"></script>
     <script src="../../js/encuestaIntangible/encuestaSinTerminar.js"></script>
     <br>
@@ -101,6 +111,24 @@ $project = trim($_POST['project']);
     <br>
     <br>
     <br>
+    <?php
+        if(enabledOperations() === false)
+        {
+            deleteIntangibleLimitDate();
+
+            echo "<script>
+            $.confirm({
+                title: 'Informaci&oacute;n',
+                content:'Haz alcanzado la fecha limite, por lo tanto no puede hacer mas registros.',
+                buttons: {
+                    Ok: function () {
+                        $.redirect('../../index.php')
+                    }
+                }
+            });
+                </script>";
+        }
+    ?>
 </body>
 
 </html>

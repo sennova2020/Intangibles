@@ -3,12 +3,16 @@
     require_once '../../modelo/proyectoEvaluarIntangible.php';
     require_once '../../controladores/encuestaIntangible/read.php';
     require_once '../../modelo/conexion/conexion.php';
+    require_once '../../controladores/verificaciones/fechaLimite.php';
+    require_once '../../modelo/intangible/intangibleModelo.php';
     $model = new consecutiveProject();
     
     session_start();
     if (!isset($_SESSION['id'])) {
         header("Location:index.php");
     }
+
+   
 
 ?>
 
@@ -140,7 +144,7 @@
 
                     <li class="li_formulario">
                         <p class="etiquetas">
-                            Observación. <span id="observationResourceNote" onclick="descriptionModal(this)" >Nota* </span> 
+                            Observaci&oacute;n*. <span id="observationResourceNote" onclick="descriptionModal(this)" >Nota* </span> 
                         </p>
                         <br>
                         <textarea name="observationResource" class="form-control" id="observationResource" required cols="30" rows="8" class="w-100 form-control" placeholder="Digite sus observaciones"  maxlength="1000"></textarea>
@@ -159,7 +163,7 @@
 
                 <li class="li_formulario">
                     <p class="etiquetas">
-                        Observación. 
+                        Observaci&oacute;n*. 
                     </p>
                     <br>
                     <textarea name="observationPotencial" id="observationPotencial" required cols="30" rows="8" class="w-100 form-control" placeholder="Digite sus observaciones"  maxlength="1000"></textarea>
@@ -179,7 +183,7 @@
 
                 <li class="li_formulario">
                     <p class="etiquetas">
-                        Observación. 
+                        Observaci&oacute;n*. 
                     </p>
                     <br>
                     <textarea name="observationReliably" id="observationReliably" required cols="30" rows="8" class="w-100 form-control" placeholder="Digite sus observaciones"  maxlength="1000"></textarea>
@@ -199,7 +203,7 @@
 
                 <li class="li_formulario">
                     <p class="etiquetas">
-                        Observación. 
+                        Observaci&oacute;n*. 
                     </p>
                     <br>
                     <textarea name="observationIdentification" id="observationIdentification" required cols="30" rows="8" class="w-100 form-control" placeholder="Digite sus observaciones"  maxlength="1000"></textarea>
@@ -218,7 +222,7 @@
 
                 <li class="li_formulario">
                     <p class="etiquetas">
-                        Observación. 
+                        Observaci&oacute;n*. 
                     </p>
                     <br>
                     <textarea name="observationMonetary" id="observationMonetary" required cols="30" rows="8" class="w-100 form-control" placeholder="Digite sus observaciones"  maxlength="1000"></textarea>
@@ -238,7 +242,7 @@
 
                 <li class="li_formulario">
                     <p class="etiquetas">
-                        Observación. <span id="observationAppearanceNote" onclick="descriptionModal(this)" >Nota* </span> 
+                        Observaci&oacute;n*. <span id="observationAppearanceNote" onclick="descriptionModal(this)" >Nota* </span> 
                     </p>
                     <br>
                     <textarea name="observationAppearance" id="observationAppearance" required cols="30" rows="8" class="w-100 form-control" placeholder="Digite sus observaciones"  maxlength="1000"></textarea>
@@ -258,7 +262,7 @@
 
                 <li class="li_formulario">
                     <p class="etiquetas">
-                        Observación. 
+                        Observaci&oacute;n*. 
                     </p>
                     <br>
                     <textarea name="observationDuration" id="observationDuration" required cols="30" rows="8" class="w-100 form-control" placeholder="Digite sus observaciones"  maxlength="1000"></textarea>
@@ -278,7 +282,7 @@
 
                 <li class="li_formulario">
                     <p class="etiquetas">
-                        Observación. 
+                        Observaci&oacute;n*. 
                     </p>
                     <br>
                     <textarea name="observationBuyActivity" id="observationBuyActivity" required cols="30" rows="8" class="w-100 form-control" placeholder="Digite sus observaciones"  maxlength="1000"></textarea>
@@ -305,6 +309,25 @@
         <script src="../../../js/jquery.redirect.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../../js/encuestaIntangible.js"></script>
+        <?php
+            if(enabledOperations() === false)
+            {
+                deleteIntangibleLimitDate();
+
+                echo "<script>
+                $.confirm({
+                    title: 'Informaci&oacute;n',
+                    content:'Haz alcanzado la fecha limite, por lo tanto no puede hacer mas registros.',
+                    buttons: {
+                        Ok: function () {
+                            $.redirect('../../index.php')
+                        }
+                    }
+                });
+                    </script>";
+            }
+        ?>
+    
 </body>
 
 </html>

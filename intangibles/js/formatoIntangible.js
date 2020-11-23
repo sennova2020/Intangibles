@@ -160,8 +160,8 @@ function validaTabla() {
             var es = $(this);
             var numero = es.children()[0].textContent;
             if (numero === elem) {
-                valorTotal = parseInt(es.children()[3].textContent);
-                var valor = parseInt($(es.children()[7].children).val());
+                valorTotal = parseInt(es.children()[4].textContent);
+                var valor = parseInt($(es.children()[8].children).val());
                 sumaTotal = sumaTotal + valor;
             }
         });
@@ -209,19 +209,12 @@ function convertirTablaFactura() {
                     fila = fila + "^" + col6.trim();
                     break;
                 case 6:
-                    if ($(this).children("p").text()) {
-                        col7 = $(this).children("p").text().trim().replace('^', '').replace('|',
-                            '');
-                        fila = fila + "^" + col7.trim();
-                    } else {
-                        fila = fila + "^  ";
-                    }
-
-                    break;
+                    col7 = $(this).text().trim().replace('^', '').replace('|','');
+                    fila = fila + "^" + col7.trim();
+                break;
                 case 7:
-                    if ($(this).children("input").val()) {
-                        col8 = $(this).children("input").val().trim().replace('^', '').replace(
-                            '|',
+                    if ($(this).children("p").text()) {
+                        col8 = $(this).children("p").text().trim().replace('^', '').replace('|',
                             '');
                         fila = fila + "^" + col8.trim();
                     } else {
@@ -230,8 +223,8 @@ function convertirTablaFactura() {
 
                     break;
                 case 8:
-                    if ($(this).children("select").val()) {
-                        col9 = $(this).children("select").val().trim().replace('^', '').replace(
+                    if ($(this).children("input").val()) {
+                        col9 = $(this).children("input").val().trim().replace('^', '').replace(
                             '|',
                             '');
                         fila = fila + "^" + col9.trim();
@@ -241,8 +234,19 @@ function convertirTablaFactura() {
 
                     break;
                 case 9:
-                    col10 = $(this).text().trim().replace('^', '').replace('|','');
-                    fila = fila + "^" + col10.trim();
+                    if ($(this).children("select").val()) {
+                        col10 = $(this).children("select").val().trim().replace('^', '').replace(
+                            '|',
+                            '');
+                        fila = fila + "^" + col10.trim();
+                    } else {
+                        fila = fila + "^  ";
+                    }
+
+                    break;
+                case 10:
+                    col11 = $(this).text().trim().replace('^', '').replace('|','');
+                    fila = fila + "^" + col11.trim();
                     break;
             }
         });
@@ -282,20 +286,20 @@ $("#pregunta9").change(function() {
                     <table id="detTbl" class="table table-striped table-hover table-bordered"
                         style="font-size:12px!important">
                         <thead>
-                            <tr>
+                            <tr><th style="width: 5%;">Tipo de documento contable</th>
                                 <th style="width: 7%;">N&uacute;mero de documento contable</th>
                                 <th style="width: 8%;">El documento contable está a nombre del SENA</th>
                                 <th style="width: 10%;">Fecha del documento contable, contrato o documento</th>
                                 <th style="width: 7%;">Valor total del documento contable</th>
                                 <th style="width: 7%;">Tiene IVA?</th>
-                                <th style="width: 10%;">IVA</th>
-                                <th style="width: 20%;">Concepto relacionado con el activo adquirido</th>
+                                <th style="width: 15%;">IVA</th>
+                                <th style="width: 10%;">Concepto relacionado con el activo adquirido</th>
                                 <th style="width: 10%;">Valor de concepto</th>
                                 <th style="width: 7%;">Es necesario este concepto para poner en funcionamiento el
                                     intangible?</th>
                                 <th style="width: 7%;">La documento contable que esta registrando corresponde a la fase de?</th>
                                 <th style="width: 10%;">
-                                    <div class="btn btn-sm btn-warning" data-toggle="modal" data-target="#mdlCtrl">
+                                    <div class="btn btn-sm btn-warning" onclick="getClassIntangible()" data-toggle="modal" data-target="#mdlCtrl">
                                         Agregar Documento Contable
                                         <i class="fa fa-plus"></i>
                                     </div>
@@ -329,6 +333,7 @@ function eliminarFase(object) {
 }
 
 function agregarFactura() {
+    
     var tipoDocumento = $("#tipoDoc").val();
     var cantidad = parseInt($("#cantidad").val());
     var factura = $("#factura").val();
@@ -340,12 +345,18 @@ function agregarFactura() {
     var fase = $("#fase").val();
 
     var resultado = "";
+
+    if(fase !== "Adquirido" && fase !== "Desarrollo" && fase !== "Investigación" )
+    {
+        resultado += "<br> <br> * Debe escoger la fase del documento contable";
+    }
+
     if(tipoDocumento !== "factura" && tipoDocumento !== "contratos" && tipoDocumento !== "resolucion"){
-        resultado = "<br> <br> * Debe ingresar el tipo de documento contable";
+        resultado += "<br> <br> * Debe ingresar el tipo de documento contable";
     }
 
     if ($("#cantidad").val() === "") {
-        resultado = "<br> <br> * Debe ingresar la cantidad de items del documento contable";
+        resultado += "<br> <br> * Debe ingresar la cantidad de items del documento contable";
     }
 
     if ($("#factura").val() === "") {
@@ -375,58 +386,80 @@ function agregarFactura() {
             content: resultado
         });
         return;
+    }else{
+
+        for (var i = 0; i < cantidad; i++) {
+
+            if(tipoDocumento == 'factura'){
+                tipoDoc= 'Factura';
+            }else{
+                if(tipoDocumento == 'contratos')
+                {
+                    tipoDoc = 'Contratos';
+                }
+            }
+
+           var conte = '';
+
+            var tr = document.createElement('tr');
+            if(tipoDocumento == 'resolucion')
+            {
+                conte += '<td>Resolución de apertura</td>';
+            }else{
+                conte +='<td>' + tipoDoc + '</td>'
+            }
+            conte += 
+                
+                
+                '<td>' + factura + '</td>' +
+                '<td>' + facturaDeSena + '</td>' +
+                '<td>' + fecha + '</td>' +
+                '<td>' + valor + '</td>' +
+                '<td>' + tieneIVA + '</td>' +
+                '<td>' + valorIVA + '</td>' +
+
+                '<td class="attrValue">                                                                                            ' +
+                '	<select name="col6" id="col6" class="selects" style="width:100%" onchange="setSeleccion(this)">                ' +
+                '	<option value="undefined">Seleccione respuesta</option>                                                        ' +
+                '	<option value="Transporte">Transporte</option>                                                                 ' +
+                '	<option value="Flete">Flete</option>                                                                           ' +
+                '	<option value="Honorarios">Honorarios</option>                                                                 ' +
+                '	<option value="Capacitación de Personal">Capacitación de Personal</option>                                     ' +
+                '	<option value="Adquisición de Servicios de Instalacion de terminación de Acabados entre otros">Adquisición de Servicios de Instalacion de terminación de Acabados entre otros</option>                                     ' +
+                '	<option value="Aranceles de importación, si los hay">Aranceles de importación, si                              ' +
+                '		los hay</option>                                                                                           ' +
+                '	<option value="Mantenimiento de maquinaria, equipo, transporte y software">                                    ' +
+                '		Mantenimiento de maquinaria, equipo, transporte y software</option>                                        ' +
+                '	<option value="Minerales, Electricidad, Gas y Agua">Minerales, Electricidad, Gas y Agua</option>                                     ' +
+                '	<option value="Paquetes de software">Paquetes de software</option>                                             ' +
+                '	<option value="Arrendamiento de Equipos">Arrendamiento de Equipos</option>                                                                 ' +
+                '	<option value="Cualquier otro costo directamente atribuible a la preparación del activo para su uso previsto.">' +
+                '		Cualquier otro costo directamente atribuible a la preparación del activo para su                           ' +
+                '		uso previsto.</option>                                                                                     ' +
+                '	<option value="Concepto no relacionado con el activo intangible">Concepto no                                   ' +
+                '		relacionado con el activo intangible</option>                                                              ' +
+                '	</select>                                                                                                      ' +
+                '	<p id="preguntaCol6"></p>                                                                                      ' +
+                '</td>																											   ' +
+
+                '<td><input type="number"></input></td>' +
+                '<td class="attrValue"><input type="hidden" value="si"><select class="selects" style="width:100%" onchange="cambioVal(this);"><option value="si">si</option><option value="no">no</option></select></td>' +
+
+                '<td>' + fase + '</td>' +
+
+                '<td>                                                                  ' +
+                '	<button class="btn btn-sm btn-danger" onclick="eliminarFase(this)">' +
+                '       <i class="fa fa-eraser"></i>' +
+                '	</button>    ' +
+                '   <button class="btn btn-sm btn-warning" onclick="duplicarFase(this)">' +
+                '       <i class="fa fa-copy"></i>' +
+                '	</button>                                                        ' +
+                '</td>                                                                 ';
+                tr.innerHTML = conte;
+            $("#detTbl tbody").append(tr);
+        }
+        $('#mdlCtrl').modal('toggle');
     }
-
-    for (var i = 0; i < cantidad; i++) {
-
-        var tr = document.createElement('tr');
-        tr.innerHTML = '<td>' + factura + '</td>' +
-            '<td>' + facturaDeSena + '</td>' +
-            '<td>' + fecha + '</td>' +
-            '<td>' + valor + '</td>' +
-            '<td>' + tieneIVA + '</td>' +
-            '<td>' + valorIVA + '</td>' +
-
-            '<td class="attrValue">                                                                                            ' +
-            '	<select name="col6" id="col6" class="selects" style="width:100%" onchange="setSeleccion(this)">                ' +
-            '	<option value="undefined">Seleccione respuesta</option>                                                        ' +
-            '	<option value="Transporte">Transporte</option>                                                                 ' +
-            '	<option value="Flete">Flete</option>                                                                           ' +
-            '	<option value="Honorarios">Honorarios</option>                                                                 ' +
-            '	<option value="Capacitación de Personal">Capacitación de Personal</option>                                     ' +
-            '	<option value="Adquisición de Servicios de Instalacion de terminación de Acabados entre otros">Adquisición de Servicios de Instalacion de terminación de Acabados entre otros</option>                                     ' +
-            '	<option value="Aranceles de importación, si los hay">Aranceles de importación, si                              ' +
-            '		los hay</option>                                                                                           ' +
-            '	<option value="Mantenimiento de maquinaria, equipo, transporte y software">                                    ' +
-            '		Mantenimiento de maquinaria, equipo, transporte y software</option>                                        ' +
-            '	<option value="Minerales, Electricidad, Gas y Agua">Minerales, Electricidad, Gas y Agua</option>                                     ' +
-            '	<option value="Paquetes de software">Paquetes de software</option>                                             ' +
-            '	<option value="Arrendamiento de Equipos">Arrendamiento de Equipos</option>                                                                 ' +
-            '	<option value="Cualquier otro costo directamente atribuible a la preparación del activo para su uso previsto.">' +
-            '		Cualquier otro costo directamente atribuible a la preparación del activo para su                           ' +
-            '		uso previsto.</option>                                                                                     ' +
-            '	<option value="Concepto no relacionado con el activo intangible">Concepto no                                   ' +
-            '		relacionado con el activo intangible</option>                                                              ' +
-            '	</select>                                                                                                      ' +
-            '	<p id="preguntaCol6"></p>                                                                                      ' +
-            '</td>																											   ' +
-
-            '<td><input type="number"></input></td>' +
-            '<td class="attrValue"><input type="hidden" value="si"><select class="selects" style="width:100%" onchange="cambioVal(this);"><option value="si">si</option><option value="no">no</option></select></td>' +
-
-            '<td>' + fase + '</td>' +
-
-            '<td>                                                                  ' +
-            '	<button class="btn btn-sm btn-danger" onclick="eliminarFase(this)">' +
-            '       <i class="fa fa-eraser"></i>' +
-            '	</button>    ' +
-            '   <button class="btn btn-sm btn-warning" onclick="duplicarFase(this)">' +
-            '       <i class="fa fa-copy"></i>' +
-            '	</button>                                                        ' +
-            '</td>                                                                 ';
-        $("#detTbl tbody").append(tr);
-    }
-    $('#mdlCtrl').modal('toggle');
 }
 
 $("#boton_volver").click(function() {
@@ -459,6 +492,7 @@ $("#boton_volver").click(function() {
 });
 
 $("#boton_registro").click(function() {
+    limite ();
     var tiempoVida = $("#tiempoVida").val();
     if (tiempoVida == 'indefinida') {
 
@@ -669,6 +703,8 @@ $(document).ready(function() {
             return false;
         }
     });
+
+    
 });
 
 var now1 = new Date();
@@ -732,4 +768,47 @@ function validarEnvioDatosFinitos()
     }
 
     return errores;
+}
+
+function getClassIntangible()
+{
+    var codeIntangible = $("#cod_intangible").val();
+
+    $.ajax({
+        type: 'POST',
+        url: '../controladores/ajax/formatoIntangible/classIntangible.php',
+        data: {'codeIntangible': codeIntangible}
+    })
+    .done(function(classIntan){
+        
+        if (classIntan === 'Error') {
+            $.alert({
+                title: 'Error',
+                content: 'Ups, ha ocurrido un error'
+            });
+        } else {
+            $('#fase').html(classIntan)
+        }
+        
+    })
+    .fail(function(){
+        $.alert({
+            title: 'Error',
+            content: 'Ups, ha ocurrido un error'
+        });
+    })
+}
+
+function limite ()
+{
+    $.ajax({
+        url: '../controladores/ajax/fechaLimite/obtenerFechaLimite.php'
+    })
+
+    .done(function(respuesta){
+        if(respuesta == false)
+        {
+            location.reload();
+        }
+    })
 }

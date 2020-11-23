@@ -4,6 +4,7 @@
     require_once '../../modelo/proyectoEvaluarIntangible.php';
     require_once '../../modelo/intangible/intangibleModelo.php';
     require_once '../../modelo/claseIntangibleModelo.php';
+    require_once '../../modelo/facturaModelo.php';
     session_start();
     if (!isset($_SESSION['id'])) {
         header("Location:../../index.php");
@@ -55,9 +56,13 @@
         <?php
             echo readIntangibleInfo($data);
         ?>
-        <div class="radicar_proyecto" id="boton_volver">VOLVER</div>
+        
     </div>
-    
+    <?php
+        echo readFactura($data);
+    ?>
+          
+    <div class="radicar_proyecto" id="boton_volver">VOLVER</div>
     <script src="../../../js/jquery.redirect.js"></script>
 
 <script>

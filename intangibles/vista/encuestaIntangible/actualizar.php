@@ -3,6 +3,8 @@
     require_once '../../modelo/conexion/conexion.php';
     require_once '../../modelo/intangible/intangibleModelo.php';
     require_once '../../controladores/encuestaIntangible/read.php';
+    require_once '../../controladores/verificaciones/fechaLimite.php';
+    require_once '../../modelo/intangible/intangibleModelo.php';
     $model = new consecutiveProject();
     
     session_start();
@@ -74,7 +76,7 @@
     ?>
     <div class="caja_formulario">
         <h2 id="timeToLife"></h2>
-        <div class="titulo"><?php echo($info->nombre_intangible) ?></div>
+        <div class="titulo"><?php echo($data) ?></div>
         <div class="formulario1 formulario_c" style="color:white">
             <h2 class="titulo_formulario">Nuevo intangible</h2>
             <p><strong>Centro:</strong>
@@ -135,6 +137,24 @@
         <script src="../../../js/jquery.redirect.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="../../js/encuestaIntangible/update.js"></script>
+        <?php
+            if(enabledOperations() === false)
+            {
+                deleteIntangibleLimitDate();
+
+                echo "<script>
+                $.confirm({
+                    title: 'Informaci&oacute;n',
+                    content:'Haz alcanzado la fecha limite, por lo tanto no puede hacer mas registros.',
+                    buttons: {
+                        Ok: function () {
+                            $.redirect('../../index.php')
+                        }
+                    }
+                });
+                    </script>";
+            }
+        ?>
 </body>
 
 </html>
