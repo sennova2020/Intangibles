@@ -53,7 +53,7 @@ $project = trim($_GET['project']);
                         <a href="../../session/logout.php">SALIR</a>
                     </div>
                     <div class="col-12 text-center" style="margin:15px">
-                        <p>Posible Descripción</p>
+                        <!--<p>Posible Descripción</p>-->
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">C&oacute;digo de centro:</label>
                     <div class="col-12 col-md-7">
@@ -96,11 +96,7 @@ $project = trim($_GET['project']);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="../../../js/jquery.redirect.js"></script>
     <script src="../../js/encuestaIntangible/encuestasTerminadas.js"></script>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    
 </body>
 
 </html>
