@@ -60,7 +60,7 @@ if(isset($_POST['project']))
                         <a href="../../session/logout.php">SALIR</a>
                     </div>
                     <div class="col-12 text-center" style="margin:15px">
-                        <p>Descripci&oacute;n</p>
+                        <!--<p>Descripci&oacute;n</p>-->
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Código de centro:</label>
                     <div class="col-12 col-md-7">
