@@ -66,5 +66,9 @@ function descargarFormatos(e){
         archivo='GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx';
     }
 
-    $.alert('dd');
+    swal({
+        title: titulo,
+        text: contenido
+    });
 }
+

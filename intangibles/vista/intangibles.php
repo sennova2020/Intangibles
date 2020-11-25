@@ -23,11 +23,30 @@ deleteIntangibleLimitDate();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" href="../../imagenes/icon_sena.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <title>INTANGIBLES | Sennova</title>
+    <title>SENNOVA | Intangibles </title>
+        <link rel="icon" href="../../images/icon_sena.png">
+        <link rel="stylesheet" href="../../css/css.css">
+        <link rel="stylesheet" href="../../css/modales.css">
+        <link rel="stylesheet" href="../../css/responsive.css">
+        <link rel="stylesheet" href="../../css/loading.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        <!-- CSS only -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+            integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <!-- JS, Popper.js, and jQuery -->
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+        </script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="../../css/encuestaIntangible.css">
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/intangible.css">
     
@@ -81,11 +100,11 @@ deleteIntangibleLimitDate();
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Descargar formatos:</label>
                     <div class="col-12 col-md-7">
-                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-078_FORMATO_ADQUIRIDOS_V2.xlsx" class="documents">GRF-F-078</a>
+                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-078_FORMATO_ADQUIRIDOS_V2.xlsx" class="documents"><span id="GRF-F-078" onclick="descargarFormatos(this)">GRF-F-078</span></a>
 
-                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-080__FORMATO_RECONOCIMIENTO__ACTIVOS_INTANGIBLES_DESARROLLADOS.xlsx" class="documents ml-3">GRF-F-080</a>
+                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-080__FORMATO_RECONOCIMIENTO__ACTIVOS_INTANGIBLES_DESARROLLADOS.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-080">GRF-F-080</span></a>
 
-                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx" class="documents ml-3">GRF-F-081</a>
+                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-081">GRF-F-081</span></a>
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Fecha limite:</label>
                     <div class="col-12 col-md-7">
@@ -113,13 +132,15 @@ deleteIntangibleLimitDate();
                 echo "</table>";
     ?>
     
-    
+    <button onclick="descargarFormatos(this)" id="GRF-F-081">esto</button>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="../../js/combosymodales.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../../js/jquery.js"></script>
     <script src="../../js/jquery.redirect.js"></script>
-    
     <script src="../js/intangible.js"></script>
     <br>
     <br>
