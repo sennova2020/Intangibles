@@ -164,7 +164,7 @@ function envioDatos(z) {
                                 
                                 $.confirm({
                                     title: 'Registro exitoso.',
-                                    content: '<p>¿Desea continuar?</p><p>Continuar: Seguir al formulario de vida útil.</p><p>Finalizar: Terminar el registro.</p>',
+                                    content: '<p>¿Desea continuar?</p><p>Dada las respuestas diligenciadas en el formulario son todas positivas, debe seguir con el proceso al formulario del costo del intangible y diligenciar los formatos seg&uacute;n los procesos de compromiso.</p><p>Continuar: Seguir al formulario de costos del intangible.</p><p>Finalizar: Terminar el registro.</p>',
                                     buttons: {
                                         Continuar: function () {
                                             $.redirect(
