@@ -37,7 +37,7 @@ deleteIntangibleLimitDate();
     <div id="header">
         <img src="../../images/banner1.png" alt="banner" class="img_header">
     </div>
-
+    
     <?php
         echo '
         <div class="container">
@@ -49,15 +49,43 @@ deleteIntangibleLimitDate();
                         <a href="../session/logout.php">SALIR</a>
                     </div>
                     <div class="col-12 text-center" style="margin:15px">
-                        <p style="text-align: justify;text-justify: inter-word;">En aplicación a la resolución 533 de 2015 de la Contaduría General de la Nación, modificada por la resolución 484 de 2017 y la Resolución número 425 de 2019, por la cual se modifican las Normas para el Reconocimiento, Medición, Revelación y Presentación de los Hechos Económicos del Marco Normativo para Entidades de Gobierno y siguientes, desde el 1° de enero de 2018 debemos reconocer los activos intangibles adquiridos y desarrollados por la entidad y que cumplan con los criterios establecidos en la norma.</p>
-                        <p style="text-align: justify;text-justify: inter-word;">Es de suma importancia que se registre toda información solicitada ya que debemos presentar este proceso a los entes de control y cumplir con lo establecido en la norma y con los compromisos que tiene la entidad de realizar correctamente el reconocimiento de los intangibles en la información financiera de la entidad.</p>
-                        <p style="text-align: justify;text-justify: inter-word;">Este reconocimiento se realizará en varias fases debido a la magnitud del proceso, siendo la primera fase la medición de saldos iniciales de los activos intangibles, seguido de una medición posterior y finalmente una medición de indicios de deterioro.</p>
-                        <p style="text-align: justify;text-justify: inter-word;">Por lo anterior, solicitamos continuar con la medición de saldos iniciales en lo concerniente a la estimación de costo de los bienes intangibles adquiridos y desarrollado por los proyectos de investigación en su Centro de Formación.</p>
+                       <article class="text-left">
+
+                            <p><strong>Resolución 533 de 2015: </strong>Contaduría General de la Nación, por la cual se incorpora, en el Régimen de Contabilidad Publica, el marco normativo aplicable a entidades de gobierno y se dictan otras disposiciones; modificado por la Resolución 425 de 2019 por la cual se modifican las Normas para el Reconocimiento, Medición, Revelación y Presentación de los Hechos Económicos del Marco Normativo para Entidades de Gobierno.</p>
+
+                            <p><strong>Resolución 620 de 2015: </strong>Contaduría General de la Nación, por la cual se incorpora el Catalogo General de Cuentas al Marco Normativo para entidades de Gobierno, actualizado por la Resolución 095 de 2020 contaduría General de la nación.</p>
+
+                            <p><strong>Resolución 193 de 2016: </strong>Suscrita por la Contaduría General de la nación: Por el cual se incorpora, en los procedimientos transversales del régimen de contabilidad pública, el procedimiento para la evaluación del control interno contable.</p>
+
+                            <p><strong>Guía de orientación contable en el marco de la emergencia económica generada por el COVID – 19.</strong></p>
+
+                            <p><strong>GRF-M-004 Manual de Políticas Contables SENA</strong></p>
+
+                            <p><h4 class="text-center">ACTIVOS INTANGIBLES:</h4></p>
+
+                            <p><strong></strong>Es así, que un activo intangible es el “recurso identificable, de carácter no monetario y sin apariencia física, sobre los cuales la entidad tiene control, espera tener potencial de servicio y puede realizar mediciones fiables. Estos activos se caracterizan porque no se espera vendernos en el curso de las actividades de la entidad y se prevé usarlo durante más de un periodo contable” (Procedimiento reconocimiento intangibles adquiridos, código GRF – P – 025, Compromiso, 2019); se pueden clasificar en dos tipos, los adquiridos y los que se han generados internamente (Desarrollados).</p>
+
+                            <p><strong>Los activos intangibles adquiridos, </strong>“son aquellos que cumplen con los criterios de reconocimiento de activos intangibles que se adquieren a un tercero en forma separada y pueden ser identificados por derechos contractuales o legales y están representados por el precio de adquisición, los aranceles de importación e impuestos no recuperables y cualquier otro costo atribuible a la adquisición o preparación para el uso del activo”. (Procedimiento reconocimiento intangibles adquiridos, código GRF – P – 025, Compromiso, 2019). </p>
+
+                            <p><strong>Los intangibles generados internamente (Desarrollados) </strong>“son aquellos que surgen de una fase de desarrollo y que pasan previamente por una fase de investigación y como resultado de esta fase, se puede demostrar la certeza de completar de manera técnica la producción del producto; disponibilidad de recursos técnicos, financieros o de otro, para completar el desarrollo; demostrar la intención de completar el producto, para usarlo; determinar su utilización dentro de las funciones misionales de SENA de formación profesional o en aquellas administrativas que coadyuvan con este fin; la capacidad del SENA para utilizar el producto; su capacidad para medir el desembolso atribuible al desarrollo del intangible”. (Procedimiento reconocimiento intangibles Desarrollados, código GRF – P – 031, Compromiso, 2019). 
+
+                            <br> <br>
+
+
+                            Por lo anterior y de acuerdo con las Normas Para El Reconocimiento, Medición, Revelación Y Presentación De Los Hechos Económicos (Actualizadas según la Resolución 425 de 2019- Contraloría General de la Nación), un intangible desarrollado en fase de investigación comprende todo aquel estudio original y planificado que realiza la entidad con la finalidad de obtener nuevos conocimientos científicos o tecnológicos; por otro lado, en fase de desarrollo consiste en la aplicación de los resultados de la investigación (o de cualquier otro tipo de conocimiento científico) a un plan o diseño para la producción de sistemas nuevos o sustancialmente mejorados, materiales, productos, métodos o procesos, antes del comienzo de su producción o utilización comercial.
+                            </p>
+
+
+                       
+                       </article>
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Descargar formatos:</label>
                     <div class="col-12 col-md-7">
-                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=Requerimiento-Intangibles.docx" class="documents">Documento 1</a>
-                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=excel.xlsx" class="documents">Documento 2</a>
+                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-078_FORMATO_ADQUIRIDOS_V2.xlsx" class="documents">GRF-F-078</a>
+
+                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-080__FORMATO_RECONOCIMIENTO__ACTIVOS_INTANGIBLES_DESARROLLADOS.xlsx" class="documents ml-3">GRF-F-080</a>
+
+                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx" class="documents ml-3">GRF-F-081</a>
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Fecha limite:</label>
                     <div class="col-12 col-md-7">
@@ -70,7 +98,7 @@ deleteIntangibleLimitDate();
 
                     
                 </div>';
-
+    
                 echo '
                     <table border="1" style="width:100%; margin:auto; border-collapse:collapse; border:1px solid rgb(200,200,200); box-sizing:border-box;">
                         <tr style="background-color:#D9E1F2; color:#203696;" align="center">

@@ -532,4 +532,6 @@
             }
         })
     }
+
+    
     //Functions for delete inputs of the form encuestaIntangible
