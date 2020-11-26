@@ -351,7 +351,7 @@ function agregarFactura() {
         resultado += "<br> <br> * Debe escoger la fase del documento contable";
     }
 
-    if(tipoDocumento !== "factura" && tipoDocumento !== "contratos" && tipoDocumento !== "resolucion"){
+    if(tipoDocumento !== "factura" && tipoDocumento !== "contratos" && tipoDocumento !== "resolucion" && tipoDocumento !== "Ordenes de pago"  && tipoDocumento !== "Liquidación de contrato" && tipoDocumento !== "Cuenta de cobro" && tipoDocumento !== "Otros"){
         resultado += "<br> <br> * Debe ingresar el tipo de documento contable";
     }
 
@@ -396,6 +396,27 @@ function agregarFactura() {
                 if(tipoDocumento == 'contratos')
                 {
                     tipoDoc = 'Contratos';
+                }else{
+
+                    if(tipoDocumento == 'Ordenes de pago')
+                    {
+                        tipoDoc = 'Ordenes de pago';
+                    }else{
+
+                        if(tipoDocumento == 'Cuenta de cobro')
+                        {
+                            tipoDoc = 'Cuenta de cobro';
+                        }else{
+
+                            if(tipoDocumento == 'Otros')
+                            {
+                                tipoDoc = 'Otros';
+                            }
+
+                        }
+
+                    }
+
                 }
             }
 
@@ -406,7 +427,13 @@ function agregarFactura() {
             {
                 conte += '<td>Resolución de apertura</td>';
             }else{
-                conte +='<td>' + tipoDoc + '</td>'
+
+                if(tipoDocumento == 'Liquidación de contrato')
+                {
+                    conte += '<td>Liquidación de contrato</td>';
+                }else{
+                    conte +='<td>' + tipoDoc + '</td>'
+                }
             }
             conte += 
                 

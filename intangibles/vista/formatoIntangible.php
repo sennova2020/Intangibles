@@ -170,6 +170,10 @@ require_once '../controladores/verificaciones/fechaLimite.php';
                                     <option value="factura">Factura</option>
                                     <option value="contratos">Contratos</option>
                                     <option value="resolucion">Resoluci&oacute;n de apertura</option>
+                                    <option value="Ordenes de pago">Ordenes de pago</option>
+                                    <option value="Liquidación de contrato">Liquidaci&oacute;n de contrato</option>
+                                    <option value="Cuenta de cobro">Cuenta de cobro</option>
+                                    <option value="Otros">Otros</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
