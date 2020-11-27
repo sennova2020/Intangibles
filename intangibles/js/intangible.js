@@ -72,3 +72,61 @@ function descargarFormatos(e){
     });
 }
 
+function sinIntangibles(e)
+{
+    var id = e.id;
+
+    swal({
+        title: "¿Está seguro?",
+        text: "Esta a punto de declarar que este proyecto no genero intangibles, despues de continuar esta acción no podra registrar intangibles de manera permanente. ",
+        icon: "warning",
+        buttons: ["Cancelar", "Sin intangibles"],
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+        if (willDelete) {
+            modalJustification(id);
+            
+        }
+    });
+}
+
+function modalJustification(id){
+    swal("Escriba una justificación:", {
+        content: "input",
+      })
+      .then((value) => {
+        if(value != '')
+        {
+            $.ajax({
+                type: 'POST',
+                url:'../controladores/encuestaIntangible/sinIntangibles.php',
+                data: {
+                    'project':id,
+                    'justificacion':value
+                }
+            })
+            .done(function(res){
+                swal({
+                    title: res,
+                    text: "",
+                    icon: "success",
+                    timer: 5000
+                })
+                .then((value) => {
+                    location.reload();
+                });
+                //location.reload();
+            })
+            .fail(function(){
+                swal("Ups, ha ocurrido un error","error");
+            })
+            //swal("Good job!", value, "success");
+        }else{
+            swal({
+                title: 'Debe enviar una justificación, por el cual el proyecto no genera intangibles',
+                icon: 'error',
+            });
+        }
+      });
+}

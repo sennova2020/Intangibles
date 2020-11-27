@@ -338,6 +338,77 @@ class intangible
         $result -> execute();
     }
     
+    public function readProjectWithoutIntagibles ($project)
+    {
+        $num = 1;
+        $resultado = null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "SELECT sin_intangible FROM x_intangibles_preguntas WHERE proyecto_consecutivo =:project AND sin_intangible=:num";
+        
+        $result = $conexion -> prepare($sql);
+
+        $result -> bindParam(':project',$project);
+        $result -> bindParam(':num',$num);
+
+        if ($result) {
+            $result->execute();
+
+            while ($f=$result->fetch()) {
+                $resultado [] = $f;
+            }
+        }else{
+            $resultado = false;
+        }
+
+        return $resultado;
+    }
+
+    public function readAll($project){
+        $resultado = null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "SELECT * FROM x_intangibles_preguntas WHERE proyecto_consecutivo =:project AND sin_intangible IS NULL";
+        
+        $result = $conexion -> prepare($sql);
+
+        $result -> bindParam(':project',$project);
+
+        if ($result) {
+            $result->execute();
+
+            while ($f=$result->fetch()) {
+                $resultado [] = $f;
+            }
+        }else{
+            $resultado = false;
+        }
+
+        return $resultado;
+    }
+
+    public function createSinIntagible($project,$justificacion,$sinJ,$estado,$negativo)
+    {
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "INSERT INTO x_intangibles_preguntas (proyecto_consecutivo,fecha,estado,negativo,sin_intangible,justificacion) VALUES (:project,now(),:estado,:negativo,:sinJ,:justificacion)";
+        
+        $result = $conexion -> prepare($sql);
+
+        $result -> bindParam(':project',$project);
+        $result -> bindParam(':justificacion',$justificacion);
+        $result -> bindParam(':sinJ',$sinJ);
+        
+        $result -> bindParam(':estado',$estado);
+        $result -> bindParam(':negativo',$negativo);
+
+        $result->execute();
+
+    }
+    
 }
 
 

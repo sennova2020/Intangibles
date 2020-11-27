@@ -30,7 +30,7 @@
                                         <td class="text-center"><a href="encuestaIntangible/encuestasTerminadas.php?project='.$projects['proyecto_consecutivo'].'">Detalle</a></td>
                                         <td class="text-center">';
 
-                                        if(enabledOperations() === true)
+                                        if(enabledOperations() === true && projectWithoutIntagibles ( $projects['proyecto_consecutivo']) === true)
                                         {
                                             $resultado .= '
                                             
@@ -39,8 +39,19 @@
                                                         Aplicar
                                                     </button>
                                                     <div class="dropdown-menu">
-                                                        <a class="ml-2" href="encuestaIntangible/encuestaIntangible.php?project='.$projects['proyecto_consecutivo'].'"><span class="redirectSpan pt-3 pb-3 text-dark">Agregar <br> <span class="ml-2">intangible</span> </span></a>'.
-                                                        itemsDropdowns($projects['proyecto_consecutivo'])
+                                                        <a class="ml-2" href="encuestaIntangible/encuestaIntangible.php?project='.$projects['proyecto_consecutivo'].'"><span class="redirectSpan pt-3 pb-3 text-dark">Agregar <br> <span class="ml-2">intangible</span> </span></a>';
+                                                        if(sinIntangiblesTerminados($projects['proyecto_consecutivo'])==true)
+                                                        {
+                                                            $resultado .= '
+
+                                                                <br>
+                                                                <hr>
+                                                                <span class="ml-2" id="'.$projects['proyecto_consecutivo'].'" onclick="sinIntangibles(this)"><span class="redirectSpan pt-3 pb-3 text-dark">No tiene<br><span class="ml-2">intangibles</span> </span></span>
+                                                                
+                                                                ';
+                                                        }
+                                                        
+                                                        $resultado .=  itemsDropdowns($projects['proyecto_consecutivo'])
                                                         .'
                                                     </div>
                                                 </div>

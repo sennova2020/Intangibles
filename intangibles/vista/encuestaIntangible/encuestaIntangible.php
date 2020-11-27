@@ -5,10 +5,16 @@
     require_once '../../modelo/conexion/conexion.php';
     require_once '../../controladores/verificaciones/fechaLimite.php';
     require_once '../../modelo/intangible/intangibleModelo.php';
+    require_once '../../controladores/verificaciones/sinIntagibles.php';
     $model = new consecutiveProject();
     
     session_start();
     if (!isset($_SESSION['id'])) {
+        header("Location:../../index.php");
+    }
+    $data = $_GET['project'];
+    if(projectWithoutIntagibles($data) === false)
+    {
         header("Location:../../index.php");
     }
 
@@ -64,7 +70,7 @@
         </div>
     </div>
     <?php
-      $data = $_GET['project'];
+      
       $projects = $model-> readTitle($data);
       
     ?>
