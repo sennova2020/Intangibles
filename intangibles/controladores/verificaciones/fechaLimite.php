@@ -2,7 +2,7 @@
 
 function getLimitDate()
 {
-    return $limitDate= '2020/12/17';
+    return $limitDate= '2020/12/11';
 }
 
  function enabledOperations()
