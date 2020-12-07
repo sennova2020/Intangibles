@@ -428,7 +428,7 @@
             $resultado .= '
                 <div class="titulo">C&oacute;digo del intangible: '.$intangible['cod_intangible'].'</div>
                 <div class="formulario1 formulario_c" style="color:white">
-                    <h2 class="titulo_formulario">Nombre del Intangible: '.$intangible['pregunta3'].'</h2>
+                    <h2 class="titulo_formulario">Nombre del Intangible: '.utf8_encode($intangible['pregunta3']).'</h2>
                     <table class="table table-striped" style="color:white">
                         <tr><td><strong>Codigo Centro:</strong></td><td>'.$_SESSION['centro'].'</td></tr>';
 

@@ -178,9 +178,12 @@ function envioDatos(z) {
                                             );
                                         },
                                         Finalizar: function () {
-                                            'encuestasSinGuardar.php',
+                                            $.redirect(
+                                                '../intangibles.php',
                                                 {'project':project},
                                                 'POST'
+                                            );
+                                            
                                         }
                                     }
                                 });
