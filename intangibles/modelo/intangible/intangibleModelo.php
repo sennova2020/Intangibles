@@ -260,13 +260,12 @@ class intangible
         $model = new Conexion();
         $conexion = $model -> conectarse();
 
-        $sql = "SELECT cod_intangible,pregunta3,pregunta2,pregunta1 FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo=:negativo AND pregunta20 IS NOT NULL";
+        $sql = "SELECT cod_intangible,pregunta3,pregunta2,pregunta1 FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo IS NOT NULL";
         
         $result = $conexion -> prepare($sql);
 
         $result -> bindParam(':project',$project);
         $result -> bindParam(':estado',$estado);
-        $result -> bindParam(':negativo',$negativo);
 
         if ($result) {
             $result->execute();
@@ -289,13 +288,12 @@ class intangible
         $model = new Conexion();
         $conexion = $model -> conectarse();
 
-        $sql = "SELECT * FROM x_intangibles_preguntas WHERE cod_intangible=:codeIntangible AND estado=:estado AND negativo=:negativo AND pregunta20 IS NOT NULL";
+        $sql = "SELECT * FROM x_intangibles_preguntas WHERE cod_intangible=:codeIntangible AND estado=:estado AND negativo IS NOT NULL";
         
         $result = $conexion -> prepare($sql);
 
         $result -> bindParam(':codeIntangible',$codeIntangible);
         $result -> bindParam(':estado',$estado);
-        $result -> bindParam(':negativo',$negativo);
 
         if ($result) {
             $result->execute();
