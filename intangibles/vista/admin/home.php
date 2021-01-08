@@ -1,13 +1,13 @@
 <?php 
- require_once '../modelo/conexion/conexion.php';
- require_once '../modelo/centroInformation/centroModel.php';
- require_once '../modelo/centroInformation/informacionCentro.php';
- require_once '../modelo/proyectoConsecutivo/proyectoConsecutivoModel.php';
- require_once '../modelo/intangible/intangibleModelo.php';
- require_once '../modelo/proyectoEvaluarIntangible.php';
- require_once '../controladores/centroProyecto/read.php';
- require_once '../controladores/verificaciones/fechaLimite.php';
- require_once '../controladores/verificaciones/sinIntagibles.php';
+ require_once '../../modelo/conexion/conexion.php';
+ require_once '../../modelo/centroInformation/centroModel.php';
+ require_once '../../modelo/centroInformation/informacionCentro.php';
+ require_once '../../modelo/proyectoConsecutivo/proyectoConsecutivoModel.php';
+ require_once '../../modelo/intangible/intangibleModelo.php';
+ require_once '../../modelo/proyectoEvaluarIntangible.php';
+ require_once '../../controladores/centroProyecto/read.php';
+ require_once '../../controladores/verificaciones/fechaLimite.php';
+ require_once '../../controladores/verificaciones/sinIntagibles.php';
 session_start();
 if (!isset($_SESSION['id'])) {
     header("Location:../index.php");
@@ -25,11 +25,11 @@ deleteIntangibleLimitDate();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>SENNOVA | Intangibles </title>
-        <link rel="icon" href="../../images/icon_sena.png">
-        <link rel="stylesheet" href="../../css/css.css">
-        <link rel="stylesheet" href="../../css/modales.css">
-        <link rel="stylesheet" href="../../css/responsive.css">
-        <link rel="stylesheet" href="../../css/loading.css">
+        <link rel="icon" href="../../../images/icon_sena.png">
+        <link rel="stylesheet" href="../../../css/css.css">
+        <link rel="stylesheet" href="../../../css/modales.css">
+        <link rel="stylesheet" href="../../../css/responsive.css">
+        <link rel="stylesheet" href="../../../css/loading.css">
         <link rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
@@ -46,15 +46,16 @@ deleteIntangibleLimitDate();
         </script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/index.css">
-    <link rel="stylesheet" href="../css/intangible.css">
+    <link rel="stylesheet" href="../../css/index.css">
+    <link rel="stylesheet" href="../../css/intangible.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css">
     
 </head>
 
 <body>
     
     <div id="header">
-        <img src="../../images/banner1.png" alt="banner" class="img_header">
+        <img src="../../../images/banner1.png" alt="banner" class="img_header">
     </div>
     
     <?php
@@ -62,10 +63,10 @@ deleteIntangibleLimitDate();
         <div class="container">
                 <div class="form-group row align-self-center">
                     <div class="col-12 text-center" style="margin:15px">
-                        <h4>Medición de Saldos Iniciales de los Activos Intangibles Adquiridos y Desarrollados en los proyectos de investigación Sennova</h4>
+                        <h4>Descargar información de todos los proyectos</h4>
                     </div>
                     <div class="col-12 text-left" style="margin:15px">
-                        <a href="../session/logout.php">SALIR</a>
+                        <a href="../../session/logout.php">SALIR</a>
                     </div>
                     <div class="col-12 text-center" style="margin:15px">
                        <article class="text-left">
@@ -100,46 +101,54 @@ deleteIntangibleLimitDate();
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Descargar formatos:</label>
                     <div class="col-12 col-md-7">
-                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-078_FORMATO_ADQUIRIDOS_V2.xlsx" class="documents"><span id="GRF-F-078" onclick="descargarFormatos(this)">GRF-F-078</span></a>
+                        <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-078_FORMATO_ADQUIRIDOS_V2.xlsx" class="documents"><span id="GRF-F-078" onclick="descargarFormatos(this)">GRF-F-078</span></a>
 
-                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-080__FORMATO_RECONOCIMIENTO__ACTIVOS_INTANGIBLES_DESARROLLADOS.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-080">GRF-F-080</span></a>
+                        <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-080__FORMATO_RECONOCIMIENTO__ACTIVOS_INTANGIBLES_DESARROLLADOS.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-080">GRF-F-080</span></a>
 
-                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-081">GRF-F-081</span></a>
+                        <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-081">GRF-F-081</span></a>
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Fecha limite:</label>
                     <div class="col-12 col-md-7">
                         <h2><strong>'. getLimitDate().'</strong></h2>
                     </div>
-                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">C&oacute;digo de centro:</label>
-                    <div class="col-12 col-md-7">
-                        <h2><strong>'. $_SESSION['centro'].'</strong></h2>
-                    </div>
+                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">
+                    
 
                     
                 </div>';
     
-                echo '
-                    <table border="1" style="width:100%; margin:auto; border-collapse:collapse; border:1px solid rgb(200,200,200); box-sizing:border-box;">
-                        <tr style="background-color:#D9E1F2; color:#203696;" align="center">
-                            <th>C&oacutedigo proyecto</th>                 
-                            <th>Nombre de proyecto</th>    
-                            <th>Ver intangibles</th>   
-                            <th>Descargar Información</th>           
-                        </tr>
-                    ';
-        
-                echo utf8_encode(readProject());
-                echo "</table>";
+                
+                   
     ?>
+     <table id="myTable" border="1" style="width:100%; margin:auto; border-collapse:collapse; border:1px solid rgb(200,200,200); box-sizing:border-box;" class="text-center">
+
+        <thead>
+        
+            <tr style="background-color:#D9E1F2; color:#203696;" align="center">
+                <th>C&oacutedigo proyecto</th>                 
+                <th>Nombre de proyecto</th>
+                <th>Centros</th>    
+                <th>Ver intangibles</th>
+                <th>Descargar Información</th>
+            </tr>
+        </thead>
+        <tbody id="contenTable">
+            
+        </tbody>
+        
+    
+    </table>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="../../js/jquery.js"></script>
-    <script src="../../js/jquery.redirect.js"></script>
-    <script src="../js/intangible.js"></script>
+    <script src="../../../js/jquery.js"></script>
+    <script src="../../../js/jquery.redirect.js"></script>
+    <script src="../../js/admin/home.js"></script>
+    <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+   
     <br>
     <br>
     <br>

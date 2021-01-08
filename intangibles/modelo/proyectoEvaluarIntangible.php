@@ -86,6 +86,23 @@ class proyectoEvaluarIntangible
 
         return $resultado;
     }
+
+    public function readAllAdmin()
+    {
+        $projects=null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "SELECT * FROM proyecto_evaluar_intangible";
+        
+        $result = $conexion -> prepare($sql);
+
+        $result->execute();
+        while($f=$result->fetch()){
+            $projects[]=$f;
+        }
+        return $projects;
+    }
 }
 
 

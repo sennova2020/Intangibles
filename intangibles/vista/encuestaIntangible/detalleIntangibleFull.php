@@ -5,6 +5,8 @@
     require_once '../../modelo/intangible/intangibleModelo.php';
     require_once '../../modelo/claseIntangibleModelo.php';
     require_once '../../modelo/facturaModelo.php';
+    require_once '../../controladores/seguridad/liderSecurity.php';
+    liderRol(2);
     session_start();
     if (!isset($_SESSION['id'])) {
         header("Location:../../index.php");

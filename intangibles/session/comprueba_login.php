@@ -1,4 +1,5 @@
 <?php
+    require_once '../controladores/seguridad/rutas.php';
     try{
 
         $respuesta = "";
@@ -23,10 +24,13 @@
             $_SESSION['tiempo'] = time();
             $_SESSION["id"] = $_POST["cedula"];
             $_SESSION["centro"] = $rs[0];
-            $respuesta= $rs[0];
+            $_SESSION["rol"] = $rs[7];
+            $respuesta= routesRol( $_SESSION["rol"]);
+            
         }else{
             $respuesta = "-1";
         }
+
         echo $respuesta;
         
     }catch(Exception $e){

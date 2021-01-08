@@ -406,7 +406,8 @@ class intangible
         $result->execute();
 
     }
-    
+
+   
 }
 
 

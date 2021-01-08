@@ -8,7 +8,8 @@
  require_once '../controladores/centroProyecto/read.php';
  require_once '../controladores/verificaciones/fechaLimite.php';
  require_once '../controladores/verificaciones/sinIntagibles.php';
-session_start();
+ require_once '../controladores/seguridad/liderSecurity.php';
+liderRol(1);
 if (!isset($_SESSION['id'])) {
     header("Location:../index.php");
 }

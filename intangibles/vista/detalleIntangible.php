@@ -1,4 +1,6 @@
 <?php 
+    require_once '../controladores/seguridad/liderSecurity.php';
+    liderRol(1);
     session_start();
     if (!isset($_SESSION['id'])) {
         header("Location:../index.php");

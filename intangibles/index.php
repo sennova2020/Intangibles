@@ -1,7 +1,9 @@
 <?php
+require_once 'controladores/seguridad/rutas.php';
 session_start();
 if (isset($_SESSION['id'])) {
-    header("Location:vista/intangibles.php");
+    $ruta = routesRol($_SESSION["rol"]);
+    header("Location:$ruta");
 }
 ?>
 <!DOCTYPE html>
@@ -36,7 +38,7 @@ if (isset($_SESSION['id'])) {
                         if (data == "-1") {
                             alert("Documento o contraseña incorrectos, por favor revisar nuevamente");
                         } else {
-                            $.redirect('vista/intangibles.php', {'centro': data}, "POST");
+                            $.redirect(data);
                         }
                     });
                 }
