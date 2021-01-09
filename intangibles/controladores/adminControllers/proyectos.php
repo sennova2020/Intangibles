@@ -19,7 +19,7 @@
                         </a>
                     </td>
                     <td>
-                        <a href="#" class="col-12 text-center" style="margin-top:15px">
+                        <a href="../../controladores/adminControllers/reportes.php?rep=2&proj='.$item['proyecto_consecutivo'].'" class="col-12 text-center" style="margin-top:15px">
                             <button type="submit" class="btn btn-primary">Descargar</button>
                         </a>
                     </td>

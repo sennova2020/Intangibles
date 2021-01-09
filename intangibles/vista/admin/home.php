@@ -120,6 +120,9 @@ deleteIntangibleLimitDate();
                 
                    
     ?>
+    <a href="../../controladores/adminControllers/reportes.php?rep=1">
+        <button>Descargar informe</button>
+    </a>
      <table id="myTable" border="1" style="width:100%; margin:auto; border-collapse:collapse; border:1px solid rgb(200,200,200); box-sizing:border-box;" class="text-center">
 
         <thead>
@@ -144,6 +147,7 @@ deleteIntangibleLimitDate();
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="../../../js/jquery.js"></script>
     <script src="../../../js/jquery.redirect.js"></script>
     <script src="../../js/admin/home.js"></script>
