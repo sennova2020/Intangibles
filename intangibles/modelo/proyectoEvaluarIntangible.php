@@ -50,7 +50,7 @@ class proyectoEvaluarIntangible
         $model = new Conexion();
         $conexion = $model -> conectarse();
 
-        $sql ="SELECT proyecto_consecutivo,centro_nombre,proyecto_titulo FROM proyecto_evaluar_intangible WHERE proyecto_consecutivo=:project ";
+        $sql ="SELECT codigo_centro,proyecto_consecutivo,centro_nombre,proyecto_titulo FROM proyecto_evaluar_intangible WHERE proyecto_consecutivo=:project ";
 
         $result = $conexion ->prepare($sql);
 

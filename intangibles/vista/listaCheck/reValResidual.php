@@ -6,17 +6,20 @@
     require_once '../../controladores/verificaciones/fechaLimite.php';
     require_once '../../modelo/intangible/intangibleModelo.php';
     require_once '../../controladores/verificaciones/sinIntagibles.php';
+    require_once '../../controladores/formatoIntangible/read.php';
+    require_once '../../controladores/seguridad/liderSecurity.php';
+    liderRol(2);
     $model = new consecutiveProject();
     
-    session_start();
+    
     if (!isset($_SESSION['id'])) {
         header("Location:../../index.php");
     }
-    $data = $_GET['project'];
-    if(projectWithoutIntagibles($data) === false)
+    $data = $_POST['id'];
+    /*if(projectWithoutIntagibles($data) === false)
     {
         header("Location:../../index.php");
-    }
+    }*/
 
    
 
@@ -70,16 +73,16 @@
         </div>
     </div>
     <?php
-      
-      $projects = $model-> readTitle($data);
+      $data = trim($_POST['id']);
       
     ?>
     <div class="caja_formulario">
         <h2 id="timeToLife"></h2>
         <?php
-         echo projectInformation($data);
+            echo readParameterFormato($data);
         ?>
     </div>
+    
 
     <form  class="form_formulario" enctype="multipart/form-data" method="post"
         id="formulario_principal">
@@ -88,7 +91,7 @@
             <div class="titulo">VALIDACIÓN DE PREGUNTAS</div>
             <div class="formulario1 formulario_c">
                 <ol class="container info_cent_prop" id="general">
-                    <h2 style="color:white">LISTA DE CHEQUEO REVISION VALOR RESIDUAL </h2>
+                    
                     <hr /><br />
 
                     <li class="li_formulario">
@@ -116,8 +119,8 @@
     </form>
 
     
-    <div class="radicar_proyecto" onclick="envioDatos(this)" id="boton_registro">ENVIAR</div>
-    <div class="radicar_proyecto" onclick="envioDatos(this)" id="boton_TEMPORAL">REGISTRO TEMPORAL</div>
+    <div class="radicar_proyecto" onclick="envioDatos()" id="boton_registro">ENVIAR</div>
+   
     <div class="radicar_proyecto" id="boton_volver">VOLVER</div>
 
     <!-- Modal -->

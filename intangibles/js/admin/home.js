@@ -228,3 +228,10 @@ function changeLimitDate() {
         
       })
 }
+
+function consultarIntangibles(e){
+    var project = e.id;
+    $.redirect('intangiblesPorProyecto.php', {
+        'id': $("#project").val()
+    }, "POST");
+}

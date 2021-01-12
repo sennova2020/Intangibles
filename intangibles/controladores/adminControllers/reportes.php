@@ -21,7 +21,7 @@ function getHeaders($nombre){
 	}
 function downloadExcelReport($project)
 {
-    require_once '../../libreria/phpExcel/Classes/PHPExcel.php';
+    require_once '../../library/phpExcel/Classes/PHPExcel.php';
 
     $objPHPExcel = new PHPExcel();
 	// Contenido de historia del archivo

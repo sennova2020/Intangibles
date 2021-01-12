@@ -12,3 +12,14 @@ function descriptionModal(e) {
             content:message
     });
 }
+function envioDatos(){
+    $.redirect('revIndDeterioro.php', {
+        'id': $("#project").val()
+    }, "POST");
+}
+
+    $("#boton_volver").click(function() {
+        $.redirect('../../intangibles.php', {
+            'centro': '<?php echo($info->codigo_centro) ?>'
+        }, "POST");
+    });

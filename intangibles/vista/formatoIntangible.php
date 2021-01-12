@@ -6,7 +6,7 @@ require_once '../controladores/formatoIntangible/read.php';
 require_once '../controladores/verificaciones/fechaLimite.php';
 require_once '../controladores/seguridad/liderSecurity.php';
     liderRol(1);    
-    session_start();
+
     if (!isset($_SESSION['id'])) {
         header("Location:../index.php");
     }

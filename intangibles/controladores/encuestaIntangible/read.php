@@ -419,21 +419,26 @@
         $model =  new intangible();
         $modelClass = new claseIntangible();
         $modelCenter = new proyectoEvaluarIntangible();
-        $centers = $modelCenter->readNameCenter($_SESSION['centro']);
+   
+        
         
         $intangibles = $model -> readFinishedDetails($codIntangible);
 
+
+
         foreach($intangibles as $intangible)
         {
+            $centers = $modelCenter->readProjectCenter($intangible['proyecto_consecutivo']);
             $resultado .= '
                 <div class="titulo">C&oacute;digo del intangible: '.$intangible['cod_intangible'].'</div>
                 <div class="formulario1 formulario_c" style="color:white">
                     <h2 class="titulo_formulario">Nombre del Intangible: '.utf8_encode($intangible['pregunta3']).'</h2>
                     <table class="table table-striped" style="color:white">
-                        <tr><td><strong>Codigo Centro:</strong></td><td>'.$_SESSION['centro'].'</td></tr>';
+                        ';
 
                         foreach($centers as $center){
-                            $resultado .= '<tr><td><strong>Nombre Centro:</strong></td><td>'.utf8_encode($center['centro_nombre']).'</td></tr>';
+                            $resultado .= '<tr><td><strong>Codigo Centro:</strong></td><td>'.$center['codigo_centro'].'</td></tr>
+                            <tr><td><strong>Nombre Centro:</strong></td><td>'.utf8_encode($center['centro_nombre']).'</td></tr>';
                         }
 
                         $resultado .= '

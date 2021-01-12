@@ -121,6 +121,7 @@
   if(isset($_POST["cod_intangible"]))
   {
       $insertar1->insertar_preguntas();
+      header("Location:../intangibles/vista/listaCheck/checkRemanente.php?id=".$_POST["cod_intangible"]);
   }
   else
   {

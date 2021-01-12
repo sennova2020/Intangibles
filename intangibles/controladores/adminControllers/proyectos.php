@@ -17,7 +17,7 @@
                     <td>'.$item['proyecto_titulo'].'</td>
                     <td>'.$item['centro_nombre'].'</td>
                     <td>
-                        <a href="#" class="col-12 text-center" style="margin-top:15px">
+                        <a href="intangiblesPorProyecto.php?project='.$item['proyecto_consecutivo'].'" class="col-12 text-center" style="margin-top:15px">
                             <button type="submit" class="btn btn-primary">Detalle</button>
                         </a>
                     </td>
