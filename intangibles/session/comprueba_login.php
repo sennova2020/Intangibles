@@ -4,7 +4,7 @@
 
         $respuesta = "";
 
-        $base = new PDO("mysql:host=localhost;dbname=sennova_formulario", "root", "1842");
+        $base = new PDO("mysql:host=localhost;dbname=sennova_formulario", "root", "");
         $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $sql="select * from usuarioslider where documento = :login and contrasena = :passw";

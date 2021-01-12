@@ -1,0 +1,1 @@
+CREATE TABLE `sennova_formulario`.`fechalimite` ( `id` INT NOT NULL AUTO_INCREMENT ,  `fechaLimite` DATE NOT NULL ,  `motivo` VARCHAR(255) NOT NULL ,  `usuario` VARCHAR(50) NOT NULL ,  `created_at` DATETIME NOT NULL ,    PRIMARY KEY  (`id`)) ENGINE = InnoDB;

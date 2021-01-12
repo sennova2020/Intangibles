@@ -109,7 +109,7 @@ deleteIntangibleLimitDate();
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Fecha limite:</label>
                     <div class="col-12 col-md-7">
-                        <h2><strong>'. getLimitDate().'</strong></h2>
+                        <h2><strong>'. getLimitDate().'</strong> <span onclick="changeLimitDate()" class="h6 changedate">Cambiar Fecha</span></h2>
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">
                     
@@ -123,6 +123,7 @@ deleteIntangibleLimitDate();
     <a href="../../controladores/adminControllers/reportes.php?rep=1">
         <button>Descargar informe</button>
     </a>
+    
      <table id="myTable" border="1" style="width:100%; margin:auto; border-collapse:collapse; border:1px solid rgb(200,200,200); box-sizing:border-box;" class="text-center">
 
         <thead>

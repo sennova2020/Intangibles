@@ -407,7 +407,165 @@ class intangible
 
     }
 
+    public function readIntangibleByAdmin()
+    {
+        $resultado = null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "SELECT 
+        b.codigo_centro,
+        b.centro_nombre,
+        b.linea_programatica_descripcion,
+        b.proyecto_titulo,
+        a.proyecto_consecutivo,
+        (CASE WHEN a.sin_intangible= 1 THEN 'Si' ELSE 'No' END) AS 'Sin Intangibles?',
+        a.justificacion,
+        a.cod_intangible,
+        a.pregunta1 'Tipo de intangible',
+        d.denominacion 'Clase de intangibles',
+        a.pregunta3 'Nombre del Intangible.',
+        a.pregunta4 '¿El intangible es un recurso controlado? Control implica la capacidad del SENA para usar un recurso o definir el uso que un tercero debe darle, para las funciones administrativas o de formación profesional, al igual si se dispone de proceso o procedimiento al cual beneficia la utilización del producto. Al evaluar si existe o no control la entidad debe tener en cuenta, si el derecho de uso lo define un contrato, factura,entrada a almacén, certificado de licenciamiento, convenio o donaciones, igualmente se debe verificar el acceso al recurso o la capacidad de un tercero para negar o restringir el uso.',
+        a.pregunta5 'Observaciones a la pregunta ¿El intangible es un recurso controlado? Aclare si el SENA tiene el control del uso del intangible, es decir, en que proceso de la entidad se utiliza.',
+        a.pregunta6 '¿Del intangible se espera obtener un potencial de servicios?',
+        a.pregunta7 'Observaciones a la pregunta ¿Del intangible se espera obtener un potencial de servicios?',
+        a.pregunta8 '¿El intangible se puede medir fiablemente? La medición de un activo es fiable cuando existe evidencia de transacciones para el activo u otros similares, o cuando la estimación del valor depende de variables que se pueden medir en términos monetarios.',
+        a.pregunta9 'Observaciones a la pregunta ¿El intangible se puede medir fiablemente?',
+        a.pregunta10 '¿El intangible se puede identificar?',
+        a.pregunta11 'Observaciones a la pregunta ¿El intangible se puede identificar?',
+        a.pregunta12 '¿El intangible NO es considerado monetario? El intangibles es monetario cuando es un CDT, un bono o títulos valores y es no monetario en caso contrario.',
+        a.pregunta13 'Observaciones a la pregunta ¿El intangible NO es considerado monetario?',
+        a.pregunta14 '¿El intangible es sin apariencia física? Algunos intangibles pueden estar contenidos en, o contener, un soporte de naturaleza o apariencia física, como es el caso de un disco compacto (caso programas informáticos), de documentación legal (caso licencia o patente) o de una película; estos casos la sustancia material del elemento es de importancia secundaria con respecto a su componente intangible, por lo que el activo será considerado como intangible.',
+        a.pregunta15 'Observaciones a la pregunta ¿El intangible es sin apariencia física? Por ejemplo el software que se encuentra en un CD, la parte importante es el intangible.',
+        a.pregunta16 '¿El intangible se va a utilizar por más de un año? Verificar si el contrato permite la utilización del intangible por más de un año, igualmente se debe identificar si el área que generó la necesidad de su adquisición piensa utilizarlo por más de un año. La vida útil de los activos intangibles estará dada por el menor periodo entre el tiempo en que se obtendría el potencial de servicio esperados y el plazo establecido conforme a los términos contractuales, siempre y cuando el activo intangible se encuentre asociado a un derecho contractual o legal. Tenga en cuenta las siguientes consideraciones Marque SI, cuando:- Si el producto dispone de un derecho de uso perpetuo, indefinido o vitalicio.- Si el producto dispone de un derecho de uso superior a un año.',
+        a.pregunta17 'Observaciones a la pregunta ¿El intangible se va a utilizar por más de un año?  ', 
+        a.pregunta18 '¿No se espera vender en el curso de las actividades de la entidad? Si la intención de la entidad es NO venderlo, la respuesta es SI. Si la intención de la entidad es venderlo, la respuesta a la pregunta es un NO.', 
+        a.pregunta19 'Observaciones a la pregunta ¿No se espera vender en el curso de las actividades de la entidad?',
+        a.pregunta20 '¿La vida útil es finita o indefinida?', 
+        a.pregunta21 'Si el proyecto se desarrolló con un aliado externo, indicar cuál es el Porcentaje de contrapartida del SENA',
+        a.pregunta23 'VIDA ÚTIL TOTAL EN MESES, SI ES FINITA. (Tenga en cuenta los términos del contrato o del concepto de quien lo fabricó). Número de meses', 
+        a.pregunta24 'VIDA ÚTIL TRANSCURRIDA, SI ES FINITA (con fecha 31/12/2019), Número en meses.', 
+        a.pregunta25 'VIDA ÚTIL REMANENTE, SI ES FINITA (resta entre la vida útil total y la transcurrida). Número en meses', 
+        a.pregunta26 '¿Tiene facturas para registrar?', 
+        a.fecha_cierre 'Fecha de cierre del proyecto técnicamente en la vigencia 2020',
+        a.fecha_vigencia 'Fecha de cierre del proyecto presupuestalmente en la vigencia 2020',
+        a.fecha_inicio 'Fecha de Registro',  
+        c.numero_factura, 
+        (CASE WHEN c.factura_a_nombre_sena= 1 THEN 'Si' ELSE 'No' END) AS 'Factura a nombre del Sena',
+        c.fecha_factura, 
+        c.valor_total, 
+        (CASE WHEN c.tiene_iva= 1 THEN 'Si' ELSE 'No' END) AS 'Tiene Iva',
+        c.iva, 
+        c.concepto,
+        c.valor_concepto, 
+        (CASE WHEN c.es_necesario= 1 THEN 'Si' ELSE 'No' END) AS 'Es necesario este concepto para poner en funcionamiento el intangible?',
+        c.fase_intangible 'La factura que esta registrando corresponde a la fase de?'
+        FROM x_intangibles_preguntas a
+        INNER JOIN proyecto_evaluar_intangible b
+        ON a.proyecto_consecutivo = b.proyecto_consecutivo
+        LEFT JOIN intangible_pregunta_factura c
+        ON a.cod_intangible = c.cod_intangible
+        LEFT JOIN clase_intangible d
+        ON a.pregunta2 = d.cod_clase";
+        
+        $result = $conexion -> prepare($sql);
+
+        $result->execute();
+
+        while ($f=$result->fetch()) {
+            $resultado [] = $f;
+        }
+
+        return $resultado;   
+    }
+
+    public function readIntangibleByAdminByProject($project)
+    {
+        $resultado = null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "SELECT 
+        b.codigo_centro,
+        b.centro_nombre,
+        b.linea_programatica_descripcion,
+        b.proyecto_titulo,
+        a.proyecto_consecutivo,
+        (CASE WHEN a.sin_intangible= 1 THEN 'Si' ELSE 'No' END) AS 'Sin Intangibles?',
+        a.justificacion,
+        a.cod_intangible,
+        a.pregunta1 'Tipo de intangible',
+        d.denominacion 'Clase de intangibles',
+        a.pregunta3 'Nombre del Intangible.',
+        a.pregunta4 '¿El intangible es un recurso controlado? Control implica la capacidad del SENA para usar un recurso o definir el uso que un tercero debe darle, para las funciones administrativas o de formación profesional, al igual si se dispone de proceso o procedimiento al cual beneficia la utilización del producto. Al evaluar si existe o no control la entidad debe tener en cuenta, si el derecho de uso lo define un contrato, factura,entrada a almacén, certificado de licenciamiento, convenio o donaciones, igualmente se debe verificar el acceso al recurso o la capacidad de un tercero para negar o restringir el uso.',
+        a.pregunta5 'Observaciones a la pregunta ¿El intangible es un recurso controlado? Aclare si el SENA tiene el control del uso del intangible, es decir, en que proceso de la entidad se utiliza.',
+        a.pregunta6 '¿Del intangible se espera obtener un potencial de servicios?',
+        a.pregunta7 'Observaciones a la pregunta ¿Del intangible se espera obtener un potencial de servicios?',
+        a.pregunta8 '¿El intangible se puede medir fiablemente? La medición de un activo es fiable cuando existe evidencia de transacciones para el activo u otros similares, o cuando la estimación del valor depende de variables que se pueden medir en términos monetarios.',
+        a.pregunta9 'Observaciones a la pregunta ¿El intangible se puede medir fiablemente?',
+        a.pregunta10 '¿El intangible se puede identificar?',
+        a.pregunta11 'Observaciones a la pregunta ¿El intangible se puede identificar?',
+        a.pregunta12 '¿El intangible NO es considerado monetario? El intangibles es monetario cuando es un CDT, un bono o títulos valores y es no monetario en caso contrario.',
+        a.pregunta13 'Observaciones a la pregunta ¿El intangible NO es considerado monetario?',
+        a.pregunta14 '¿El intangible es sin apariencia física? Algunos intangibles pueden estar contenidos en, o contener, un soporte de naturaleza o apariencia física, como es el caso de un disco compacto (caso programas informáticos), de documentación legal (caso licencia o patente) o de una película; estos casos la sustancia material del elemento es de importancia secundaria con respecto a su componente intangible, por lo que el activo será considerado como intangible.',
+        a.pregunta15 'Observaciones a la pregunta ¿El intangible es sin apariencia física? Por ejemplo el software que se encuentra en un CD, la parte importante es el intangible.',
+        a.pregunta16 '¿El intangible se va a utilizar por más de un año? Verificar si el contrato permite la utilización del intangible por más de un año, igualmente se debe identificar si el área que generó la necesidad de su adquisición piensa utilizarlo por más de un año. La vida útil de los activos intangibles estará dada por el menor periodo entre el tiempo en que se obtendría el potencial de servicio esperados y el plazo establecido conforme a los términos contractuales, siempre y cuando el activo intangible se encuentre asociado a un derecho contractual o legal. Tenga en cuenta las siguientes consideraciones Marque SI, cuando:- Si el producto dispone de un derecho de uso perpetuo, indefinido o vitalicio.- Si el producto dispone de un derecho de uso superior a un año.',
+        a.pregunta17 'Observaciones a la pregunta ¿El intangible se va a utilizar por más de un año?  ', 
+        a.pregunta18 '¿No se espera vender en el curso de las actividades de la entidad? Si la intención de la entidad es NO venderlo, la respuesta es SI. Si la intención de la entidad es venderlo, la respuesta a la pregunta es un NO.', 
+        a.pregunta19 'Observaciones a la pregunta ¿No se espera vender en el curso de las actividades de la entidad?',
+        a.pregunta20 '¿La vida útil es finita o indefinida?', 
+        a.pregunta21 'Si el proyecto se desarrolló con un aliado externo, indicar cuál es el Porcentaje de contrapartida del SENA',
+        a.pregunta23 'VIDA ÚTIL TOTAL EN MESES, SI ES FINITA. (Tenga en cuenta los términos del contrato o del concepto de quien lo fabricó). Número de meses', 
+        a.pregunta24 'VIDA ÚTIL TRANSCURRIDA, SI ES FINITA (con fecha 31/12/2019), Número en meses.', 
+        a.pregunta25 'VIDA ÚTIL REMANENTE, SI ES FINITA (resta entre la vida útil total y la transcurrida). Número en meses', 
+        a.pregunta26 '¿Tiene facturas para registrar?', 
+        a.fecha_cierre 'Fecha de cierre del proyecto técnicamente en la vigencia 2020',
+        a.fecha_vigencia 'Fecha de cierre del proyecto presupuestalmente en la vigencia 2020',
+        a.fecha_inicio 'Fecha de Registro',  
+        c.numero_factura, 
+        (CASE WHEN c.factura_a_nombre_sena= 1 THEN 'Si' ELSE 'No' END) AS 'Factura a nombre del Sena',
+        c.fecha_factura, 
+        c.valor_total, 
+        (CASE WHEN c.tiene_iva= 1 THEN 'Si' ELSE 'No' END) AS 'Tiene Iva',
+        c.iva, 
+        c.concepto,
+        c.valor_concepto, 
+        (CASE WHEN c.es_necesario= 1 THEN 'Si' ELSE 'No' END) AS 'Es necesario este concepto para poner en funcionamiento el intangible?',
+        c.fase_intangible 'La factura que esta registrando corresponde a la fase de?'
+        FROM x_intangibles_preguntas a
+        INNER JOIN proyecto_evaluar_intangible b
+        ON a.proyecto_consecutivo = b.proyecto_consecutivo
+        LEFT JOIN intangible_pregunta_factura c
+        ON a.cod_intangible = c.cod_intangible
+        LEFT JOIN clase_intangible d
+        ON a.pregunta2 = d.cod_clase
+        WHERE a.proyecto_consecutivo=:project";
+        
+        $result = $conexion -> prepare($sql);
+        $result -> bindParam(':project',$project);
+        $result->execute();
+
+        while ($f=$result->fetch()) {
+            $resultado [] = $f;
+        }
+
+        return $resultado;   
+    }
    
+    public function existProject($project)
+    {
+        $resultado = null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql = "SELECT sin_intangible FROM x_intangibles_preguntas WHERE proyecto_consecutivo =:project";
+        
+        $result = $conexion -> prepare($sql);
+
+        $result -> bindParam(':project',$project);
+        $result -> execute();
+        return $result->rowCount();
+    }
 }
 
 

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+
     Swal.fire({
         title: 'Cargando Información...',
         html:`
@@ -169,4 +169,62 @@ $(document).ready(function() {
         $("#porBarra").html('100%');
         Swal.close();
     })
-});
+
+function changeLimitDate() {
+    Swal.fire({
+        icon: 'warning',
+        title: 'Cambio de fecha limite',
+        text: 'Escoja la nueva fecha limite',
+        html:`
+        <label>Fecha:</label>
+        <br>
+        <input type="date" id = "newLimitDate" required/>
+        <br>
+        <br>
+        <label>Motivo:</label>
+        <br>
+        <textarea id="motivo"></textarea>
+        `,
+        showCancelButton: true,
+        cancelButtonColor: 'red',
+        confirmButtonText: 'Cambiar'
+    }).then((result) => {
+        if(result.isConfirmed){
+            var newLimitDate = $("#newLimitDate").val();
+            var motivo = $("#motivo").val();
+            if (newLimitDate == '' || motivo == '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text:'No selecciono una nueva fecha.',
+                    confirmButtonColor:'red'
+                })
+            } else {
+                $.ajax({
+                    type: 'POST',
+                    url: '../../controladores/adminControllers/fechaLimite.php',
+                    data: {
+                        'date':newLimitDate,
+                        'motivo':motivo
+                    }
+                })
+                .done(function(respuesta){
+                    if (respuesta ==  true) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Actualización exitosa'
+                        }) 
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text:'Ha ocurrido un error en el servidor.'+respuesta,
+                            confirmButtonColor:'red'
+                        }) 
+                    }
+                })    
+            }
+        }
+        
+      })
+}
