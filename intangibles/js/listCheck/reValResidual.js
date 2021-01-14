@@ -15,7 +15,7 @@ function descriptionModal(e) {
 function envioDatos(){
     var validarDatos=validarEnvioDatos();
     if (validarDatos==''){
-    $.redirect('revIndDeterioro.php', {
+    $.redirect('revMetdAmortizacion.php', {
         'id': $("#project").val()
     }, "POST");
     } else {

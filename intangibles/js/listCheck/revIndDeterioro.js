@@ -27,7 +27,7 @@ function descriptionModal(e) {
 function envioDatos(){
     var validarDatos=validarEnvioDatos();
     if (validarDatos=='') {
-        $.redirect('revMetdAmortizacion.php', {
+        $.redirect('fin.php', {
             'id': $("#project").val()
         }, "POST");
     } else {
@@ -94,14 +94,39 @@ function envioDatos(){
 
         if (value=== '') {
             results += '6) No digito el valor del estudio del mercado (si no se puede estimar el costo del valor del mercado, escribir el costo de reposición). <br>';
+        
+        }else {
+            value = parseFloat(value);
+    
+                if (!Number.isInteger(value) || (value < 0)) {
+                    results += "6)El valor del estudio del mercado, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                
+                }
         }
 
         if (reposicion=== '') {
             results += '7) No Justifico su respuesta si es negativa indicando el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando,¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?.. <br>';
+            
+        }else {
+            reposicion = parseFloat(reposicion);
+    
+                if (!Number.isInteger(reposicion) || (reposicion < 0)) {
+                    results += "7)El valor del costo de reposicion, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                    
+                }
         }
 
+
         if (reposicionIntangible=== '') {
-            results += '8) No digito el valor de reposición del activo intangible.. <br>';
+            results += '8) No digito el valor de reposición del activo intangible. <br>';
+            
+        }else {
+            reposicionIntangible = parseFloat(reposicionIntangible);
+    
+                if (!Number.isInteger(reposicionIntangible) || (reposicionIntangible < 0)) {
+                    results += "8)El valor de reposición del activo intangible, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                    
+                }
         }
 
         if (evidencia === '') {
@@ -111,7 +136,15 @@ function envioDatos(){
         }
 
         if ( rehabilitaciones=== '') {
-            results += '10) No digito, sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones.. <br>';
+            results += '10) No digito, sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
+           
+        }else {
+            rehabilitaciones = parseFloat(rehabilitaciones);
+    
+                if (!Number.isInteger(rehabilitaciones) || (rehabilitaciones < 0)) {
+                    results += "10)No digito, el valor de las rehabilitaciones, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                    
+                }
         }
 
         if (evaluation === '') {
