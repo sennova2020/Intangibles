@@ -11,8 +11,8 @@
         foreach($results as $result)
         {
             $resultado .= '
-                <div class="titulo">'.utf8_encode($result['pregunta3']).'</div>
-                <div class="formulario1 formulario_c" style="color:white">
+            <div class="titulo">'.utf8_encode($result['pregunta3']).'</div>
+            <div class="formulario1 formulario_c" style="color:white">     
                     <h2 class="titulo_formulario">Costo del intangible</h2>
                     <p><strong>Centro: </strong>
             ';
@@ -35,7 +35,7 @@
                     <p><strong>Tipo Intangible: </strong>
                         '.utf8_encode($result['pregunta1']).'
                     </p>
-                </div>
+                
             ';
             
         }

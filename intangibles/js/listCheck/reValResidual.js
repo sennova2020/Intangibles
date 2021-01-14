@@ -15,9 +15,69 @@ function descriptionModal(e) {
 function envioDatos(){
     var validarDatos=validarEnvioDatos();
     if (validarDatos==''){
-    $.redirect('revMetdAmortizacion.php', {
-        'id': $("#project").val()
-    }, "POST");
+
+        var residual= $("#residual").val();
+        var observationResidual = $("#observationResidual").val();
+        var cod = $("#project").val();
+
+        $.confirm({
+            title: 'Confirmación de envío',
+            content: '¿Esta seguro de enviar esta información?',
+            buttons: {
+                confirmar: function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '../../controladores/listCheckControllers/reValResidualController.php',
+                        data: {
+                            'residual':residual,
+                            'observationResidual':observationResidual,
+                            'cod':cod
+                        }
+
+                    })
+                    .done(function(respuesta) {
+                        
+                        if (respuesta == '') {
+                            
+                            $.redirect('revMetdAmortizacion.php', {
+                                'id': $("#project").val()
+                            }, "POST");
+
+                        } else {
+                            if (repuesta == 'Error') {
+                                 
+                                $.alert({
+                                    title: 'Error',
+                                    content:'Ha ocurrido un error en el servidor o no hay conexion internet'
+                                });
+
+                            } else {
+                               
+                                $.alert({
+                                    title: 'Error',
+                                    content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+respuesta
+                                });
+
+                            }
+                        }
+
+                    })
+                    .fail(function () {
+                        $.alert({
+                            title: 'Error',
+                            content: 'Ha ocurrido un error'
+                        });
+                    })
+
+                },
+                cancelar: function() {
+
+                },
+            }
+        });
+
+
+        
     } else {
         $.alert({
             title: 'Error',

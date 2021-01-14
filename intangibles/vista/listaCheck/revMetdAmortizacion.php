@@ -81,6 +81,14 @@
         <?php
             echo readParameterFormato($data);
         ?>
+            <div>
+                <p>
+                    <strong>Objectivo: </strong> Los métodos de amortización son el modo por el cual se distribuye el importe de la amortización de manera equitativa de acuerdo al patrón de consumo del bien y teniendo en cuenta el potencial del servicio del bien intangible.
+
+                </p>
+            </div>
+            <!-- Importante no borrar este div de cierre-->
+        </div>
     </div>
     <form  class="form_formulario" enctype="multipart/form-data" method="post"
         id="formulario_principal">

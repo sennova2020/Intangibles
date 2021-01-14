@@ -10,7 +10,7 @@ class consecutiveProject
         $conexion = $model -> conectarse();
 
 
-        $sql = "SELECT * FROM x_informacion_proyecto WHERE proyecto_consecutivo=:project";
+        $sql = "SELECT * FROM proyecto_evaluar_intangible WHERE proyecto_consecutivo=:project";
 
         $result = $conexion -> prepare($sql);
         $result -> bindParam(':project',$project);

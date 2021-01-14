@@ -7,7 +7,7 @@
 
         public function __construct(){
             try{
-                $this->conexion_db = new PDO("mysql:host=localhost; dbname=sennova_formulario", "root","1842");
+                $this->conexion_db = new PDO("mysql:host=localhost; dbname=sennova_formulario", "root","");
                 $this->conexion_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $this->conexion_db->exec("SET CHARACTER SET utf8");
                 return $this->conexion_db;

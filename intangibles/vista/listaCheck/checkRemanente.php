@@ -78,9 +78,19 @@
     ?>
     <div class="caja_formulario">
         <h2 id="timeToLife"></h2>
+        
         <?php
             echo readParameterFormato($data);
         ?>
+            <div>
+                <p>
+                    <strong>Objectivo: </strong> Anualmente hay que revisar si dicha estimación ha cambiado.
+
+                </p>
+            </div>
+            <!-- Importante no borrar este div de cierre-->
+        </div>
+
     </div>
 
       

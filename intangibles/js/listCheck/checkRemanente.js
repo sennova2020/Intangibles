@@ -20,9 +20,72 @@ function descriptionModal(e) {
 function envioDatos(){
     var validarDatos=validarEnvioDatos();
     if (validarDatos=='') {
-        $.redirect('reValResidual.php', {
-            'id': $("#project").val()
-        }, "POST");
+        
+        var rule = $("#rule").val();
+        var observationRule = $("#observationRule").val();
+        var condition = $("#condition").val();
+        var observationCondition = $("#observationCondition").val();
+        var settingLife = $("#settingLife").val();
+        var cod = $("#project").val();
+        $.confirm({
+            title: 'Confirmación de envío',
+            content: '¿Esta seguro de enviar esta información?',
+            buttons: {
+                confirmar: function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '../../controladores/listCheckControllers/checkRemanenteController.php',
+                        data: {
+                            'rule':rule,
+                            'observationRule':observationRule,
+                            'condition':condition,
+                            'observationCondition':observationCondition,
+                            'settingLife':settingLife,
+                            'cod':cod
+                        }
+
+                    })
+                    .done(function(respuesta) {
+                        
+                        if (respuesta == '') {
+                            
+                           $.redirect('reValResidual.php', {
+                                'id': $("#project").val()
+                            }, "POST");
+
+                        } else {
+                            if (repuesta == 'Error') {
+                                 
+                                $.alert({
+                                    title: 'Error',
+                                    content:'Ha ocurrido un error en el servidor o no hay conexion internet'
+                                });
+
+                            } else {
+                               
+                                $.alert({
+                                    title: 'Error',
+                                    content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+respuesta
+                                });
+
+                            }
+                        }
+
+                    })
+                    .fail(function () {
+                        $.alert({
+                            title: 'Error',
+                            content: 'Ha ocurrido un error'
+                        });
+                    })
+
+                },
+                cancelar: function() {
+
+                },
+            }
+        });
+
     } else {
         $.alert({
             title: 'Error',
@@ -69,9 +132,9 @@ function validarEnvioDatos() {
         results += '4) No digito la observación de la aclaración de que sí se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc.. <br>';
     }
 
-    /*if (settingLife === '') {
+    if (settingLife === '') {
         results += '5) No digito la observación de la pregunta, ¿El intangible se puede identificar?. <br>';
-    }*/
+    }
 
     return results;
 }

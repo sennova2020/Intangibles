@@ -81,6 +81,14 @@
         <?php
             echo readParameterFormato($data);
         ?>
+            <div>
+                <p>
+                    <strong>Objectivo: </strong> Al aplicar la siguiente lista de chequeo, se verificará si ha cambiado o se piensa cambiar, el periodo durante el cual se va utilizar el bien intangible.
+
+                </p>
+            </div>
+            <!-- Importante no borrar este div de cierre-->
+        </div>
     </div>
     
 
@@ -112,7 +120,7 @@
                             Observaci&oacute;n*. 
                         </p>
                         <br>
-                        <textarea name="observationResource" class="form-control" id="observationResource" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                        <textarea name="observationResidual" class="form-control" id="observationResidual" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                     </li>
             </div>
         </div>

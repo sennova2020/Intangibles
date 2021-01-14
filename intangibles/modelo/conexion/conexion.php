@@ -8,7 +8,7 @@
 			function __construct(){
 				$this->ruta       ="localhost";
 				$this->usuario    ="root"; 
-				$this->contrasena ="1842"; 
+				$this->contrasena =""; 
 				$this->baseDatos  ="sennova_formulario";
 			}
 

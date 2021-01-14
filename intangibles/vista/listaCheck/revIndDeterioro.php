@@ -81,6 +81,14 @@
         <?php
             echo readParameterFormato($data);
         ?>
+            <div>
+                <p>
+                    <strong>Objectivo: </strong> La aplicación de esta lista de chequeo de “Indicios de deterioro”, sirve a la entidad para identificar aquellos elementos bienes intangibles que se puedan encontrar en posibles condiciones de deterioro. En este apartado se aconseja leer el Instructivo de medición posterior de bienes intangibles (GRF-I-009).
+
+                </p>
+            </div>
+            <!-- Importante no borrar este div de cierre-->
+        </div>
     </div>
     <form  class="form_formulario" enctype="multipart/form-data" method="post"
         id="formulario_principal">
