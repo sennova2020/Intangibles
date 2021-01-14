@@ -97,7 +97,7 @@
                             ¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?<span id="differentAssets" onclick="descriptionModal(this)" >Nota* </span>
                         </p>
                         <br/>
-                        <select name="resourceControl" id="resourceControl" required class="form-control">
+                        <select name="different" id="different" required class="form-control">
                             <option value="" selected>Seleccione...</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
@@ -111,7 +111,7 @@
                             al patron de consumo determinado.
                         </p>
                         <br>
-                        <textarea name="observationResource" class="form-control" id="observationResource" required cols="30" rows="8" class="w-100 form-control" placeholder="Identifique el nuevo método de amortización"  maxlength="1000"></textarea>
+                        <textarea name="observationDifferent" class="form-control" id="observationDifferent" required cols="30" rows="8" class="w-100 form-control" placeholder="Identifique el nuevo método de amortización"  maxlength="1000"></textarea>
                     </li>
 
                     <li class="li_formulario">
@@ -121,17 +121,15 @@
 
                         
                     <br>
-                    <textarea name="observationPotencial" id="observationPotencial" required cols="30" rows="8" class="w-100 form-control" placeholder="Indique el dato de la amortización"  maxlength="1000"></textarea>
+                    <textarea name="datoAmortizacion" id="datoAmortizacion" required cols="30" rows="8" class="w-100 form-control" placeholder="Indique el dato de la amortización"  maxlength="1000"></textarea>
                     <br/>
                         
                     </li>
 
-
-
                     <li class="li_formulario">
                             <p class="etiquetas">Adjunte el documento</p>
                             <br />
-                            <input type="file" class="form-control" required placeholder="Adjunte el documento" name="nameIntangible" id="nameIntangible">
+                            <input type="file" class="form-control" required placeholder="Adjunte el documento" name="document" id="document">
                         </li>
             </div>
         </div>

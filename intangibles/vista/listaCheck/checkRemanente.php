@@ -101,7 +101,7 @@
                             interna que hace verificar la utilización del bien intangible <span id="ruleNote" onclick="descriptionModal(this)" >Nota* </span>
                         </p>
                         <br/>
-                        <select name="resourceControl" id="resourceControl" required class="form-control">
+                        <select name="rule" id="rule" required class="form-control">
                             <option value="" selected>Seleccione...</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
@@ -113,14 +113,14 @@
                             Observaci&oacute;n*.  
                         </p>
                         <br>
-                        <textarea name="observationResource" class="form-control" id="observationResource" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                        <textarea name="observationRule" class="form-control" id="observationRule" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                     </li>
                 <li class="li_formulario">
                     <p class="etiquetas">
                         Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc. <span id="conditionNote" onclick="descriptionModal(this)" >Nota* </span>
                     </p>
                     <br/>
-                    <select name="potencial" id="potencial" required class="form-control">
+                    <select name="condition" id="condition" required class="form-control">
                         <option value="" selected>Seleccione...</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -132,14 +132,14 @@
                             Observaci&oacute;n*.
                         </p>
                         <br>
-                        <textarea name="observationResource" class="form-control" id="observationResource" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                        <textarea name="observationCondition" class="form-control" id="observationCondition" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                     </li>
                     <li class="li_formulario">
                         <p class="etiquetas">
                             Ajuste de la vida útil <span id="usefulLife" onclick="descriptionModal(this)" >Nota* </span>
                         </p>
                         <br>
-                        <textarea name="observationResource" class="form-control" id="observationResource" required cols="30" rows="8" class="w-100 form-control" placeholder="Indicar la nueva vida útil del intangible"  maxlength="1000"></textarea>
+                        <textarea name="settingLife" class="form-control" id="settingLife" required cols="30" rows="8" class="w-100 form-control" placeholder="Indicar la nueva vida útil del intangible"  maxlength="1000"></textarea>
                     </li>
             </div>
         </div>

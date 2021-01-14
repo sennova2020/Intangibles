@@ -13,9 +13,17 @@ function descriptionModal(e) {
     });
 }
 function envioDatos(){
+    var validarDatos=validarEnvioDatos();
+    if (validarDatos==''){
     $.redirect('revIndDeterioro.php', {
         'id': $("#project").val()
     }, "POST");
+    } else {
+        $.alert({
+            title: 'Error',
+            content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+validarDatos
+        });
+    }
 }
 
     $("#boton_volver").click(function() {
@@ -23,3 +31,27 @@ function envioDatos(){
             'centro': '<?php echo($info->codigo_centro) ?>'
         }, "POST");
     });
+
+    function validarEnvioDatos() {
+
+        var residual= $("#residual").val();
+        var observationResidual = $("#observationResidual").val();
+        
+        
+        
+        //VALIDACIONES
+        var results = '';
+    
+        if (residual === '') {
+            results += '1)  No selecciono una repuesta a la pregunta, ¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?. <br>';
+        } else if(residual !== 'si' && residual !== 'no'){
+            results += '1) La respuesta seleccionada a ¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa? , no corresponde a SI o NO. <br>';
+        }
+    
+        if (observationResidual === '') {
+            results += '2) No digito la observación de la pregunta ¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?. <br>';
+        }
+    
+        return results;
+    }
+    

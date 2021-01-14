@@ -100,7 +100,7 @@
                             en los que opera la entidad. <span id="changesNote" onclick="descriptionModal(this)" >Nota* </span>
                         </p>
                         <br/>
-                        <select name="resourceControl" id="resourceControl" required class="form-control">
+                        <select name="changes" id="changes" required class="form-control">
                             <option value="" selected>Seleccione...</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>
@@ -112,7 +112,7 @@
                             Observaci&oacute;n*. 
                         </p>
                         <br>
-                        <textarea name="observationResource" class="form-control" id="observationResource" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                        <textarea name="observationChanges" class="form-control" id="observationChanges" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                     </li>
                 <li class="li_formulario">
                     <p class="etiquetas">
@@ -121,7 +121,7 @@
                         esperaría como consecuencia del paso del tiempo o de su uso normal.<span id="assetReduction" onclick="descriptionModal(this)" >Nota* </span>
                     </p>
                     <br/>
-                    <select name="potencial" id="potencial" required class="form-control">
+                    <select name="reduction" id="reduction" required class="form-control">
                         <option value="" selected>Seleccione...</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -138,7 +138,7 @@
                         Observaci&oacute;n*. 
                         </p>
                     <br>
-                    <textarea name="observationPotencial" id="observationPotencial" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                    <textarea name="observationReduction" id="observationReduction" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                         
                 </li>
                 <li class="li_formulario">
@@ -155,7 +155,7 @@
 
                         <br/>
                         
-                        <input type="number" class="form-control" required placeholder="Digite el valor del estudio del mercado" name="nameIntangible" id="nameIntangible"> 
+                        <input type="number" class="form-control" required placeholder="Digite el valor del estudio del mercado" name="value" id="value"> 
                 </li>
 
                 <li class="li_formulario">
@@ -172,7 +172,7 @@
 
                         <br/>
                         
-                        <input type="number" class="form-control" required placeholder="Digite el costo de reposición" name="nameIntangible" id="nameIntangible"> 
+                        <input type="number" class="form-control" required placeholder="Digite el costo de reposición" name="reposicion" id="reposicion"> 
                 </li>
 
                 <li class="li_formulario">
@@ -182,7 +182,7 @@
 
                         <br/>
                         
-                        <input type="number" class="form-control" required placeholder="Digite el valor de reposición del activo " name="nameIntangible" id="nameIntangible"> 
+                        <input type="number" class="form-control" required placeholder="Digite el valor de reposición del activo " name="reposicionIntangible" id="reposicionIntangible"> 
                 </li>
 
                 <li class="li_formulario">
@@ -190,7 +190,7 @@
                         Se dispone de evidencia sobre la obsolescencia o daño del activo. <span id="damagedAsset" onclick="descriptionModal(this)" >Nota* </span>
                     </p>
                     <br/>
-                    <select name="reliably" id="reliably" required class="form-control">
+                    <select name="evidencia" id="evidencia" required class="form-control">
                         <option value="" selected>Seleccione...</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -205,7 +205,7 @@
 
                         <br/>
                         
-                        <input type="number" class="form-control" required placeholder="Digite el valor de las rehabilitaciones" name="nameIntangible" id="nameIntangible"> 
+                        <input type="number" class="form-control" required placeholder="Digite el valor de las rehabilitaciones" name="rehabilitaciones" id="rehabilitaciones"> 
                 </li>
 
         
@@ -223,7 +223,7 @@
                         el cambio de la vida útil de un activo de indefinida a finita. <span id="activeEvaluation" onclick="descriptionModal(this)" >Nota* </span>
                     </p>
                     <br/>
-                    <select name="identification" id="identification" required class="form-control">
+                    <select name="evaluation" id="evaluation" required class="form-control">
                         <option value="" selected>Seleccione...</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -235,7 +235,7 @@
                         Observaci&oacute;n*. 
                     </p>
                     <br>
-                    <textarea name="observationMonetary" id="observationMonetary" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                    <textarea name="observationEvaluation" id="observationEvaluation" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                 </li>
 
                 <li class="li_formulario">
@@ -245,7 +245,7 @@
                         evidencia objetiva de que se reanudará la construcción en el futuro próximo.<span id="constructionActive" onclick="descriptionModal(this)" >Nota* </span>
                     </p>
                     <br/>
-                    <select name="isMonetary" id="isMonetary" required class="form-control">
+                    <select name="construction" id="construction" required class="form-control">
                         <option value="" selected>Seleccione...</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -257,7 +257,7 @@
                         Observaci&oacute;n*. 
                     </p>
                     <br>
-                    <textarea name="observationMonetary" id="observationMonetary" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                    <textarea name="observationConstruction" id="observationConstruction" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                 </li>
 
                 <li class="li_formulario">
@@ -267,7 +267,7 @@
                         disminuido o va a ser inferior a la esperada. <span id="activeInformation" onclick="descriptionModal(this)" >Nota* </span>
                     </p>
                     <br/>
-                    <select name="physicalAppearance" id="physicalAppearance" required class="form-control">
+                    <select name="information" id="information" required class="form-control">
                         <option value="" selected>Seleccione...</option>
                         <option value="si">Si</option>
                         <option value="no">No</option>
@@ -279,7 +279,7 @@
                         Observaci&oacute;n*.  
                     </p>
                     <br>
-                    <textarea name="observationAppearance" id="observationAppearance" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                    <textarea name="observationInformation" id="observationInformation" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                 </li>
 
             </div>

@@ -100,7 +100,7 @@
                         consuma completamente o de forma significativa?<span id="residualValue" onclick="descriptionModal(this)" >Nota* </span>
                         </p>
                         <br/>
-                        <select name="resourceControl" id="resourceControl" required class="form-control">
+                        <select name="residual" id="residual" required class="form-control">
                             <option value="" selected>Seleccione...</option>
                             <option value="si">Si</option>
                             <option value="no">No</option>

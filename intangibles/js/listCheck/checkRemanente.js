@@ -18,13 +18,61 @@ function descriptionModal(e) {
 }
 
 function envioDatos(){
-    $.redirect('reValResidual.php', {
-        'id': $("#project").val()
-    }, "POST");
+    var validarDatos=validarEnvioDatos();
+    if (validarDatos=='') {
+        $.redirect('reValResidual.php', {
+            'id': $("#project").val()
+        }, "POST");
+    } else {
+        $.alert({
+            title: 'Error',
+            content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+validarDatos
+        });
+    }
+    
 }
 
-    $("#boton_volver").click(function() {
-        $.redirect('../../intangibles.php', {
-            'centro': '<?php echo($info->codigo_centro) ?>'
-        }, "POST");
-    });
+$("#boton_volver").click(function() {
+    $.redirect('../../intangibles.php', {
+        'centro': '<?php echo($info->codigo_centro) ?>'
+    }, "POST");
+});
+function validarEnvioDatos() {
+
+    var rule = $("#rule").val();
+    var observationRule = $("#observationRule").val();
+    var condition = $("#condition").val();
+    var observationCondition = $("#observationCondition").val();
+    var settingLife = $("#settingLife").val();
+    
+    
+    //VALIDACIONES
+    var results = '';
+
+    if (rule === '') {
+        results += '1) No aclaro sí surgió una nueva ley, norma, acuerdo, decreto o normativa interna que hace verificar la utilización del bien intangible . <br>';
+    } else if(rule !== 'si' && rule !== 'no'){
+        results += '1) La respuesta seleccionada a surgió una nueva ley, norma, acuerdo, decreto o normativa interna que hace verificar la utilización del bien intangible , no corresponde a SI o NO. <br>';
+    }
+
+    if (observationRule === '') {
+        results += '2) No digito la observación de la aclaración sí surgió una nueva ley, norma, acuerdo, decreto o normativa interna que hace verificar la utilización del bien intangible . <br>';
+    }
+
+    if (condition === '') {
+        results += '3) No aclaro sí se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc. <br>';
+    } else if(condition !== 'si' && condition !== 'no'){
+        results += '3) La respuesta seleccionada a sí se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc., no corresponde a SI o NO. <br>';
+    }
+
+    if (observationCondition === '') {
+        results += '4) No digito la observación de la aclaración de que sí se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc.. <br>';
+    }
+
+    /*if (settingLife === '') {
+        results += '5) No digito la observación de la pregunta, ¿El intangible se puede identificar?. <br>';
+    }*/
+
+    return results;
+}
+

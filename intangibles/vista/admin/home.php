@@ -99,30 +99,38 @@ deleteIntangibleLimitDate();
                        
                        </article>
                     </div>
-                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Descargar formatos:</label>
-                    <div class="col-12 col-md-7">
-                        <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-078_FORMATO_ADQUIRIDOS_V2.xlsx" class="documents"><span id="GRF-F-078" onclick="descargarFormatos(this)">GRF-F-078</span></a>
+                    <div class="col-12 col-sm-12 col-md-10">
+                        <div class="container">
+                            <div class="row">
+                                <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Descargar formatos:</label>
+                                <div class="col-12 col-md-7">
+                                    <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-078_FORMATO_ADQUIRIDOS_V2.xlsx" class="documents"><span id="GRF-F-078" onclick="descargarFormatos(this)">GRF-F-078</span></a>
 
-                        <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-080__FORMATO_RECONOCIMIENTO__ACTIVOS_INTANGIBLES_DESARROLLADOS.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-080">GRF-F-080</span></a>
+                                    <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-080__FORMATO_RECONOCIMIENTO__ACTIVOS_INTANGIBLES_DESARROLLADOS.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-080">GRF-F-080</span></a>
 
-                        <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-081">GRF-F-081</span></a>
+                                    <a href="../../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-081">GRF-F-081</span></a>
+                                </div>
+                                <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Fecha limite:</label>
+                                <div class="col-12 col-md-7">
+                                    <h2><strong>'. getLimitDate().'</strong> <span onclick="changeLimitDate()" class="h6 changedate">Cambiar Fecha</span></h2>
+                                </div>
+                                <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">
+                            </div>
+                        </div>
                     </div>
-                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Fecha limite:</label>
-                    <div class="col-12 col-md-7">
-                        <h2><strong>'. getLimitDate().'</strong> <span onclick="changeLimitDate()" class="h6 changedate">Cambiar Fecha</span></h2>
+                    <div class="col-12 col-sm-12 col-md-2">
+                        <br>
+                        <a href="../../controladores/adminControllers/reportes.php?rep=1">
+                            <button class="btn btn-primary">Descargar informe</button>
+                        </a>
                     </div>
-                    <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">
-                    
-
                     
                 </div>';
     
                 
                    
     ?>
-    <a href="../../controladores/adminControllers/reportes.php?rep=1">
-        <button>Descargar informe</button>
-    </a>
+    
     
      <table id="myTable" border="1" style="width:100%; margin:auto; border-collapse:collapse; border:1px solid rgb(200,200,200); box-sizing:border-box;" class="text-center">
 
