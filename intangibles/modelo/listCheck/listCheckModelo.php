@@ -50,6 +50,36 @@
 
             return $info;
         }
+
+        public function createRevMetdAmortizacion($different,$observationDifferent,$datoAmortizacion,$document,$cod)
+        {
+            $modelo =  new Conexion();
+            $conexion = $modelo->conectarse();
+
+            $sql = "UPDATE x_intangibles_preguntas SET pregunta34=:different,pregunta35=:observationDifferent,pregunta36=:datoAmortizacion,pregunta37=:document WHERE 	cod_intangible=:cod";
+
+            $result = $conexion->prepare($sql);
+
+            $result -> bindParam(':different',$different);
+            $result -> bindParam(':observationDifferent',$observationDifferent);
+            $result -> bindParam(':datoAmortizacion',$datoAmortizacion);
+            $result -> bindParam(':document',$document);
+            $result -> bindParam(':cod',$cod);
+
+            if (!$result) {
+                $info = false;
+            } else {
+                $result-> execute();
+                $info = true;
+            }
+
+            return $info;
+        }
+
+        public function createRevIndDeterioro()
+        {
+            
+        }
     }
 
 ?>

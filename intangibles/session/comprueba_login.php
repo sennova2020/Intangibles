@@ -11,8 +11,8 @@
 
         $resultado=$base->prepare($sql);
 
-        $login=htmlentities(addslashes($_POST["cedula"]));
-        $password=htmlentities(addslashes($_POST["contra"]));
+        $login=trim(htmlentities(addslashes($_POST["cedula"])));
+        $password=trim(htmlentities(addslashes($_POST["contra"])));
 
         $resultado->bindValue(":login", $login);
         $resultado->bindValue(":passw", $password);
@@ -22,7 +22,7 @@
         if($rs = $resultado->fetch()){
             session_start();
             $_SESSION['tiempo'] = time();
-            $_SESSION["id"] = $_POST["cedula"];
+            $_SESSION["id"] = trim($_POST["cedula"]);
             $_SESSION["centro"] = $rs[0];
             $_SESSION["rol"] = $rs[7];
             $respuesta= routesRol( $_SESSION["rol"]);

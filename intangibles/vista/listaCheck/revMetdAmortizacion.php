@@ -90,8 +90,8 @@
             <!-- Importante no borrar este div de cierre-->
         </div>
     </div>
-    <form  class="form_formulario" enctype="multipart/form-data" method="post"
-        id="formulario_principal">
+    <form  class="form_formulario" enctype="multipart/form-data" action="../../controladores/listCheckControllers/uploadFileAmortizacion.php" method="POST"
+        id="miForm">
         <input type="hidden" name="cod_intangible" id="project" value="<?php echo($data)?>">
         <div class=" caja_formulario">
             <div class="titulo">VALIDACIÓN DE PREGUNTAS</div>

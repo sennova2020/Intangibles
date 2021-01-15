@@ -15,7 +15,7 @@
     if (!isset($_SESSION['id'])) {
         header("Location:../../index.php");
     }
-    $data = $_POST['id'];
+    $data = $_GET['id'];
     /*if(projectWithoutIntagibles($data) === false)
     {
         header("Location:../../index.php");
@@ -73,7 +73,7 @@
         </div>
     </div>
     <?php
-      $data = trim($_POST['id']);
+      $data = trim($_GET['id']);
       
     ?>
     <div class="caja_formulario">
