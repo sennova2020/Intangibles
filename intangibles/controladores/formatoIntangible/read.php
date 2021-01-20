@@ -1,6 +1,6 @@
 <?php
 
-    function readParameterFormato($codIntangible){
+    function readParameterFormato($codIntangible,$titulo){
 
         $resultado = null;
         $model = new intangible();
@@ -13,7 +13,7 @@
             $resultado .= '
             <div class="titulo">'.utf8_encode($result['pregunta3']).'</div>
             <div class="formulario1 formulario_c" style="color:white">     
-                    <h2 class="titulo_formulario">Costo del intangible</h2>
+                    <h2 class="titulo_formulario">'.$titulo.'</h2>
                     <p><strong>Centro: </strong>
             ';
             foreach ($resulstTwo as $resultTwo)

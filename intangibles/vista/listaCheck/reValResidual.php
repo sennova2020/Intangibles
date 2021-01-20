@@ -79,7 +79,8 @@
     <div class="caja_formulario">
         <h2 id="timeToLife"></h2>
         <?php
-            echo readParameterFormato($data);
+        $titulo = 'LISTA DE CHEQUEO REVISION VALOR RESIDUAL.';
+            echo readParameterFormato($data,$titulo);
         ?>
             <div>
                 <p>

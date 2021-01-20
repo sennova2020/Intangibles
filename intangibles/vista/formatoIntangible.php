@@ -67,7 +67,7 @@ require_once '../controladores/seguridad/liderSecurity.php';
     <div class="caja_formulario">
         <h2 id="timeToLife"></h2>
         <?php
-            echo readParameterFormato($data);
+            echo readParameterFormato($data,'COSTOS DEL INTANGIBLE.');
         ?>
     </div>
 

@@ -27,7 +27,7 @@ liderRol(2);
   <div class="caja_formulario">
         <div class="titulo"><?php echo(/*$_POST["cod_intangible"] .*/ "Registrado correctamente.") ?></div>
         <div class="formulario1 formulario_c" style="color:white">
-            <h2 class="titulo_formulario"><?php echo($_POST["id"] . "Registrado correctamente.") ?></h2>
+            <h2 class="titulo_formulario"><?php echo($_GET["id"] . "Registrado correctamente.") ?></h2>
             <p><strong>Centro:</strong>
             <?php echo($_SESSION["centro"]) ?>
             </p>

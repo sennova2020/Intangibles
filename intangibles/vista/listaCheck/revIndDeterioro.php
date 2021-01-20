@@ -79,7 +79,8 @@
     <div class="caja_formulario">
         <h2 id="timeToLife"></h2>
         <?php
-            echo readParameterFormato($data);
+            $titulo = 'LISTA DE CHEQUEO REVISION INDICIOS DE DETERIORO.';
+            echo readParameterFormato($data,$titulo);
         ?>
             <div>
                 <p>
@@ -90,8 +91,8 @@
             <!-- Importante no borrar este div de cierre-->
         </div>
     </div>
-    <form  class="form_formulario" enctype="multipart/form-data" method="post"
-        id="formulario_principal">
+    <form  class="form_formulario" enctype="multipart/form-data" method="POST"
+        id="miForm" action="../../controladores/listCheckControllers/uploadFileDeterioro.php">
         <input type="hidden" name="cod_intangible" id="project" value="<?php echo($data)?>">
         <div class=" caja_formulario">
             <div class="titulo">VALIDACIÓN DE PREGUNTAS</div>

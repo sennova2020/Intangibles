@@ -27,9 +27,92 @@ function descriptionModal(e) {
 function envioDatos(){
     var validarDatos=validarEnvioDatos();
     if (validarDatos=='') {
-        $.redirect('fin.php', {
-            'id': $("#project").val()
-        }, "POST");
+        var changes = $("#changes").val();
+        var observationChanges = $("#observationChanges").val();
+        var reduction = $("#reduction").val();
+        var observationReduction = $("#observationReduction").val();
+        var nameIntangible = $("#nameIntangible").val();
+        var value = $("#value").val();
+        var reposicion = $("#reposicion").val();
+        var reposicionIntangible = $("#reposicionIntangible").val();
+        var evidencia = $("#evidencia").val();
+        var rehabilitaciones = $("#rehabilitaciones").val();
+        var evaluation = $("#evaluation").val();
+        var observationEvaluation = $("#observationEvaluation").val();
+        var construction = $("#construction").val();
+        var observationConstruction = $("#observationConstruction").val();
+        var information = $("#information").val();
+        var observationInformation = $("#observationInformation").val();
+        var cod = $("#project").val();
+        
+        $.confirm({
+            title: 'Confirmación de envío',
+            content: '¿Esta seguro de enviar esta información?',
+            buttons: {
+                confirmar: function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '../../controladores/listCheckControllers/revIndDeterioroController.php',
+                        data: {
+                            'changes':changes,
+                            'observationChanges':observationChanges,
+                            'reduction':reduction,
+                            'observationReduction':observationReduction,
+                            'nameIntangible':nameIntangible,
+                            'value':value,
+                            'reposicion':reposicion,
+                            'reposicionIntangible':reposicionIntangible,
+                            'evidencia':evidencia,
+                            'rehabilitaciones':rehabilitaciones,
+                            'evaluation':evaluation,
+                            'observationEvaluation':observationEvaluation,
+                            'construction':construction,
+                            'observationConstruction':observationConstruction,
+                            'information':information,
+                            'observationInformation':observationInformation,
+                            'cod':cod
+                        }
+
+                    })
+                    .done(function(respuesta) {
+                        if (respuesta == '') {
+                            $("#miForm").submit();
+
+                        } else {
+                            if (repuesta == 'Error') {
+                                 
+                                $.alert({
+                                    title: 'Error',
+                                    content:'Ha ocurrido un error en el servidor o no hay conexion internet'
+                                });
+
+                            } else {
+                               
+                                $.alert({
+                                    title: 'Error',
+                                    content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+respuesta
+                                });
+
+                            }
+                        }
+
+                    })
+                    .fail(function () {
+                        $.alert({
+                            title: 'Error',
+                            content: 'Ha ocurrido un error'
+                        });
+                    })
+
+                },
+                cancelar: function() {
+
+                },
+            }
+
+        });
+     
+        
     } else {
         $.alert({
             title: 'Error',
@@ -53,7 +136,7 @@ function envioDatos(){
         var observationReduction = $("#observationReduction").val();
         var nameIntangible = $("#nameIntangible").val();
         var value = $("#value").val();
-        var reposicion = $("#observationResource").val();
+        var reposicion = $("#reposicion").val();
         var reposicionIntangible = $("#reposicionIntangible").val();
         var evidencia = $("#evidencia").val();
         var rehabilitaciones = $("#rehabilitaciones").val();
@@ -63,6 +146,7 @@ function envioDatos(){
         var observationConstruction = $("#observationConstruction").val();
         var information = $("#information").val();
         var observationInformation = $("#observationInformation").val();
+        
         
         
         //VALIDACIONES
@@ -75,7 +159,7 @@ function envioDatos(){
         }
 
         if (observationChanges === '') {
-            results += '2) No digito la observación de la aclaración sí durante el periodo, han tenido lugar, o va a tener lugar en un futuro inmediato,cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales estan relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad.. <br>';
+            results += '2) No digito la observación de la aclaración sí durante el periodo, han tenido lugar, o va a tener lugar en un futuro inmediato,cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales estan relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad. <br>';
         }
 
         if (reduction === '') {
@@ -83,10 +167,12 @@ function envioDatos(){
         } else if(reduction !== 'si' && reduction !== 'no'){
             results += '3) La respuesta seleccionada a durante el periodo, el valor de mercado del activo ha disminuido significativamente más que lo que se esperaría como consecuencia del paso del tiempo o de su uso normal, no corresponde a SI o NO. <br>';
         }
-
-        if (observationReduction === '') {
-            results += '4) No digito la observación de justifique su respuesta si es afirmativa y adjunte las evidencias del estudio del mercado que realizó para determinar el valor del mercado. . <br>';
+        if (reduction == 'si') {
+            if (observationReduction === '') {
+                results += '4) Su respuesta es afirmativa, pero no adjunto las evidencias del estudio del mercado que realizó para determinar el valor del mercado. <br>';
+            }
         }
+        
 
         if (nameIntangible=== '') {
             results += '5) No adjunto evidencias del estudio realizado. <br>';
@@ -103,18 +189,19 @@ function envioDatos(){
                 
                 }
         }
-
-        if (reposicion=== '') {
-            results += '7) No Justifico su respuesta si es negativa indicando el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando,¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?.. <br>';
-            
-        }else {
-            reposicion = parseFloat(reposicion);
-    
-                if (!Number.isInteger(reposicion) || (reposicion < 0)) {
-                    results += "7)El valor del costo de reposicion, debe ser un n&uacute;mero entero y positivo.<br><br>";
-                    
-                }
-        }
+        if (reduction == 'no') {
+            if (reposicion=== '') {
+                results += '7) Su respuesta es negativa, pero no indico el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando,¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?. <br>';
+                
+            }else {
+                reposicion = parseFloat(reposicion);
+        //Revisar y cooregir
+                   /* if (!Number.isInteger(reposicion) || (reposicion < 0)) {
+                        results += "7)El valor del costo de reposicion, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                        
+                    }*/
+            } 
+        } 
 
 
         if (reposicionIntangible=== '') {
@@ -130,31 +217,36 @@ function envioDatos(){
         }
 
         if (evidencia === '') {
-            results += '9) No selecciono sí se dispone de evidencia sobre la obsolescencia o daño del activo.. <br>';
+            results += '9) No selecciono sí se dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
         } else if(evidencia !== 'si' && evidencia !== 'no'){
-            results += '9) La respuesta seleccionada a sí se dispone de evidencia sobre la obsolescencia o daño del activo., no corresponde a SI o NO. <br>';
+            results += '9) La respuesta seleccionada a sí se dispone de evidencia sobre la obsolescencia o daño del activo, no corresponde a SI o NO. <br>';
         }
 
-        if ( rehabilitaciones=== '') {
-            results += '10) No digito, sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
+        if (evidencia == 'si') {
            
-        }else {
-            rehabilitaciones = parseFloat(rehabilitaciones);
-    
-                if (!Number.isInteger(rehabilitaciones) || (rehabilitaciones < 0)) {
-                    results += "10)No digito, el valor de las rehabilitaciones, debe ser un n&uacute;mero entero y positivo.<br><br>";
-                    
-                }
+            if ( rehabilitaciones=== '') {
+                results += '10) Sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
+               
+            }else {
+                rehabilitaciones = parseFloat(rehabilitaciones);
+        
+                    if (!Number.isInteger(rehabilitaciones) || (rehabilitaciones < 0)) {
+                        results += "10)No digito, el valor de las rehabilitaciones, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                        
+                    }
+            }
+            
         }
+        
 
         if (evaluation === '') {
-            results += '11) No selecciono una repuesta a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita.. <br>';
+            results += '11) No aclaro sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
         } else if(evaluation !== 'si' && evaluation !== 'no'){
             results += '11) La respuesta seleccionada a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita., no corresponde a SI o NO. <br>';
         }
 
         if (observationEvaluation === '') {
-            results += '12) No digito la observación a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita.. <br>';
+            results += '12) No digito la observación a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
         }
 
         if (construction === '') {

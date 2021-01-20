@@ -76,10 +76,111 @@
             return $info;
         }
 
-        public function createRevIndDeterioro()
+        public function createRevIndDeterioro($changes,$observationChanges,$reduction,$observationReduction,$nameIntangible,$value,$reposicion,$reposicionIntangible,$evidencia,$rehabilitaciones,$evaluation,$observationEvaluation,$construction,$observationConstruction,$information,$observationInformation,$cod)
         {
-            
+            $modelo =  new Conexion();
+            $conexion = $modelo->conectarse();
+
+            $sql = "UPDATE x_intangibles_preguntas SET pregunta38=:changess,pregunta39=:observationChanges,pregunta40=:reduction,pregunta41=:observationReduction,pregunta42=:nameIntangible,pregunta43=:value,pregunta44=:reposicion,pregunta45=:reposicionIntangible,pregunta46=:evidencia,pregunta47=:rehabilitaciones,pregunta48=:evaluation,pregunta49=:observationEvaluation,pregunta50=:construction,pregunta51=:observationConstruction,pregunta52=:information,pregunta53=:observationInformation WHERE cod_intangible=:cod";
+
+            $result = $conexion->prepare($sql);
+
+            $result -> bindParam(':changess',$changes);
+            $result -> bindParam(':observationChanges',$observationChanges);
+            $result -> bindParam(':reduction',$reduction);
+            $result -> bindParam(':observationReduction',$observationReduction);
+            $result -> bindParam(':nameIntangible',$nameIntangible);
+            $result -> bindParam(':value',$value);
+            $result -> bindParam(':reposicion',$reposicion);
+            $result -> bindParam(':reposicionIntangible',$reposicionIntangible);
+            $result -> bindParam(':evidencia',$evidencia);
+            $result -> bindParam(':rehabilitaciones',$rehabilitaciones);
+            $result -> bindParam(':evaluation',$evaluation);
+            $result -> bindParam(':observationEvaluation',$observationEvaluation);
+            $result -> bindParam(':construction',$construction);
+            $result -> bindParam(':observationConstruction',$observationConstruction);
+            $result -> bindParam(':information',$information);
+            $result -> bindParam(':observationInformation',$observationInformation);
+            $result -> bindParam(':cod',$cod);
+
+            if (!$result) {
+                $info = false;
+            } else {
+                $result-> execute();
+                $info = true;
+            }
+
+            return $info;
         }
+
+        public function checkRemanente($codIntangible)
+        {
+            $modelo =  new Conexion();
+            $conexion = $modelo->conectarse();
+
+            $sql = "SELECT * FROM x_intangibles_preguntas WHERE pregunta27 IS NULL AND cod_intangible=:cod";
+
+            $result = $conexion->prepare($sql);
+
+            $result -> bindParam(':cod',$codIntangible);
+
+            $result-> execute();
+             
+
+            return $result->rowCount();
+        }
+
+        public function checkResidual($codIntangible)
+        {
+            $modelo =  new Conexion();
+            $conexion = $modelo->conectarse();
+
+            $sql = "SELECT * FROM x_intangibles_preguntas WHERE pregunta32 IS NULL AND cod_intangible=:cod";
+
+            $result = $conexion->prepare($sql);
+
+            $result -> bindParam(':cod',$codIntangible);
+
+            $result-> execute();
+             
+
+            return $result->rowCount();
+        }
+
+        public function checkDeterioro($codIntangible)
+        {
+            $modelo =  new Conexion();
+            $conexion = $modelo->conectarse();
+
+            $sql = "SELECT * FROM x_intangibles_preguntas WHERE pregunta34 IS NULL AND cod_intangible=:cod";
+
+            $result = $conexion->prepare($sql);
+
+            $result -> bindParam(':cod',$codIntangible);
+
+            $result-> execute();
+             
+
+            return $result->rowCount();
+        }
+
+        public function checkAmortizacion($codIntangible)
+        {
+           $modelo =  new Conexion();
+            $conexion = $modelo->conectarse();
+
+            $sql = "SELECT * FROM x_intangibles_preguntas WHERE pregunta38 IS NULL AND cod_intangible=:cod";
+
+            $result = $conexion->prepare($sql);
+
+            $result -> bindParam(':cod',$codIntangible);
+
+            $result-> execute();
+             
+
+            return $result->rowCount(); 
+        }
+
     }
 
 ?>

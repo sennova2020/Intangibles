@@ -8,6 +8,7 @@
     require_once '../../controladores/verificaciones/sinIntagibles.php';
     require_once '../../controladores/formatoIntangible/read.php';
     require_once '../../controladores/seguridad/liderSecurity.php';
+    require_once '../../controladores/listCheckControllers/checkExistence.php';
     liderRol(2);
     $model = new consecutiveProject();
     
@@ -15,11 +16,8 @@
     if (!isset($_SESSION['id'])) {
         header("Location:../../index.php");
     }
-    //$data = $_GET['project'];
-    //if(projectWithoutIntagibles($data) === false)
-    //{
-    //    header("Location:../../index.php");
-    //}
+
+    
 
    
 
@@ -80,7 +78,8 @@
         <h2 id="timeToLife"></h2>
         
         <?php
-            echo readParameterFormato($data);
+            $titulo = 'LISTA DE CHEQUEO REVISION VIDA UTIL REMANENTE';
+            echo readParameterFormato($data,$titulo);
         ?>
             <div>
                 <p>
