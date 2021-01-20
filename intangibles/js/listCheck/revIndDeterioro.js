@@ -159,7 +159,7 @@ function envioDatos(){
         }
 
         if (observationChanges === '') {
-            results += '2) No digito la observación de la aclaración sí durante el periodo, han tenido lugar, o va a tener lugar en un futuro inmediato,cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales estan relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad. <br>';
+            results += '2) No digito la observación a sí durante el periodo, han tenido lugar, o va a tener lugar en un futuro inmediato,cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales estan relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad. <br>';
         }
 
         if (reduction === '') {
@@ -179,7 +179,7 @@ function envioDatos(){
         }
 
         if (value=== '') {
-            results += '6) No digito el valor del estudio del mercado (si no se puede estimar el costo del valor del mercado, escribir el costo de reposición). <br>';
+            results += '6) No digito el valor del estudio del mercado. <br>';
         
         }else {
             value = parseFloat(value);
@@ -189,19 +189,18 @@ function envioDatos(){
                 
                 }
         }
-        if (reduction == 'no') {
-            /*if (reposicion=== '') {
-                results += '7) Su respuesta es negativa, pero no indico el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando,¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?. <br>';
-                
-            }else {
-                reposicion = parseFloat(reposicion);
-        //Revisar y cooregir
-                    if (!Number.isInteger(reposicion) || (reposicion < 0)) {
-                        results += "7)El valor del costo de reposicion, debe ser un n&uacute;mero entero y positivo.<br><br>";
-                        
-                    }
-            }*/
-        } 
+
+        if (reposicion=== '') {
+            results += '7) No digito el costo de reposición del activo intangible. <br>';
+            
+        }else {
+            reposicion = parseFloat(reposicion);
+    
+                if (!Number.isInteger(reposicion) || (reposicion < 0)) {
+                    results += "7)El costo de reposición del activo intangible, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                    
+                }
+        }
 
 
         if (reposicionIntangible=== '') {
@@ -217,7 +216,7 @@ function envioDatos(){
         }
 
         if (evidencia === '') {
-            results += '9) No selecciono sí se dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
+            results += '9) No selecciono sí dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
         } else if(evidencia !== 'si' && evidencia !== 'no'){
             results += '9) La respuesta seleccionada a sí se dispone de evidencia sobre la obsolescencia o daño del activo, no corresponde a SI o NO. <br>';
         }
@@ -246,27 +245,27 @@ function envioDatos(){
         }
 
         if (observationEvaluation === '') {
-            results += '12) No digito la observación a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
+            results += '12) No digito la observación, a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
         }
 
         if (construction === '') {
-            results += '13) No selecciono una repuesta a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
+            results += '13) No selecciono una repuesta, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
         } else if(construction !== 'si' && construction !== 'no'){
-            results += '13) La respuesta seleccionada a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo., no corresponde a SI o NO. <br>';
+            results += '13) La respuesta seleccionada, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo., no corresponde a SI o NO. <br>';
         }
 
         if (observationConstruction === '') {
-            results += '14) No digito la observación de sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
+            results += '14) No digito la observación, de sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
         }
 
         if (information === '') {
-            results += '15) No selecciono una repuesta a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
+            results += '15) No selecciono una repuesta, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
         } else if(information !== 'si' && information !== 'no'){
-            results += '15) La respuesta seleccionada a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada, no corresponde a SI o NO. <br>';
+            results += '15) La respuesta seleccionada, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada, no corresponde a SI o NO. <br>';
         }
 
         if (observationInformation === '') {
-            results += '16) No digito la observación de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
+            results += '16) No digito la observación, de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
         }
 
         return results;

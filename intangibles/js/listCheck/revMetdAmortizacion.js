@@ -111,19 +111,19 @@ function envioDatos(){
         if (different === '') {
             results += '1) No selecciono una repuesta a la pregunta ¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?. <br>';
         } else if(different !== 'si' && different !== 'no'){
-            results += '1) La respuesta seleccionada en la pregunta ¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?, no corresponde a SI o NO. <br>';
+            results += '1) La respuesta seleccionada a la pregunta ¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?, no corresponde a SI o NO. <br>';
         }
 
         if (different == 'si') {
             
             if (observationDifferent === '') {
-                results += '2) No digito la observación de la aclaración sí para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se debera utilizar de acuerdo al patron de consumo determinado. <br>';
+                results += '2)No digito, sí la respuesta fue SI, entonces identifique el nuevo método de amortización que se debera utilizar de acuerdo al patron de consumo determinado. <br>';
             }
             
         }
     
         if (datoAmortizacion === '') {
-            results += '3) No digito la observación de como llegó al dato de la amortización y adjunte el documento soporte para para esta determinación. <br>';
+            results += '3) No digito como llegó al dato de la amortización y adjunte el documento soporte para para esta determinación. <br>';
         }
 
         if (document === '') {
