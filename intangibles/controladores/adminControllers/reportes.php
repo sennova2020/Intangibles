@@ -99,7 +99,8 @@ function downloadExcelReport($project)
 	
 
 	// dibujo de los titulps y las cabeceras de la tabla
-	$objPHPExcel->setActiveSheetIndex(0)
+    $objPHPExcel->setActiveSheetIndex(0)
+    //Titulos de costo de intangibles, facturas y nombramiento
 			->setCellValue('A1', 'Código de centro')
             ->setCellValue('B1', 'Nombre de centro')
             ->setCellValue('C1', 'Descripción de la linea programática')
@@ -145,11 +146,15 @@ function downloadExcelReport($project)
             ->setCellValue('AQ1', 'Concepto')
             ->setCellValue('AR1', 'Valor concepto')
             ->setCellValue('AS1', 'Es necesario este concepto para poner en funcionamiento el intangible?')
-            ->setCellValue('AT1', 'La factura que esta registrando corresponde a la fase de?');
+            ->setCellValue('AT1', 'La factura que esta registrando corresponde a la fase de?')
 
-
+        //Titulos de listas de chequeo de vida remanente
 	
-
+            ->setCellValue('AU1', 'Surgió una nueva ley, norma, acuerdo, decreto o normativa interna que hace verificar la utilización del bien intangible.')
+            ->setCellValue('AV1', 'Justificación')
+            ->setCellValue('AW1', 'Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc')
+            ->setCellValue('AX1', 'Justificación')
+            ->setCellValue('AY1', 'AJUSTE DE LA VIDA UTIL: Si alguno de los criterios establecidos en la lista de chequeo se respondió “SI”, determine el nuevo periodo durante el cual se espera que el activo intangible sea utilizable por parte de los usuarios. En observaciones, indique como llego a este dato o indique el documento soporte para esta determinación.');
     $modelo= new intangible();
 
     if ($project == 'sinCodigo') {
@@ -215,16 +220,21 @@ function downloadExcelReport($project)
                     ->setCellValue("AQ$i", utf8_encode($row['concepto']))
                     ->setCellValue("AR$i", utf8_encode($row['valor_concepto']))
                     ->setCellValue("AS$i", utf8_encode($row['Es necesario este concepto para poner en funcionamiento el intangible?']))
-                    ->setCellValue("AT$i", utf8_encode($row['La factura que esta registrando corresponde a la fase de?']));
+                    ->setCellValue("AT$i", utf8_encode($row['La factura que esta registrando corresponde a la fase de?']))
+                    ->setCellValue("AU$i", utf8_encode($row['Surgió una nueva ley, norma, acuerdo, decreto o normativa interna que hace verificar la utilización del bien intangible.']))
+                    ->setCellValue("AV$i", utf8_encode($row['Justificación: Surgio una nueva ley']))
+                    ->setCellValue("AW$i", utf8_encode($row['Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc.']))
+                    ->setCellValue("AX$i", utf8_encode($row['Justificación reemplazo del activo intangible']))
+                    ->setCellValue("AY$i", utf8_encode($row['Ajuste de la vida util remanente']));
 
 		      		$i++;   
 		     
 		}
 		$i=$i-1;
 		//ajustes de texto
-		$objPHPExcel->getActiveSheet()->getStyle("A2:AT$i")->applyFromArray($bordeCeldas);
-		$objPHPExcel->getActiveSheet()->getStyle("A2:AT$i")->applyFromArray($sheet);
-		$objPHPExcel->getActiveSheet()->getStyle("A2:AT$i")->applyFromArray($alin);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:AY$i")->applyFromArray($bordeCeldas);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:AY$i")->applyFromArray($sheet);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:AY$i")->applyFromArray($alin);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
@@ -270,6 +280,14 @@ function downloadExcelReport($project)
         $objPHPExcel->getActiveSheet()->getColumnDimension('AR')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('AS')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('AT')->setAutoSize(true);
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension('AU')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('AV')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('AW')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('AX')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('AY')->setAutoSize(true);
+
+
 
 
 

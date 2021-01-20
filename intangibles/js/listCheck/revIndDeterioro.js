@@ -190,17 +190,17 @@ function envioDatos(){
                 }
         }
         if (reduction == 'no') {
-            if (reposicion=== '') {
+            /*if (reposicion=== '') {
                 results += '7) Su respuesta es negativa, pero no indico el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando,¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?. <br>';
                 
             }else {
                 reposicion = parseFloat(reposicion);
         //Revisar y cooregir
-                   /* if (!Number.isInteger(reposicion) || (reposicion < 0)) {
+                    if (!Number.isInteger(reposicion) || (reposicion < 0)) {
                         results += "7)El valor del costo de reposicion, debe ser un n&uacute;mero entero y positivo.<br><br>";
                         
-                    }*/
-            } 
+                    }
+            }*/
         } 
 
 
