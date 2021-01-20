@@ -356,28 +356,28 @@ function agregarFactura() {
     }
 
     if ($("#cantidad").val() === "") {
-        resultado += "<br> <br> * Debe ingresar la cantidad de items del documento contable";
+        resultado += "<br> * Debe ingresar la cantidad de items del documento contable";
     }
 
     if ($("#factura").val() === "") {
-        resultado = resultado + "<br> <br> * Debe ingresar el número del documento contable";
+        resultado = resultado + "<br> * Debe ingresar el número del documento contable";
     }
 
     if ($("#fecha").val() === "") {
-        resultado = resultado + "<br> <br> * Debe ingresar fecha del documento contable";
+        resultado = resultado + "<br> * Debe ingresar fecha del documento contable";
     }
 
     if ($("#valor").val() === "") {
-        resultado = resultado + "<br> <br> * Debe ingresar valor del documento contable";
+        resultado = resultado + "<br> * Debe ingresar valor del documento contable";
     }
 
     if ($("#facturaDeSena").val() === "undefined") {
-        resultado = resultado + "<br> <br> * Debe seleccionar si el documento contable esta a nombre del SENA";
+        resultado = resultado + "<br> * Debe seleccionar si el documento contable esta a nombre del SENA";
     }
 
     if(tieneIVA === "si" && valorIVA ==="")
     {
-        resultado = resultado + "<br> <br> * Debe ingresar el IVA";
+        resultado = resultado + "<br> * Debe ingresar el IVA";
     }
 
     if (resultado !== "") {
