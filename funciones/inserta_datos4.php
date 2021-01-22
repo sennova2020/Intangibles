@@ -21,7 +21,7 @@
             $pregunta6 = isset($_POST["pregunta6"])?$_POST["pregunta6"]:"";
             $pregunta7 = isset($_POST["pregunta7"])?$_POST["pregunta7"]:"";
             $pregunta8 = isset($_POST["pregunta8"])?$_POST["pregunta8"]:"";
-            $pregunta9 = isset($_POST["pregunta9"])?$_POST["pregunta9"]:"";
+            $pregunta9 = isset($_POST["pregunta9"])?$_POST["pregunta9"]:"no";
 
             $cod_intangible = $_POST["cod_intangible"];
 

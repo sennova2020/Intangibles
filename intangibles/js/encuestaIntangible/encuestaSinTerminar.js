@@ -12,6 +12,34 @@ function finish(e) {
     );
 }
 
+function finishTwo(e) {
+    id = e.id;
+    project = $("#project").val();
+    $.redirect(
+        '../listaCheck/reValResidual.php',
+        {
+            'id': id,
+            'project':project,
+            'volver':'finish'
+        }, 
+        "POST"
+    );
+}
+
+function finishThree(e) {
+    id = e.id;
+    project = $("#project").val();
+    $.redirect(
+        '../listaCheck/revMetdAmortizacion.php',
+        {
+            'id': id,
+            'project':project,
+            'volver':'finish'
+        }, 
+        "POST"
+    );
+}
+
 function seeSave(e) {
     limite ();
     id = e.id;

@@ -26,6 +26,22 @@ class fechaLimite
         
         return $resultado;
     }
+
+    public function read()
+    {
+        $resultado = null;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+        $sql ="SELECT * FROM fechalimite ORDER BY id DESC LIMIT 1";
+
+        $result = $conexion ->prepare($sql);
+        $result -> execute();
+
+        while ($f=$result->fetch()) {
+            $resultado [] =$f;
+        }
+        return $resultado;
+    }
 }
 
 ?>

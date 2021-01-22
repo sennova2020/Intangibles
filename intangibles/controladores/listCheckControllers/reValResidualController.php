@@ -3,6 +3,8 @@
     require_once '../../modelo/conexion/conexion.php';
     require_once '../../modelo/listCheck/listCheckModelo.php';
     require_once '../seguridad/liderSecurity.php';
+    require_once '../verificaciones/fechaLimite.php';
+    require_once '../../modelo/fechaLimite.php';
     liderRol(2);
     
     $residual = trim($_POST['residual']);

@@ -96,9 +96,7 @@ function envioDatos(){
 }
 
 $("#boton_volver").click(function() {
-    $.redirect('../../intangibles.php', {
-        'centro': '<?php echo($info->codigo_centro) ?>'
-    }, "POST");
+    $.redirect('../intangibles.php');
 });
 function validarEnvioDatos() {
 

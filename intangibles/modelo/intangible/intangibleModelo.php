@@ -72,16 +72,18 @@ class intangible
     {
         $negativo = 1;
         $estado = 1;
+        $finish = 0;
         $model = new Conexion();
         $conexion = $model -> conectarse();
 
-        $sql = "SELECT id FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo=:negativo AND pregunta20 IS NULL";
+        $sql = "SELECT id FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo=:negativo AND finished=:finish";
 
         $result = $conexion -> prepare($sql);
 
         $result -> bindParam(':project',$project);
         $result -> bindParam(':estado',$estado);
         $result -> bindParam(':negativo',$negativo);
+        $result -> bindParam(':finish',$finish);
 
         $result -> execute();
 
@@ -110,17 +112,20 @@ class intangible
     {
         $negativo = 1;
         $estado = 1;
+        $finish = 0;
         $resultado = null;
         $model = new Conexion();
         $conexion = $model -> conectarse();
 
-        $sql = "SELECT cod_intangible,pregunta3,pregunta2,pregunta1 FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo=:negativo AND pregunta20 IS NULL";
+        $sql = "SELECT cod_intangible,pregunta3,pregunta2,pregunta1,pregunta20,pregunta27,pregunta32,pregunta34,pregunta38 FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo=:negativo AND finished=:finish";
 
         $result = $conexion -> prepare($sql);
 
         $result -> bindParam(':project',$project);
         $result -> bindParam(':estado',$estado);
         $result -> bindParam(':negativo',$negativo);
+        
+        $result -> bindParam(':finish',$finish);
 
         if ($result) {
             $result->execute();
@@ -256,16 +261,18 @@ class intangible
     {
         $negativo = 1;
         $estado = 1;
+        $finish = 1;
         $resultado = null;
         $model = new Conexion();
         $conexion = $model -> conectarse();
 
-        $sql = "SELECT cod_intangible,pregunta3,pregunta2,pregunta1 FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo IS NOT NULL";
+        $sql = "SELECT cod_intangible,pregunta3,pregunta2,pregunta1 FROM x_intangibles_preguntas WHERE proyecto_consecutivo=:project AND estado=:estado AND negativo IS NOT NULL AND finished =:finish";
         
         $result = $conexion -> prepare($sql);
 
         $result -> bindParam(':project',$project);
         $result -> bindParam(':estado',$estado);
+        $result -> bindParam(':finish',$finish);
 
         if ($result) {
             $result->execute();
@@ -312,14 +319,16 @@ class intangible
     {
         $estado = 1;
         $negativo = 1;
+        $finish = 0;
         $model = new Conexion();
         $conexion = $model -> conectarse();
 
-        $sql="DELETE FROM x_intangibles_preguntas WHERE estado=:estado AND negativo=:negativo AND pregunta20 IS NULL ";
+        $sql="DELETE FROM x_intangibles_preguntas WHERE estado=:estado AND negativo=:negativo AND finished=:finish";
 
         $result = $conexion -> prepare($sql);
         $result -> bindParam(':estado',$estado);
         $result -> bindParam(':negativo',$negativo);
+        $result -> bindParam(':finish',$finish);
         $result -> execute();
     }
 
@@ -391,8 +400,9 @@ class intangible
     {
         $model = new Conexion();
         $conexion = $model -> conectarse();
+        $finish = 1;
 
-        $sql = "INSERT INTO x_intangibles_preguntas (proyecto_consecutivo,fecha,estado,negativo,sin_intangible,justificacion) VALUES (:project,now(),:estado,:negativo,:sinJ,:justificacion)";
+        $sql = "INSERT INTO x_intangibles_preguntas (proyecto_consecutivo,fecha,estado,negativo,sin_intangible,justificacion,finished) VALUES (:project,now(),:estado,:negativo,:sinJ,:justificacion,:finish)";
         
         $result = $conexion -> prepare($sql);
 
@@ -402,6 +412,7 @@ class intangible
         
         $result -> bindParam(':estado',$estado);
         $result -> bindParam(':negativo',$negativo);
+        $result -> bindParam(':finish',$finish);
 
         $result->execute();
 

@@ -31,9 +31,36 @@
                             <td class="text-center">'.$key['denominacion'].'</td>
                         ';
                     }
-                    
-                    $resultado .= '<td class="text-center"><button id="'.$intangible['cod_intangible'].'" class="btn" onclick="finish(this)">Terminar</button></td> 
-                </tr>
+                    if ($intangible['pregunta20'] == '') {
+                        $resultado .= '<td class="text-center"><button id="'.$intangible['cod_intangible'].'" class="btn" onclick="finish(this)">Terminar</button></td>';
+                    } else {
+                        
+                        if ($intangible['pregunta27'] == '') {
+                            $resultado .= '<td class="text-center"><a href="../listaCheck/checkRemanente.php?id='.$intangible['cod_intangible'].'"><button id="'.$intangible['cod_intangible'].'" class="btn" >Terminar</button></a></td>';
+                        } else {
+                           
+                            if ($intangible['pregunta32'] == '') {
+                                $resultado .= '<td class="text-center"><button id="'.$intangible['cod_intangible'].'" class="btn" onclick="finishTwo(this)">Terminar</button></td>';
+                            } else {
+                                
+                                if ($intangible['pregunta34'] == '') {
+                                    $resultado .= '<td class="text-center"><button id="'.$intangible['cod_intangible'].'" class="btn" onclick="finishThree(this)">Terminar</button></td>';
+                                } else {
+
+                                   if ($intangible['pregunta38'] == '') {
+                                    $resultado .= '<td class="text-center"><a href="../listaCheck/revIndDeterioro.php?id='.$intangible['cod_intangible'].'"><button id="'.$intangible['cod_intangible'].'" class="btn" >Terminar</button></a></td>';
+                                   }
+                                   
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                
+                
+                $resultado.=    '</tr>
                 ';
             }
         }

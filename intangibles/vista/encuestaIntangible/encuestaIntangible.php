@@ -7,6 +7,7 @@
     require_once '../../modelo/intangible/intangibleModelo.php';
     require_once '../../controladores/verificaciones/sinIntagibles.php';
     require_once '../../controladores/seguridad/liderSecurity.php';
+    require_once '../../modelo/fechaLimite.php';
     liderRol(2);
     $model = new consecutiveProject();
     

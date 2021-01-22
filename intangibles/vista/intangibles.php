@@ -5,6 +5,7 @@
  require_once '../modelo/proyectoConsecutivo/proyectoConsecutivoModel.php';
  require_once '../modelo/intangible/intangibleModelo.php';
  require_once '../modelo/proyectoEvaluarIntangible.php';
+ require_once '../modelo/fechaLimite.php';
  require_once '../controladores/centroProyecto/read.php';
  require_once '../controladores/verificaciones/fechaLimite.php';
  require_once '../controladores/verificaciones/sinIntagibles.php';

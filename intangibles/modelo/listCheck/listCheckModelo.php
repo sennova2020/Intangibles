@@ -78,10 +78,11 @@
 
         public function createRevIndDeterioro($changes,$observationChanges,$reduction,$observationReduction,$nameIntangible,$value,$reposicion,$reposicionIntangible,$evidencia,$rehabilitaciones,$evaluation,$observationEvaluation,$construction,$observationConstruction,$information,$observationInformation,$cod)
         {
+            $finish = 1;
             $modelo =  new Conexion();
             $conexion = $modelo->conectarse();
 
-            $sql = "UPDATE x_intangibles_preguntas SET pregunta38=:changess,pregunta39=:observationChanges,pregunta40=:reduction,pregunta41=:observationReduction,pregunta42=:nameIntangible,pregunta43=:value,pregunta44=:reposicion,pregunta45=:reposicionIntangible,pregunta46=:evidencia,pregunta47=:rehabilitaciones,pregunta48=:evaluation,pregunta49=:observationEvaluation,pregunta50=:construction,pregunta51=:observationConstruction,pregunta52=:information,pregunta53=:observationInformation WHERE cod_intangible=:cod";
+            $sql = "UPDATE x_intangibles_preguntas SET pregunta38=:changess,pregunta39=:observationChanges,pregunta40=:reduction,pregunta41=:observationReduction,pregunta42=:nameIntangible,pregunta43=:value,pregunta44=:reposicion,pregunta45=:reposicionIntangible,pregunta46=:evidencia,pregunta47=:rehabilitaciones,pregunta48=:evaluation,pregunta49=:observationEvaluation,pregunta50=:construction,pregunta51=:observationConstruction,pregunta52=:information,pregunta53=:observationInformation,finished=:finish WHERE cod_intangible=:cod";
 
             $result = $conexion->prepare($sql);
 
@@ -101,6 +102,7 @@
             $result -> bindParam(':observationConstruction',$observationConstruction);
             $result -> bindParam(':information',$information);
             $result -> bindParam(':observationInformation',$observationInformation);
+            $result -> bindParam(':finish',$finish);
             $result -> bindParam(':cod',$cod);
 
             if (!$result) {

@@ -123,7 +123,7 @@ function envioDatos(){
 }
 
     $("#boton_volver").click(function() {
-        $.redirect('../../intangibles.php', {
+        $.redirect('../intangibles.php', {
             'centro': '<?php echo($info->codigo_centro) ?>'
         }, "POST");
     });

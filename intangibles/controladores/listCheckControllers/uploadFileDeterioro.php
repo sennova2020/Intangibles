@@ -1,6 +1,8 @@
 <?php
-//error_reporting(0);
+error_reporting(0);
 require_once '../seguridad/liderSecurity.php';
+require_once '../verificaciones/fechaLimite.php';
+require_once '../../modelo/fechaLimite.php';
 //require_once '../verificaciones/uploadFile.php';
 require_once '../../library/class.upload.php';
 liderRol(2);

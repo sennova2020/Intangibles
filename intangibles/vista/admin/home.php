@@ -8,6 +8,8 @@
  require_once '../../controladores/centroProyecto/read.php';
  require_once '../../controladores/verificaciones/fechaLimite.php';
  require_once '../../controladores/verificaciones/sinIntagibles.php';
+ require_once '../../modelo/fechaLimite.php';
+ require_once '../../controladores/verificaciones/fechaLimite.php';
 session_start();
 if (!isset($_SESSION['id'])) {
     header("Location:../../index.php");
