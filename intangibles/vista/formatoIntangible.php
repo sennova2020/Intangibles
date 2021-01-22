@@ -117,10 +117,15 @@ require_once '../controladores/seguridad/liderSecurity.php';
                             <p class="etiquetas">Vínculo para ingresar todas sus evidencias, facturas, contratos,
                                 documentos y todo lo que constituye evidencia para el Intangible.</p>
                             <br />
+
+                            
                             <?php
                                 echo linkSharepoint($project);
                             ?>
+                            
                         </li>
+                            
+                
                         
                         <li class="li_formulario">
                             <p class="etiquetas">¿Tiene documentos contables para registrar?</p>
@@ -142,6 +147,7 @@ require_once '../controladores/seguridad/liderSecurity.php';
             
 
         </div>
+
     
     
         <div class="radicar_proyecto" id="boton_registro">ENVIAR</div>

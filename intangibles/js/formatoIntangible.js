@@ -343,8 +343,17 @@ function agregarFactura() {
     var tieneIVA = $("#IVASelect").val();
     var valorIVA = $("#valorIVA").val();
     var fase = $("#fase").val();
-
+    var pregunta5= $("#pregunta5").val();
+    
+    
     var resultado = "";
+
+    if (pregunta5 === '') {
+        resultado += '5) No selecciono sí dispone de documentos contables para registrar. <br>';
+    } else if(pregunta5 !== 'si' && pregunta5 !== 'no'){
+        resultado += '5)Sí su respuesta fue afirmativa debe adjuntar  documentos contables . <br>';
+    }
+
 
     if(fase !== "Adquirido" && fase !== "Desarrollo" && fase !== "Investigación" )
     {
@@ -580,7 +589,6 @@ $("#boton_registro").click(function() {
                 content: 'Los siguientes campos no se han diligenciado correctamente: <br> <br> 2)No ha determinado el tiempo de vida &uacute;til del intangible'
             });
         }
-        
 
     }
     
@@ -839,3 +847,5 @@ function limite ()
         }
     })
 }
+
+
