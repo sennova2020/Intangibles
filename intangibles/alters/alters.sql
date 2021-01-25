@@ -5,5 +5,9 @@ DELETE FROM x_intangibles_preguntas WHERE estado=1 AND negativo=1 AND pregunta20
 DELETE FROM x_intangibles_preguntas WHERE estado=0
 UPDATE x_intangibles_preguntas SET finished=1
 
+ALTER TABLE `usuarioslider` ADD `rol` TINYINT(1) NOT NULL AFTER `contrasena2`;
+UPDATE usuarioslider SET rol = 2
+
+
 /* Falta Asegurar las validaciones de entradas forzadas por medio de url a las listas de chequeo*/
 /*Falta ajustar las funciones de fecha limite en las listas de chequeo*/
