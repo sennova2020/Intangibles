@@ -11,3 +11,6 @@ UPDATE usuarioslider SET rol = 2
 
 /* Falta Asegurar las validaciones de entradas forzadas por medio de url a las listas de chequeo*/
 /*Falta ajustar las funciones de fecha limite en las listas de chequeo*/
+/*Ajustar la vista de detalle intangible*/
+/*Realizar calculos de ecuaciones solicitadas*/
+/*Borrar documentos de soporte de intangibles no finalizados*/

@@ -463,6 +463,11 @@ class intangible
         a.pregunta29 'Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc.',
         a.pregunta30 'Justificación reemplazo del activo intangible',
         a.pregunta31 'Ajuste de la vida util remanente',
+        a.pregunta32 '¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?',
+        a.pregunta33 'Justificación ¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?',
+        a.pregunta34 '¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?',
+        a.pregunta35 'Si para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se deberá utilizar de acuerdo al patrón de consumo determinado.',
+        a.pregunta36 'Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación.',
         a.fecha_cierre 'Fecha de cierre del proyecto técnicamente en la vigencia 2020',
         a.fecha_vigencia 'Fecha de cierre del proyecto presupuestalmente en la vigencia 2020',
         a.fecha_inicio 'Fecha de Registro',  
@@ -482,7 +487,9 @@ class intangible
         LEFT JOIN intangible_pregunta_factura c
         ON a.cod_intangible = c.cod_intangible
         LEFT JOIN clase_intangible d
-        ON a.pregunta2 = d.cod_clase";
+        ON a.pregunta2 = d.cod_clase
+        WHERE a.finished=1";
+
         
         $result = $conexion -> prepare($sql);
 
@@ -540,6 +547,11 @@ class intangible
         a.pregunta29 'Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc.',
         a.pregunta30 'Justificación reemplazo del activo intangible',
         a.pregunta31 'Ajuste de la vida util remanente', 
+        a.pregunta32 '¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?',
+        a.pregunta33 'Justificación ¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?',
+        a.pregunta34 '¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?',
+        a.pregunta35 'Si para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se deberá utilizar de acuerdo al patrón de consumo determinado.',
+        a.pregunta36 'Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación.',
         a.fecha_cierre 'Fecha de cierre del proyecto técnicamente en la vigencia 2020',
         a.fecha_vigencia 'Fecha de cierre del proyecto presupuestalmente en la vigencia 2020',
         a.fecha_inicio 'Fecha de Registro',  
@@ -560,7 +572,7 @@ class intangible
         ON a.cod_intangible = c.cod_intangible
         LEFT JOIN clase_intangible d
         ON a.pregunta2 = d.cod_clase
-        WHERE a.proyecto_consecutivo=:project";
+        WHERE a.proyecto_consecutivo=:project AND a.finished=1";
         
         $result = $conexion -> prepare($sql);
         $result -> bindParam(':project',$project);

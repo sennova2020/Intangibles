@@ -20,12 +20,11 @@ function enabledOperations()
     $result= false;
     date_default_timezone_set("America/Bogota");
     $limitDate= getLimitDate();
-    $nowDate =  date("Y/m/d");
+    $nowDate =  date("Y-m-d");
 
     if ($nowDate <= $limitDate) {
         $result = true;
-    }else{
-        deleteIntangibleLimitDate();
+    
     }
 
     return $result;

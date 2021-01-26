@@ -4,6 +4,7 @@ require_once '../verificaciones/verificacionesEncuestaIntangible.php';
 require_once '../../modelo/conexion/conexion.php';
 require_once '../../modelo/intangible/intangibleModelo.php';
 require_once '../verificaciones/fechaLimite.php';
+require_once '../../modelo/fechaLimite.php';
 
 
 function createIntangible()

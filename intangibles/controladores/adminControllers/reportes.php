@@ -18,14 +18,15 @@ function getHeaders($nombre){
 	header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
 	header ('Pragma: public'); // HTTP/1.0
 
-	}
+    }
+    
 function downloadExcelReport($project)
 {
     require_once '../../library/phpExcel/Classes/PHPExcel.php';
 
     $objPHPExcel = new PHPExcel();
 	// Contenido de historia del archivo
-	$objPHPExcel->getProperties()->setCreator("ADSI 2020")
+	$objPHPExcel->getProperties()->setCreator("SENNOVA-INTANGIBLE 2021")
 							 ->setLastModifiedBy("Maarten Balliauw")
 							 //veersion minima de excel
 							 ->setTitle("Office 2007 XLSX Test Document")
@@ -154,7 +155,17 @@ function downloadExcelReport($project)
             ->setCellValue('AV1', 'Justificación')
             ->setCellValue('AW1', 'Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc')
             ->setCellValue('AX1', 'Justificación')
-            ->setCellValue('AY1', 'AJUSTE DE LA VIDA UTIL: Si alguno de los criterios establecidos en la lista de chequeo se respondió “SI”, determine el nuevo periodo durante el cual se espera que el activo intangible sea utilizable por parte de los usuarios. En observaciones, indique como llego a este dato o indique el documento soporte para esta determinación.');
+            ->setCellValue('AY1', 'AJUSTE DE LA VIDA UTIL: Si alguno de los criterios establecidos en la lista de chequeo se respondió “SI”, determine el nuevo periodo durante el cual se espera que el activo intangible sea utilizable por parte de los usuarios. En observaciones, indique como llego a este dato o indique el documento soporte para esta determinación.')
+
+        //Titulos de listas de chequeo revision valor residual
+            ->setCellValue('AZ1', '¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?')
+            ->setCellValue('BA1', 'Justificación')
+
+        //Titulos de listas de chequeo revision metodo de amortización
+            ->setCellValue('BB1', '¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?')
+            ->setCellValue('BC1', 'Si para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se deberá utilizar de acuerdo al patrón de consumo determinado. ')
+            ->setCellValue('BD1', 'Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación.');
+
     $modelo= new intangible();
 
     if ($project == 'sinCodigo') {
@@ -225,16 +236,21 @@ function downloadExcelReport($project)
                     ->setCellValue("AV$i", utf8_encode($row['Justificación: Surgio una nueva ley']))
                     ->setCellValue("AW$i", utf8_encode($row['Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc.']))
                     ->setCellValue("AX$i", utf8_encode($row['Justificación reemplazo del activo intangible']))
-                    ->setCellValue("AY$i", utf8_encode($row['Ajuste de la vida util remanente']));
+                    ->setCellValue("AY$i", utf8_encode($row['Ajuste de la vida util remanente']))
+                    ->setCellValue("AZ$i", utf8_encode($row['¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?']))
+                    ->setCellValue("BA$i", utf8_encode($row['Justificación ¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?']))
+                    ->setCellValue("BB$i", utf8_encode($row['¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?']))
+                    ->setCellValue("BC$i", utf8_encode($row['Si para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se deberá utilizar de acuerdo al patrón de consumo determinado.']))
+                    ->setCellValue("BD$i", utf8_encode($row['Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación.']));
 
 		      		$i++;   
 		     
 		}
 		$i=$i-1;
 		//ajustes de texto
-		$objPHPExcel->getActiveSheet()->getStyle("A2:AY$i")->applyFromArray($bordeCeldas);
-		$objPHPExcel->getActiveSheet()->getStyle("A2:AY$i")->applyFromArray($sheet);
-		$objPHPExcel->getActiveSheet()->getStyle("A2:AY$i")->applyFromArray($alin);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:BD$i")->applyFromArray($bordeCeldas);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:BD$i")->applyFromArray($sheet);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:BD$i")->applyFromArray($alin);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
@@ -286,6 +302,12 @@ function downloadExcelReport($project)
         $objPHPExcel->getActiveSheet()->getColumnDimension('AW')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('AX')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('AY')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('AZ')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BA')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BB')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BC')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BD')->setAutoSize(true);
+
 
 
 

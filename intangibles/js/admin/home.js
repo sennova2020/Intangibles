@@ -213,7 +213,8 @@ function changeLimitDate() {
                         Swal.fire({
                             icon: 'success',
                             title: 'Actualización exitosa'
-                        }) 
+                        });
+                        window.location.reload(); 
                     } else {
                         Swal.fire({
                             icon: 'error',

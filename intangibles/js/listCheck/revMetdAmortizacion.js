@@ -46,7 +46,7 @@ function envioDatos(){
                             $("#miForm").submit();
 
                         } else {
-                            if (repuesta == 'Error') {
+                            if (respuesta == 'Error') {
                                  
                                 $.alert({
                                     title: 'Error',

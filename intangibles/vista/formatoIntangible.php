@@ -5,7 +5,7 @@ require_once '../modelo/conexion/conexion.php';
 require_once '../controladores/formatoIntangible/read.php';
 require_once '../controladores/verificaciones/fechaLimite.php';
 require_once '../controladores/seguridad/liderSecurity.php';
-require_once '../../modelo/fechaLimite.php';
+require_once '../modelo/fechaLimite.php';
     liderRol(1);    
 
     if (!isset($_SESSION['id'])) {
