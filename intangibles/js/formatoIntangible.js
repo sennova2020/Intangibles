@@ -343,15 +343,15 @@ function agregarFactura() {
     var tieneIVA = $("#IVASelect").val();
     var valorIVA = $("#valorIVA").val();
     var fase = $("#fase").val();
-    var pregunta5= $("#pregunta5").val();
+    var pregunta9= $("#pregunta9").val();
     
     
     var resultado = "";
 
-    if (pregunta5 === '') {
-        resultado += '5) No selecciono sí dispone de documentos contables para registrar. <br>';
-    } else if(pregunta5 !== 'si' && pregunta5 !== 'no'){
-        resultado += '5)Sí su respuesta fue afirmativa debe adjuntar  documentos contables . <br>';
+    if (pregunta9 === '') {
+        resultado += '9) No selecciono sí dispone de documentos contables para registrar. <br>';
+    } else if(pregunta9!== 'si' && pregunta9 !== 'no'){
+        resultado += '9)Sí su respuesta fue afirmativa debe adjuntar  documentos contables . <br>';
     }
 
 
@@ -619,6 +619,7 @@ function validarEnvioDatos() {
     var pregunta7 = $("#pregunta7").val();
     var pregunta8 = $("#pregunta8").val();
     var pregunta9 = $("#pregunta9").val();
+    
 
     //Estado de validaciones de numeros enteros
     var enteros= true;
@@ -631,7 +632,13 @@ function validarEnvioDatos() {
 
     results = validaTabla(); 
     
-    
+    if(pregunta9 == 'si'){
+        var factura= $("#detalleFactura_tbody").html();
+        alert(factura);
+        if(factura == ''){
+            results += "No has registrado el documento contable";
+        }
+    }
 
    
     if (pregunta3 === '') {

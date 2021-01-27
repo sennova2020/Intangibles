@@ -164,7 +164,24 @@ function downloadExcelReport($project)
         //Titulos de listas de chequeo revision metodo de amortización
             ->setCellValue('BB1', '¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?')
             ->setCellValue('BC1', 'Si para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se deberá utilizar de acuerdo al patrón de consumo determinado. ')
-            ->setCellValue('BD1', 'Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación.');
+            ->setCellValue('BD1', 'Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación.')
+        
+        //Titulos de listas de chequeo revisión de indicios de deterioro
+            ->setCellValue('BE1', 'Durante el periodo, han tenido lugar, o van a tener lugar en un futuro inmediato, cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales están relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad.')
+            ->setCellValue('BF1', 'Justifique su respuesta en caso afirmativo o negativo')
+            ->setCellValue('BG1', 'Durante el periodo, el valor de mercado del activo ha disminuido significativamente más que lo que se esperaría como consecuencia del paso del tiempo o de su uso normal.')
+            ->setCellValue('BH1', 'Justifique su respuesta si es afirmativa  y adjunte las evidencias del estudio del mercado que realizó para determinar el valor del mercado.')
+            ->setCellValue('BI1', 'Valor del estudio del mercado (si no se puede estimar el costo del valor del mercado, escribir el costo de reposición)')
+            ->setCellValue('BJ1', 'Justifique su respuesta si es negativa indicando el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en las que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando, ¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?.')
+            ->setCellValue('BK1', 'Valor de reposición del activo intangible.')
+            ->setCellValue('BL1', 'Se dispone de evidencia sobre la obsolescencia o daño del activo.')
+            ->setCellValue('BM1', 'Si su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones.')
+            ->setCellValue('BN1', 'Durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización o la manera como se usa o se espera usar el activo, los cuales afectarán desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita.')
+            ->setCellValue('BO1', 'Justifique su respuesta si es afirmativa o negativa.')
+            ->setCellValue('BP1', 'Se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo.')
+            ->setCellValue('BQ1', 'Justifique su respuesta si es afirmativa o negativa.')
+            ->setCellValue('BR1', 'Se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. ')
+            ->setCellValue('BS1', 'Justifique su respuesta si es afirmativa o negativa');
 
     $modelo= new intangible();
 
@@ -241,16 +258,31 @@ function downloadExcelReport($project)
                     ->setCellValue("BA$i", utf8_encode($row['Justificación ¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?']))
                     ->setCellValue("BB$i", utf8_encode($row['¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?']))
                     ->setCellValue("BC$i", utf8_encode($row['Si para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se deberá utilizar de acuerdo al patrón de consumo determinado.']))
-                    ->setCellValue("BD$i", utf8_encode($row['Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación.']));
+                    ->setCellValue("BD$i", utf8_encode($row['Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación.']))
+                    /*->setCellValue("BE$i", utf8_encode($row['Durante el periodo, han tenido lugar, o van a tener lugar en un futuro inmediato, cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales están relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad.']))*/
+                    ->setCellValue("BF$i", utf8_encode($row['Justifique su respuesta en caso afirmativo  o negativo.']))
+                    ->setCellValue("BG$i", utf8_encode($row['Durante el periodo, el valor de mercado del activo ha disminuido significativamente más que lo que se esperaría como consecuencia del paso del tiempo o de su uso normal.']))
+                    ->setCellValue("BH$i", utf8_encode($row['Justifique su respuesta si es afirmativa  y adjunte las evidencias del estudio del mercado que realizó para determinar el valor del mercado.']))
+                    ->setCellValue("BI$i", utf8_encode($row['Valor del estudio del mercado (si no se puede estimar el costo del valor del mercado, escribir el costo de reposición).']))
+                    /*->setCellValue("BJ$i", utf8_encode($row['Justifique su respuesta si es negativa indicando el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en las que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando, ¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?']))*/
+                    ->setCellValue("BK$i", utf8_encode($row['Valor de reposición del activo intangible.']))
+                    ->setCellValue("BL$i", utf8_encode($row['Se dispone de evidencia sobre la obsolescencia o daño del activo.']))
+                    ->setCellValue("BM$i", utf8_encode($row['Si su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones.']))
+                    /*->setCellValue("BN$i", utf8_encode($row['Durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización o la manera como se usa o se espera usar el activo, los cuales afectarán desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita.']))*/
+                    ->setCellValue("BO$i", utf8_encode($row['Justifique su respuesta si es afirmativa o negativa.']))
+                    ->setCellValue("BP$i", utf8_encode($row['Se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo.']))
+                    ->setCellValue("BQ$i", utf8_encode($row['Justifique su respuesta si es afirmativa o negativa.']))
+                    ->setCellValue("BR$i", utf8_encode($row['Se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada.']))
+                    ->setCellValue("BS$i", utf8_encode($row['Justifique su respuesta si es afirmativa o negativa.']));
 
 		      		$i++;   
 		     
 		}
 		$i=$i-1;
 		//ajustes de texto
-		$objPHPExcel->getActiveSheet()->getStyle("A2:BD$i")->applyFromArray($bordeCeldas);
-		$objPHPExcel->getActiveSheet()->getStyle("A2:BD$i")->applyFromArray($sheet);
-		$objPHPExcel->getActiveSheet()->getStyle("A2:BD$i")->applyFromArray($alin);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:BS$i")->applyFromArray($bordeCeldas);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:BS$i")->applyFromArray($sheet);
+		$objPHPExcel->getActiveSheet()->getStyle("A2:BS$i")->applyFromArray($alin);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
 		$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
@@ -307,6 +339,22 @@ function downloadExcelReport($project)
         $objPHPExcel->getActiveSheet()->getColumnDimension('BB')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('BC')->setAutoSize(true);
         $objPHPExcel->getActiveSheet()->getColumnDimension('BD')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BE')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BF')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BG')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BH')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BI')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BJ')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BK')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BL')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BM')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BN')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BO')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BP')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BQ')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BR')->setAutoSize(true);
+        $objPHPExcel->getActiveSheet()->getColumnDimension('BS')->setAutoSize(true);
+
 
 
 
@@ -344,6 +392,5 @@ if ($_GET['rep'] == 1) {
         downloadExcelReport($_GET['proj']);
     }
 }
-
 
 ?>
