@@ -38,7 +38,7 @@ if (($changes == 'si' || $changes == 'no') && strlen($changes) > 0) {
             if (($reduction == 'si' && strlen($observationReduction) > 0) || ($reduction == 'no')) {
                 
                 if (strlen($nameIntangible) > 0) {
-    
+                        $nameIntangible='../../documentos/upload/DocumentDeterioro/'.$cod;
                     if ($value > 0 ) {
                 
                         if (($reduction == 'no' && $reposicion > 0) || ($reduction == 'si')) {

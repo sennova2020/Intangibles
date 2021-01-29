@@ -515,7 +515,7 @@
                         <tr><td><strong>Surgió una nueva ley, norma, acuerdo, decreto o normativa interna que hace verificar la utilización del bien intangible:</strong></td><td>'.$intangible['pregunta26'].'</td></tr>
                         <tr><td><strong>Justificación:</strong></td><td></td></tr>
                         <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta27']).'</div></td><td></td></tr>
-                        <tr><td><strong>Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc.:</strong></td><td>'.$intangible['pregunta28'].'</td></tr>
+                        <tr><td><strong>Se espera reemplazar el activo intangible por uno con mejores condiciones como son capacidad, velocidad, definición, etc:</strong></td><td>'.$intangible['pregunta28'].'</td></tr>
                         <tr><td><strong>Justificación:</strong></td><td></td></tr>
                         <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta29']).'</div></td><td></td></tr>
                         <tr><td><strong>AJUSTE DE LA VIDA UTIL: Si alguno de los criterios establecidos en la lista de chequeo se respondió “SI”, determine el nuevo periodo durante el cual se espera que el activo intangible sea utilizable por parte de los usuarios. En observaciones, indique como llego a este dato o indique el documento soporte para esta determinación. (indicar la nueva vida útil del intangible de contrario escribir NO APLICA ):</strong></td><td></td></tr>
@@ -528,7 +528,7 @@
 
 
                         <tr><td><strong>¿El activo intangible presenta un patrón de consumo diferente al inicialmente esperado?:</strong></td><td>'.$intangible['pregunta33'].'</td></tr>
-                        <tr><td><strong>Si para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se deberá utilizar de acuerdo al patrón de consumo determinado.:</strong></td><td></td></tr>
+                        <tr><td><strong>Si para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se deberá utilizar de acuerdo al patrón de consumo determinado:</strong></td><td></td></tr>
                         <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta34']).'</div></td><td></td></tr>
                         <tr><td><strong>Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación:</strong></td><td></td></tr>
                         <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta35']).'</div></td><td></td></tr>
@@ -536,10 +536,10 @@
 
 
 
-                        <tr><td><strong>Durante el periodo, han tenido lugar, o van a tener lugar en un futuro inmediato, cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales están relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad.:</strong></td><td>'.$intangible['pregunta37'].'</td></tr>
+                        <tr><td><strong>Durante el periodo, han tenido lugar, o van a tener lugar en un futuro inmediato, cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales están relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad:</strong></td><td>'.$intangible['pregunta37'].'</td></tr>
                         <tr><td><strong>Justificación:</strong></td><td></td></tr>
                         <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta38']).'</div></td><td></td></tr>
-                        <tr><td><strong>Durante el periodo, el valor de mercado del activo ha disminuido significativamente más que lo que se esperaría como consecuencia del paso del tiempo o de su uso normal.:</strong></td><td>'.$intangible['pregunta39'].'</td></tr>
+                        <tr><td><strong>Durante el periodo, el valor de mercado del activo ha disminuido significativamente más que lo que se esperaría como consecuencia del paso del tiempo o de su uso normal:</strong></td><td>'.$intangible['pregunta39'].'</td></tr>
                         <tr><td><strong>Justificación:</strong></td><td></td></tr>
                         <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta40']).'</div></td><td></td></tr>
                         <tr><td><strong>Adjunte documento:</strong></td><td>'. ucwords( $intangible['pregunta41']).'</td></tr>
