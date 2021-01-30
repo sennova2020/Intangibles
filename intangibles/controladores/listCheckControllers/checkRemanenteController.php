@@ -3,6 +3,8 @@
     require_once '../../modelo/conexion/conexion.php';
     require_once '../../modelo/listCheck/listCheckModelo.php';
     require_once '../seguridad/liderSecurity.php';
+    require_once '../verificaciones/fechaLimite.php';
+    require_once '../../modelo/fechaLimite.php';
     liderRol(2);
     
     $rule = trim($_POST['rule']);
@@ -23,11 +25,19 @@
                 if (strlen($observationRule) > 0) {
                     
                     if (strlen($settingLife) > 0) {
-                        
-                        $modelo =  new listCheck();
-                        $consulta = $modelo->createCheckRemanente($rule,$observationRule,$condition,$observationCondition,$settingLife,$cod);
 
-                        $errores = $consulta === true ? '' : 'Error';
+                        if(enabledOperations() === false)
+                        {
+                            echo 'LimitDate';
+                        }else{
+                                
+                            $modelo =  new listCheck();
+                            $consulta = $modelo->createCheckRemanente($rule,$observationRule,$condition,$observationCondition,$settingLife,$cod);
+
+                            $errores = $consulta === true ? '' : 'Error';
+                            
+                        }
+                        
 
                     } else {
                         $errores = '5) No digito la observación de la pregunta, ¿El intangible se puede identificar?. <br>';

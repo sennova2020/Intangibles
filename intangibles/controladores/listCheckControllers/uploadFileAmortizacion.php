@@ -7,7 +7,7 @@ require_once '../../modelo/fechaLimite.php';
 require_once '../../library/class.upload.php';
 liderRol(2);
 $document = $_FILES['document'];
-$ruta = '../../documentos/upload/DocumentdRevMetdAmortización/';
+$ruta = 'documentos/upload/DocumentdRevMetdAmortización/';
 $cod = $_POST['cod_intangible'];
 
 if(isset($_FILES['document'])){
@@ -20,10 +20,10 @@ if(isset($_FILES['document'])){
         //verificar que el archivo si se halla cargado en la pagina web
     if($up->uploaded){
 
-        mkdir($ruta.$cod.'/', 0700);
+        mkdir('../../'.$ruta.$cod.'/', 0700);
 
             //guardar el archivo en una carpeta predeterminada
-        $up->Process($ruta.$cod.'/');
+        $up->Process('../../'.$ruta.$cod.'/');
         
             //di fue procesada con exito la reubicación iniciar la lectura del excel
         

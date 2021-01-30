@@ -14,7 +14,10 @@ liderRol(1);
 if (!isset($_SESSION['id'])) {
     header("Location:../index.php");
 }
-deleteIntangibleLimitDate();
+if(enabledOperations() === false)
+{
+    deleteIntangibleLimitDate(1);
+}
 ?>
 
 <!doctype html>

@@ -7,7 +7,7 @@ require_once '../../modelo/fechaLimite.php';
 require_once '../../library/class.upload.php';
 liderRol(2);
 $document = $_FILES['nameIntangible'];
-$ruta = '../../documentos/upload/DocumentDeterioro/';
+$ruta = 'documentos/upload/DocumentDeterioro/';
 $cod = $_POST['cod_intangible'];
 
 if(isset($_FILES['nameIntangible'])){
@@ -23,7 +23,7 @@ if(isset($_FILES['nameIntangible'])){
         mkdir($ruta.$cod.'/', 0700);
 
             //guardar el archivo en una carpeta predeterminada
-        $up->Process($ruta.$cod.'/');
+        $up->Process('../../'.$ruta.$cod.'/');
         
             //di fue procesada con exito la reubicación iniciar la lectura del excel
         

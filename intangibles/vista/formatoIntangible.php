@@ -259,6 +259,9 @@ require_once '../modelo/fechaLimite.php';
         <input type="hidden" id="cod_intangible" name="cod_intangible" value="<?php echo($data)?>">
         <input type="hidden" name="centro" value="<?php echo($_SESSION['centro']) ?>">
         <input type="hidden" id="facturas" name="facturas" value="">
+        <input type="hidden" name="valorConcep" id="valorConcep" value="0">
+        <input type="hidden" id="vidaTranscurrida" name ="vidaTranscurrida"/>
+        <input type="hidden" id="vidaRemanente" name ="vidaRemanente"/>
     </form>
       <?php
         echo '<input type="hidden" id="volver" value="'.trim($_POST['volver']).'">';
@@ -269,7 +272,7 @@ require_once '../modelo/fechaLimite.php';
         <?php
             if(enabledOperations() === false)
             {
-                deleteIntangibleLimitDate();
+                deleteIntangibleLimitDate(1);
 
                 echo "<script>
                 $.confirm({

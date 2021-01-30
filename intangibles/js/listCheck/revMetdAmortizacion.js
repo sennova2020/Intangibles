@@ -55,10 +55,23 @@ function envioDatos(){
 
                             } else {
                                
-                                $.alert({
-                                    title: 'Error',
-                                    content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+respuesta
-                                });
+                                if (respuesta == 'LimitDate') {
+                                    $.confirm({
+                                        title: 'Informaci&oacute;n',
+                                        content:'Haz alcanzado la fecha limite, por lo tanto no puede hacer mas registros.',
+                                        buttons: {
+                                            Ok: function () {
+                                                $.redirect('../../index.php')
+                                            }
+                                        }
+                                    });
+                                } else {
+                                     
+                                    $.alert({
+                                        title: 'Error',
+                                        content:'Los siguientes campos no se han diligenciado correctamente: <br> <br> '+respuesta
+                                    });
+                                }
 
                             }
                         }

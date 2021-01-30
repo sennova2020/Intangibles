@@ -31,14 +31,42 @@ function enabledOperations()
 
 }
 
- function deleteIntangibleLimitDate()
- {
-     if(enabledOperations() === false)
-     {
-         $model = new intangible();
-         $deleteOne = $model -> deleteIncompleteIntangible();
-         $deleteTwo = $model -> deleteUnsaveIntangible();
-     }
- }
+function deleteIntangibleLimitDate($number)
+{
+    $salir = '';
+    for($i = 0; $i<$number;$i++){
+        $salir.='../';
+    }
+    if(enabledOperations() === false)
+    {
+        $model = new intangible();
+        $documentDelete = $model-> readDeleteIncompleteIntangible();
+        
+        if(isset($documentDelete))
+        {
+            
+            foreach ($documentDelete as $key) {
+                if (file_exists($salir.$key['pregunta37'])) {
+                    //Borrar los documentos de los intagibles sin terminar su registro,  guardados en el servidor
+                    deleteDirectory($salir.$key['pregunta37']);
+                }
+            }
+            
+        }
+        
+        $deleteOne = $model -> deleteIncompleteIntangible();
+        $deleteTwo = $model -> deleteUnsaveIntangible();
+    }
+}
+
+//Funcion para borrar archivos y carpetas 
+function deleteDirectory($dir) {
+    $files = glob($dir.'/'); //obtenemos todos los nombres de los ficheros
+    foreach($files as $file){
+        if(is_file($file))
+        unlink($file); //elimino el fichero
+    }
+    rmdir($dir);
+}
 
 ?>

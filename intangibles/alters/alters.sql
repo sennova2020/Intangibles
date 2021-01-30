@@ -9,9 +9,4 @@ ALTER TABLE `usuarioslider` ADD `rol` TINYINT(1) NOT NULL AFTER `contrasena2`;
 UPDATE usuarioslider SET rol = 2
 
 
-/* Falta Asegurar las validaciones de entradas forzadas por medio de url a las listas de chequeo*/
-/*Falta ajustar las funciones de fecha limite en las listas de chequeo-controladores*/
-/*Ajustar la vista de detalle intangible*/
-/*Realizar calculos de ecuaciones solicitadas*/
-/*Borrar documentos de soporte de intangibles no finalizados*/
-/*visualizar y/o descargar documentos de intangibles finalizados*/
+/*visualizar y/o descargar documentos de intangibles finalizados - pendiente*/

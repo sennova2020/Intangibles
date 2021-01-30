@@ -12,7 +12,7 @@
     $datoAmortizacion = trim($_POST['datoAmortizacion']);
     $ruta = '../../documentos/upload/DocumentdRevMetdAmortización/';
     $cod = trim($_POST['cod']);
-    $document = '../../documentos/upload/DocumentdRevMetdAmortización/'.$cod;
+    $document = 'documentos/upload/DocumentdRevMetdAmortización/'.$cod;
 
     $errores = '';
     if (($different == 'si' || $different == 'no') && strlen($different) > 0) {
@@ -20,11 +20,17 @@
         if (true) {
 
             if (strlen($datoAmortizacion) > 0) {
+
+                if(enabledOperations() === false)
+                {
+                    echo 'LimitDate';
+                }else{
                     
                     $modelo = new listCheck();
                     $consulta = $modelo->createRevMetdAmortizacion($different,$observationDifferent,$datoAmortizacion,$document,$cod);
                     
                     $errores = $consulta === true ? '' : 'Error';
+                }
                     
                 
                 

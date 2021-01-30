@@ -1,6 +1,14 @@
 <?php
 require_once 'controladores/seguridad/rutas.php';
+require_once 'modelo/conexion/conexion.php';
+require_once 'modelo/intangible/intangibleModelo.php';
+require_once 'controladores/verificaciones/fechaLimite.php';
+require_once 'modelo/fechaLimite.php';
 session_start();
+if(enabledOperations() === false)
+{
+    deleteIntangibleLimitDate(0);
+}
 if (isset($_SESSION['id'])) {
     $ruta = routesRol($_SESSION["rol"]);
     header("Location:$ruta");
@@ -19,6 +27,27 @@ if (isset($_SESSION['id'])) {
     <link rel="stylesheet" href="../css/index.css">
     <script src="../js/jquery.js"></script>
     <script src="../js/jquery.redirect.js"></script>
+    
+</head>
+
+<body>
+    <div id="contenido">
+        <div id="header">
+            <img src="../images/banner1.png" alt="" class="img_header">
+        </div>
+        <div action="session/comprueba_login.php" method="post" id="formulario_inicio_evaluador">
+            <h2>Bienvenido</h2>
+            <p>Por favor inicie sesión para continuar</p>
+            <label for="">Documento de identidad: </label> <br>
+            <input type="number" name="cedula" id="cedula"><br>
+
+            <label for="">Contraseña: </label><br>
+            <input type="password" name="contra" id="contra"><br>
+
+            <div id="boton_inicio">Iniciar sesión</div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         $(document).ready(function() {
             $("#aviso").hide();
@@ -36,7 +65,11 @@ if (isset($_SESSION['id'])) {
                     },
                     function(data, status) {
                         if (data == "-1") {
-                            alert("Documento o contraseña incorrectos, por favor revisar nuevamente");
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Ups...!',
+                                text: 'El usuario y/o la contraseña son incorrectas'
+                            })
                         } else {
                             $.redirect(data);
                         }
@@ -45,25 +78,6 @@ if (isset($_SESSION['id'])) {
             });
         });
     </script>
-</head>
-
-<body>
-    <div id="contenido">
-        <div id="header">
-            <img src="../images/banner1.png" alt="" class="img_header">
-        </div>
-        <div action="session/comprueba_login.php" method="post" id="formulario_inicio_evaluador">
-            <h2>Bienvenido</h2>
-            <p>Por favor inicie sesión para continuar</p>
-            <label for="">Documento de identidad: </label> <br>
-            <input type="text" name="cedula" id="cedula"><br>
-
-            <label for="">Contraseña: </label><br>
-            <input type="password" name="contra" id="contra"><br>
-
-            <div id="boton_inicio">Iniciar sesión</div>
-        </div>
-    </div>
 </body>
-
+    
 </html>

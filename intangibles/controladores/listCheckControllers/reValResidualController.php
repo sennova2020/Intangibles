@@ -5,6 +5,8 @@
     require_once '../seguridad/liderSecurity.php';
     require_once '../verificaciones/fechaLimite.php';
     require_once '../../modelo/fechaLimite.php';
+    require_once '../verificaciones/fechaLimite.php';
+    require_once '../../modelo/fechaLimite.php';
     liderRol(2);
     
     $residual = trim($_POST['residual']);
@@ -17,11 +19,16 @@
         
         if (strlen($observationResidual) > 0) {
 
-            $modelo = new listCheck();
-            $consulta = $modelo->createCheckReValResidual($residual,$observationResidual,$cod);
-            
-            $errores = $consulta === true ? '' : 'Error';
-            
+            if(enabledOperations() === false)
+            {
+                echo 'LimitDate';
+            }else{
+
+                $modelo = new listCheck();
+                $consulta = $modelo->createCheckReValResidual($residual,$observationResidual,$cod);
+                
+                $errores = $consulta === true ? '' : 'Error';
+            }
         } else {
             $errores = '2) No digito la observación de la pregunta ¿El bien intangible se utilizará hasta que éste se consuma completamente o de forma significativa?. <br>';
         }

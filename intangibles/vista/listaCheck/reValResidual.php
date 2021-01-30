@@ -149,7 +149,7 @@
         <?php
             if(enabledOperations() === false)
             {
-                deleteIntangibleLimitDate();
+                deleteIntangibleLimitDate(2);
 
                 echo "<script>
                 $.confirm({

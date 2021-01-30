@@ -630,6 +630,30 @@ class intangible
         $result -> execute();
         return $result->rowCount();
     }
+
+    public function readDeleteIncompleteIntangible()
+    {
+        $resultado= null;
+        $estado = 1;
+        $negativo = 1;
+        $finish = 0;
+        $model = new Conexion();
+        $conexion = $model -> conectarse();
+
+        $sql="SELECT pregunta37,pregunta42 FROM x_intangibles_preguntas WHERE estado=:estado AND negativo=:negativo AND finished=:finish";
+
+        $result = $conexion -> prepare($sql);
+        $result -> bindParam(':estado',$estado);
+        $result -> bindParam(':negativo',$negativo);
+        $result -> bindParam(':finish',$finish);
+        $result -> execute();
+
+        while ($f=$result->fetch()) {
+            $resultado [] = $f; 
+        }
+
+        return $resultado;
+    }
 }
 
 

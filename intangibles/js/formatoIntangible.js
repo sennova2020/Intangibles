@@ -320,6 +320,9 @@ $("#pregunta9").change(function() {
         $("#tabla_facturas").html(contenido);
     } else {
         $("#tabla_facturas").html('');
+        $("#vidaTranscurrida").val(0);
+        $("#valorConcep").val(0);
+        $("#vidaRemanente").val(0);
     }
 });
 
@@ -344,6 +347,7 @@ function agregarFactura() {
     var valorIVA = $("#valorIVA").val();
     var fase = $("#fase").val();
     var pregunta9= $("#pregunta9").val();
+    
     
     
     var resultado = "";
@@ -378,6 +382,8 @@ function agregarFactura() {
 
     if ($("#valor").val() === "") {
         resultado = resultado + "<br> * Debe ingresar valor del documento contable";
+    }else{
+        $("#valorConcep").val(valor)
     }
 
     if ($("#facturaDeSena").val() === "undefined") {
@@ -559,6 +565,11 @@ $("#boton_registro").click(function() {
         if(tiempoVida == 'finita')
         {
             convertirTablaFactura();
+            //Preguntar de donde sale el valor del concepto
+            var vidaTranscurrida = (parseFloat($("#valorConcep").val()) / parseFloat($("#pregunta6").val())) * parseFloat($("#pregunta7").val());
+            $("#vidaTranscurrida").val(vidaTranscurrida);
+            var vidaRemanente = (parseFloat($("#valorConcep").val()) / parseFloat($("#pregunta6").val())) * parseFloat($("#pregunta8").val());
+            $("#vidaRemanente").val(vidaRemanente);
             var result = validarEnvioDatos();
             var errores = validarEnvioDatosFinitos();
             if (result === "" && errores === "") {
@@ -634,7 +645,7 @@ function validarEnvioDatos() {
     
     if(pregunta9 == 'si'){
         var factura= $("#detalleFactura_tbody").html();
-        alert(factura);
+        
         if(factura == ''){
             results += "No has registrado el documento contable";
         }

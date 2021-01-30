@@ -10,11 +10,15 @@
  require_once '../../controladores/verificaciones/sinIntagibles.php';
  require_once '../../modelo/fechaLimite.php';
  require_once '../../controladores/verificaciones/fechaLimite.php';
-session_start();
+ require_once '../../controladores/seguridad/adminSecurity.php';
+adminRol(2);
 if (!isset($_SESSION['id'])) {
     header("Location:../../index.php");
 }
-deleteIntangibleLimitDate();
+if(enabledOperations() === false)
+{
+    deleteIntangibleLimitDate(2);
+}
 ?>
 
 <!doctype html>

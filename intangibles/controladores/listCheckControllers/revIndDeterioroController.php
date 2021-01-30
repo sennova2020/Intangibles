@@ -5,6 +5,8 @@ require_once '../../modelo/listCheck/listCheckModelo.php';
 require_once '../seguridad/liderSecurity.php';
 require_once '../verificaciones/fechaLimite.php';
 require_once '../../modelo/fechaLimite.php';
+require_once '../verificaciones/fechaLimite.php';
+require_once '../../modelo/fechaLimite.php';
 liderRol(2);
 
 $changes = trim($_POST['changes']);
@@ -38,7 +40,7 @@ if (($changes == 'si' || $changes == 'no') && strlen($changes) > 0) {
             if (($reduction == 'si' && strlen($observationReduction) > 0) || ($reduction == 'no')) {
                 
                 if (strlen($nameIntangible) > 0) {
-                        $nameIntangible='../../documentos/upload/DocumentDeterioro/'.$cod;
+                        $nameIntangible='documentos/upload/DocumentDeterioro/'.$cod;
                     if ($value > 0 ) {
                 
                         if (($reduction == 'no' && $reposicion > 0) || ($reduction == 'si')) {
@@ -60,11 +62,17 @@ if (($changes == 'si' || $changes == 'no') && strlen($changes) > 0) {
                                                         if (($information == 'si' || $information == 'no') && strlen($information) > 0) {
                                                     
                                                             if (strlen($observationInformation)>0) {
-                                                               
-                                                                $modelo = new listCheck();
-                                                                $consulta = $modelo->createRevIndDeterioro($changes,$observationChanges,$reduction,$observationReduction,$nameIntangible,$value,$reposicion,$reposicionIntangible,$evidencia,$rehabilitaciones,$evaluation,$observationEvaluation,$construction,$observationConstruction,$information,$observationInformation,$cod);
+
+                                                                if(enabledOperations() === false)
+                                                                {
+                                                                    echo 'LimitDate';
+                                                                }else{
                                                                 
-                                                                $errores = $consulta === true ? '' : 'Error';
+                                                                    $modelo = new listCheck();
+                                                                    $consulta = $modelo->createRevIndDeterioro($changes,$observationChanges,$reduction,$observationReduction,$nameIntangible,$value,$reposicion,$reposicionIntangible,$evidencia,$rehabilitaciones,$evaluation,$observationEvaluation,$construction,$observationConstruction,$information,$observationInformation,$cod);
+                                                                    
+                                                                    $errores = $consulta === true ? '' : 'Error';
+                                                                }
                                                                 
                                                             } else {
                                                                 $errores.='16) No digito la observación de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
