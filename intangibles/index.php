@@ -39,16 +39,50 @@ if (isset($_SESSION['id'])) {
             <h2>Bienvenido</h2>
             <p>Por favor inicie sesión para continuar</p>
             <label for="">Documento de identidad: </label> <br>
-            <input type="number" name="cedula" id="cedula"><br>
+            <input type="number" name="cedula"  onkeydown="onKeyDownHandler(event);" id="cedula"><br>
 
             <label for="">Contraseña: </label><br>
-            <input type="password" name="contra" id="contra"><br>
+            <input type="password" name="contra" onkeydown="onKeyDownHandler(event);" id="contra"><br>
 
             <div id="boton_inicio">Iniciar sesión</div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
+
+        
+        function onKeyDownHandler(event) {
+
+            var codigo = event.which || event.keyCode;
+            
+            if(codigo === 13){
+                var cedula = $("#cedula").val();
+                var contra = $("#contra").val();
+
+                if (cedula.length == 0 || contra.length == 0) {
+                    alert("No es posible dejar campos vacios");
+                } else {
+                    $.post("session/comprueba_login.php", {
+                        cedula: cedula,
+                        contra: contra
+                    },
+                    function(data, status) {
+                        if (data == "-1") {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: 'Ups...!',
+                                text: 'El usuario y/o la contraseña son incorrectas'
+                            })
+                        } else {
+                            $.redirect(data);
+                        }
+                    });
+                }
+            }
+
+ 
+        }
+        
         $(document).ready(function() {
             $("#aviso").hide();
 

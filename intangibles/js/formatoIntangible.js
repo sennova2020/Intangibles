@@ -542,18 +542,26 @@ $("#boton_registro").click(function() {
 
         var result = validarEnvioDatosIndefinidos();
         if (result ==="" && tiempoVida == 'indefinida') {
-            $.confirm({
-                title: 'Confirmación de envío',
-                content: '¿Esta seguro de enviar esta información?',
-                buttons: {
-                    confirm: function() {
-                        $("#formulario_principal").submit();
-                    },
-                    cancel: function() {
-
-                    },
-                }
-            });
+            if ($("#facturas").val()=='' && $("#pregunta9").val() == 'si') {
+                $.alert({
+                    title: 'Error',
+                    content: 'No agrego la información del documento contable'
+                });
+            } else {
+                $.confirm({
+                    title: 'Confirmación de envío',
+                    content: '¿Esta seguro de enviar esta información?',
+                    buttons: {
+                        confirm: function() {
+                            $("#formulario_principal").submit();
+                        },
+                        cancel: function() {
+    
+                        },
+                    }
+                }); 
+            }
+            
         } else {
             $.alert({
                 title: 'Error',
@@ -573,18 +581,25 @@ $("#boton_registro").click(function() {
             var result = validarEnvioDatos();
             var errores = validarEnvioDatosFinitos();
             if (result === "" && errores === "") {
-                $.confirm({
-                    title: 'Confirmación de envío',
-                    content: '¿Esta seguro de enviar esta información?',
-                    buttons: {
-                        confirm: function() {
+                if ($("#facturas").val()=='' && $("#pregunta9").val() == 'si') {
+                    $.alert({
+                        title: 'Error',
+                        content: 'No agrego la información del documento contable'
+                    });
+                } else {
+                    $.confirm({
+                        title: 'Confirmación de envío',
+                        content: '¿Esta seguro de enviar esta información?',
+                        buttons: {
+                            confirm: function() {
                             $("#formulario_principal").submit();
-                        },
-                        cancel: function() {
+                            },
+                            cancel: function() {
 
-                        },
-                    }
-                });
+                            },
+                        }
+                    });
+                }
             } else {
                 
                     $.alert({

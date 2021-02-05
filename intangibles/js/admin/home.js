@@ -200,30 +200,41 @@ function changeLimitDate() {
                     confirmButtonColor:'red'
                 })
             } else {
-                $.ajax({
-                    type: 'POST',
-                    url: '../../controladores/adminControllers/fechaLimite.php',
-                    data: {
-                        'date':newLimitDate,
-                        'motivo':motivo
-                    }
-                })
-                .done(function(respuesta){
-                    if (respuesta ==  true) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Actualización exitosa'
-                        });
-                        window.location.reload(); 
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text:'Ha ocurrido un error en el servidor.'+respuesta,
-                            confirmButtonColor:'red'
-                        }) 
+                Swal.fire({
+                    icon: 'question',
+                    title: '¿Seguro que quiere realizar el cambio?',
+                    showCancelButton: true,
+                    cancelButtonColor: 'red',
+                    confirmButtonText: 'Cambiar'
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        $.ajax({
+                            type: 'POST',
+                            url: '../../controladores/adminControllers/fechaLimite.php',
+                            data: {
+                                'date':newLimitDate,
+                                'motivo':motivo
+                            }
+                        })
+                        .done(function(respuesta){
+                            if (respuesta ==  true) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Actualización exitosa'
+                                });
+                                window.location.reload(); 
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text:'Ha ocurrido un error en el servidor.'+respuesta,
+                                    confirmButtonColor:'red'
+                                }) 
+                            }
+                        })   
                     }
                 })    
+                   
             }
         }
         
