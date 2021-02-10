@@ -425,7 +425,7 @@
                     <td align="center">'.$intangible['pregunta3'].'</td>
                     <td class="text-center">'.$intangible['pregunta1'].'</td>';
 
-                    foreach ($nameClass as $key ) {
+                    foreach ($nameClass as $key) {
                         $resultado .= '
                             <td class="text-center">'.$key['denominacion'].'</td>
                         ';
@@ -550,32 +550,32 @@
                         <br><br>
                         <h2 class="titulo_formulario">LISTA DE CHEQUEO REVISION INDICIOS DE DETERIORO</h2>
                         <table class="table table-striped" style="color:white">
-                            <tr><td><strong>Durante el periodo, han tenido lugar, o van a tener lugar en un futuro inmediato, cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales están relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad:</strong></td><td>'.$intangible['pregunta37'].'</td></tr>
+                            <tr><td><strong>Durante el periodo, han tenido lugar, o van a tener lugar en un futuro inmediato, cambios significativos con una incidencia desfavorable sobre la entidad a largo plazo, los cuales están relacionados con el entorno legal, tecnológico o de política gubernamental, en los que opera la entidad:</strong></td><td>'.$intangible['pregunta38'].'</td></tr>
                             <tr><td><strong>Justificación:</strong></td><td></td></tr>
-                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta38']).'</div></td><td></td></tr>
-                            <tr><td><strong>Durante el periodo, el valor de mercado del activo ha disminuido significativamente más que lo que se esperaría como consecuencia del paso del tiempo o de su uso normal:</strong></td><td>'.$intangible['pregunta39'].'</td></tr>
+                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta39']).'</div></td><td></td></tr>
+                            <tr><td><strong>Durante el periodo, el valor de mercado del activo ha disminuido significativamente más que lo que se esperaría como consecuencia del paso del tiempo o de su uso normal:</strong></td><td>'.$intangible['pregunta40'].'</td></tr>
                             <tr><td><strong>Justificación:</strong></td><td></td></tr>
-                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta40']).'</div></td><td></td></tr>
-                            <tr><td><strong>Adjunte documento:</strong></td><td>'. ucwords( $intangible['pregunta41']).'</td></tr>
+                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta41']).'</div></td><td></td></tr>
+                           
                             <tr><td><strong>Valor del estudio del mercado (si no se puede estimar el costo del valor del mercado, escribir el costo de reposición):</strong></td><td></td></tr>
-                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta42']).'</div></td><td></td></tr>
-                            <tr><td><strong> Justifique su respuesta si es negativa indicando el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en las que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando, ¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?.:</strong></td><td></td></tr>
                             <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta43']).'</div></td><td></td></tr>
-                            <tr><td><strong>Valor de reposición del activo intangible:</strong></td><td></td></tr>
+                            <tr><td><strong> Justifique su respuesta si es negativa indicando el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en las que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando, ¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?.:</strong></td><td></td></tr>
                             <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta44']).'</div></td><td></td></tr>
-                            <tr><td><strong>Se dispone de evidencia sobre la obsolescencia o daño del activo:</strong></td><td>'.$intangible['pregunta45'].'</td></tr>
+                            <tr><td><strong>Valor de reposición del activo intangible:</strong></td><td></td></tr>
+                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta45']).'</div></td><td></td></tr>
+                            <tr><td><strong>Se dispone de evidencia sobre la obsolescencia o daño del activo:</strong></td><td>'.$intangible['pregunta46'].'</td></tr>
                             <tr><td><strong>Si su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones:</strong></td><td></td></tr>
-                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta46']).'</div></td><td></td></tr>
-                            <tr><td><strong> Durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización o la manera como se usa o se espera usar el activo, los cuales afectarán desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita:</strong></td><td></td></tr>
                             <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta47']).'</div></td><td></td></tr>
-                            <tr><td><strong>Justificación:</strong></td><td></td></tr>
+                            <tr><td><strong> Durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización o la manera como se usa o se espera usar el activo, los cuales afectarán desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita:</strong></td><td></td></tr>
                             <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta48']).'</div></td><td></td></tr>
-                            <><td><strong>Se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo:</strong></td><td>'.$intangible['pregunta49'].'</td></>
                             <tr><td><strong>Justificación:</strong></td><td></td></tr>
-                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta50']).'</div></td><td></td></tr>
-                            <tr><td><strong>Se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada:</strong></td><td>'.$intangible['pregunta51'].'</td></tr>
+                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta49']).'</div></td><td></td></tr>
+                            <><td><strong>Se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo:</strong></td><td>'.$intangible['pregunta50'].'</td></>
                             <tr><td><strong>Justificación:</strong></td><td></td></tr>
-                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta52']).'</div></td><td></td></tr>
+                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta51']).'</div></td><td></td></tr>
+                            <tr><td><strong>Se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada:</strong></td><td>'.$intangible['pregunta52'].'</td></tr>
+                            <tr><td><strong>Justificación:</strong></td><td></td></tr>
+                            <tr><td><div disabled class="bg-light text-dark p-3 border overflow-auto w-100" style="height:200px;" >'.utf8_encode( $intangible['pregunta53']).'</div></td><td></td></tr>
                         </table>
 
 
@@ -622,19 +622,22 @@
             ';
             foreach($infoFactura as $key)
             {
+                $facturaSena=$key['factura_a_nombre_sena']==1?'Si':'No';
+                $esNecesario=$key['es_necesario']==1?'Si':'No';
+                $tieneIva=$key['tiene_iva']==1?'Si':'No';
                 $resultado .='
                 
                         <tr>
                         <th scope="">'.utf8_encode($key['tipo_documento_contable']).'</th>
                         <th scope="">'.$key['numero_factura'].'</th>
-                        <th scope="">'.$key['factura_a_nombre_sena'].'</th>
+                        <th scope="">'.$facturaSena.'</th>
                         <th scope="">'.$key['fecha_factura'].'</th>
                         <th scope="">'.$key['valor_total'].'</th>
-                        <th scope="">'.ucwords($key['tiene_iva']).'</th>
+                        <th scope="">'.$tieneIva.'</th>
                         <th scope="">'.$key['iva'].'</th>
                         <th scope="">'.utf8_encode($key['concepto']).'</th>
                         <th scope="">'.$key['valor_concepto'].'</th>
-                        <th scope="">'.$key['es_necesario'].'</th>
+                        <th scope="">'.$esNecesario.'</th>
                         <th scope="">'.$key['fecha'].'</th>
                     </tr>
                 
