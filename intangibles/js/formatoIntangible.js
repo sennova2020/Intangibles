@@ -275,7 +275,7 @@ $("#pregunta4").change(function() {
 
 
 //control de facturacion ver y ocultar
-$("#pregunta9").change(function() {
+$(document).ready(function() {
     var pregunta9 = $("#pregunta9").val();
     if (pregunta9 === "si") {
         var contenido = `

@@ -126,16 +126,9 @@ require_once '../modelo/fechaLimite.php';
                             
                         </li>
                             
-                
+                        <input type="hidden"name="pregunta9" id="pregunta9" value="si">
                         
-                        <li class="li_formulario">
-                            <p class="etiquetas">¿Tiene documentos contables para registrar?</p>
-                            <select name="pregunta9" id="pregunta9" class="selects">
-                                <option value="" selected>Seleccione...</option>
-                                <option value="si">Si</option>
-                                <option value="no">No</option>
-                            </select>
-                        </li>
+                    
 
                 </ol>
             </div>
