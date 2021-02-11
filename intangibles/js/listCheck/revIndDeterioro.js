@@ -1,3 +1,36 @@
+$(document).ready(function(){
+    var cod = $("#project").val();
+    $.ajax({
+        type: 'POST',
+        url: '../../controladores/listCheckControllers/queryLifeIntangible.php',
+        data: {
+            'cod':cod
+        }
+
+    })
+    .done(function(respuesta) {
+       
+        if (respuesta=='unLife') {
+            $.alert({
+                title: 'Error',
+                content: 'El intangible no tiene vida útil definida'
+            });
+        } else {
+            if(respuesta=='finita'){
+                $("#dependencia").attr("style","display:block"); 
+            } 
+            $('#vidaUtil').val(respuesta);  
+        }
+
+    })
+    .fail(function () {
+        $.alert({
+            title: 'Error',
+            content: 'Ha ocurrido un error'
+        });
+    })
+})
+
 function descriptionModal(e) {
         
     var object = e.id;
@@ -44,6 +77,7 @@ function envioDatos(){
         var information = $("#information").val();
         var observationInformation = $("#observationInformation").val();
         var cod = $("#project").val();
+        var vidaUtil = $("#vidaUtil").val();
         
         $.confirm({
             title: 'Confirmación de envío',
@@ -70,7 +104,8 @@ function envioDatos(){
                             'observationConstruction':observationConstruction,
                             'information':information,
                             'observationInformation':observationInformation,
-                            'cod':cod
+                            'cod':cod,
+                            'vidaUtil':vidaUtil
                         }
 
                     })
@@ -159,6 +194,7 @@ function envioDatos(){
         var observationConstruction = $("#observationConstruction").val();
         var information = $("#information").val();
         var observationInformation = $("#observationInformation").val();
+        var vidaUtil = $("#vidaUtil").val();
         
         
         
@@ -227,59 +263,63 @@ function envioDatos(){
                     
                 }
         }
+    
+        if(vidaUtil=='finita'){
 
-        if (evidencia === '') {
-            results += '9) No selecciono sí dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
-        } else if(evidencia !== 'si' && evidencia !== 'no'){
-            results += '9) La respuesta seleccionada a sí se dispone de evidencia sobre la obsolescencia o daño del activo, no corresponde a SI o NO. <br>';
-        }
+            
 
-        if (evidencia == 'si') {
-           
-            if ( rehabilitaciones=== '') {
-                results += '10) Sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
-               
-            }else {
-                rehabilitaciones = parseFloat(rehabilitaciones);
-        
-                    if (!Number.isInteger(rehabilitaciones) || (rehabilitaciones < 0)) {
-                        results += "10)No digito, el valor de las rehabilitaciones, debe ser un n&uacute;mero entero y positivo.<br><br>";
-                        
-                    }
+            if (evidencia === '') {
+                results += '9) No selecciono sí dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
+            } else if(evidencia !== 'si' && evidencia !== 'no'){
+                results += '9) La respuesta seleccionada a sí se dispone de evidencia sobre la obsolescencia o daño del activo, no corresponde a SI o NO. <br>';
+            }
+
+            if (evidencia == 'si') {
+            
+                if ( rehabilitaciones=== '') {
+                    results += '10) Sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
+                
+                }else {
+                    rehabilitaciones = parseFloat(rehabilitaciones);
+            
+                        if (!Number.isInteger(rehabilitaciones) || (rehabilitaciones < 0)) {
+                            results += "10)No digito, el valor de las rehabilitaciones, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                            
+                        }
+                }
+                
             }
             
-        }
-        
 
-        if (evaluation === '') {
-            results += '11) No aclaro sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
-        } else if(evaluation !== 'si' && evaluation !== 'no'){
-            results += '11) La respuesta seleccionada a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita., no corresponde a SI o NO. <br>';
-        }
+            if (evaluation === '') {
+                results += '11) No aclaro sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
+            } else if(evaluation !== 'si' && evaluation !== 'no'){
+                results += '11) La respuesta seleccionada a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita., no corresponde a SI o NO. <br>';
+            }
 
-        if (observationEvaluation === '') {
-            results += '12) No digito la observación, a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
-        }
+            if (observationEvaluation === '') {
+                results += '12) No digito la observación, a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
+            }
 
-        if (construction === '') {
-            results += '13) No selecciono una repuesta, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
-        } else if(construction !== 'si' && construction !== 'no'){
-            results += '13) La respuesta seleccionada, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo., no corresponde a SI o NO. <br>';
-        }
+            if (construction === '') {
+                results += '13) No selecciono una repuesta, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
+            } else if(construction !== 'si' && construction !== 'no'){
+                results += '13) La respuesta seleccionada, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo., no corresponde a SI o NO. <br>';
+            }
 
-        if (observationConstruction === '') {
-            results += '14) No digito la observación, de sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
-        }
+            if (observationConstruction === '') {
+                results += '14) No digito la observación, de sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
+            }
 
-        if (information === '') {
-            results += '15) No selecciono una repuesta, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
-        } else if(information !== 'si' && information !== 'no'){
-            results += '15) La respuesta seleccionada, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada, no corresponde a SI o NO. <br>';
-        }
+            if (information === '') {
+                results += '15) No selecciono una repuesta, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
+            } else if(information !== 'si' && information !== 'no'){
+                results += '15) La respuesta seleccionada, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada, no corresponde a SI o NO. <br>';
+            }
 
-        if (observationInformation === '') {
-            results += '16) No digito la observación, de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
-        }
-
+            if (observationInformation === '') {
+                results += '16) No digito la observación, de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
+            }
+    }
         return results;
     }
