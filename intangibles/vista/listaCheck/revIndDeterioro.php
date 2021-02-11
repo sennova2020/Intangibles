@@ -195,103 +195,105 @@
                         <input type="number" class="form-control" required placeholder="Digite el valor de reposición del activo " name="reposicionIntangible" id="reposicionIntangible"> 
                 </li>
 
-                <li class="li_formulario">
-                    <p class="etiquetas">
-                        Se dispone de evidencia sobre la obsolescencia o daño del activo. <span id="damagedAsset" onclick="descriptionModal(this)" >Nota* </span>
-                    </p>
-                    <br/>
-                    <select name="evidencia" id="evidencia" required class="form-control">
-                        <option value="" selected>Seleccione...</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                    </select>
-                </li>
-
-                <li class="li_formulario">
+                <div id="dependencia" style="display:none;">
+                    <li class="li_formulario">
                         <p class="etiquetas">
-                            Si su respuesta fue afirmativa se debe calcular 
-                            el valor de dichas rehabilitaciones.<span id="valueRehabilitations" onclick="descriptionModal(this)" >Nota* </span>
+                            Se dispone de evidencia sobre la obsolescencia o daño del activo. <span id="damagedAsset" onclick="descriptionModal(this)" >Nota* </span>
                         </p>
-
                         <br/>
-                        
-                        <input type="number" class="form-control" required placeholder="Digite el valor de las rehabilitaciones" name="rehabilitaciones" id="rehabilitaciones"> 
-                </li>
+                        <select name="evidencia" id="evidencia" required class="form-control">
+                            <option value="" selected>Seleccione...</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </li>
 
-        
+                    <li class="li_formulario">
+                            <p class="etiquetas">
+                                Si su respuesta fue afirmativa se debe calcular 
+                                el valor de dichas rehabilitaciones.<span id="valueRehabilitations" onclick="descriptionModal(this)" >Nota* </span>
+                            </p>
 
-                <li class="li_formulario">
-                    <p class="etiquetas">
-                        Durante el periodo, han tenido lugar, o se espera que 
-                        tengan lugar en un futuro inmediato, cambios significativos 
-                        en el grado de utilización  o la manera como se usa o se 
-                        espera usar el activo, los cuales afectaran desfavorablemente 
-                        la entidad a largo plazo. Estos cambios incluyen el hecho de 
-                        que el activo esté ocioso, los planes de discontinuación o 
-                        restructuración de la operación  a la que pertenece el activo, 
-                        los planes para disponer el activo antes de la fecha prevista y 
-                        el cambio de la vida útil de un activo de indefinida a finita. <span id="activeEvaluation" onclick="descriptionModal(this)" >Nota* </span>
-                    </p>
-                    <br/>
-                    <select name="evaluation" id="evaluation" required class="form-control">
-                        <option value="" selected>Seleccione...</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                    </select>
-                </li>
+                            <br/>
+                            
+                            <input type="number" class="form-control" required placeholder="Digite el valor de las rehabilitaciones" name="rehabilitaciones" id="rehabilitaciones"> 
+                    </li>
 
-                <li class="li_formulario">
-                    <p class="etiquetas">
-                        Observaci&oacute;n*. 
-                    </p>
-                    <br>
-                    <textarea name="observationEvaluation" id="observationEvaluation" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
-                </li>
+            
 
-                <li class="li_formulario">
-                    <p class="etiquetas">
-                        Se decide detener la construcción del activo antes de su finalización
-                        o de su puesta en condiciones de funcionamiento, salvo que exista 
-                        evidencia objetiva de que se reanudará la construcción en el futuro próximo.<span id="constructionActive" onclick="descriptionModal(this)" >Nota* </span>
-                    </p>
-                    <br/>
-                    <select name="construction" id="construction" required class="form-control">
-                        <option value="" selected>Seleccione...</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                    </select>
-                </li>
+                    <li class="li_formulario">
+                        <p class="etiquetas">
+                            Durante el periodo, han tenido lugar, o se espera que 
+                            tengan lugar en un futuro inmediato, cambios significativos 
+                            en el grado de utilización  o la manera como se usa o se 
+                            espera usar el activo, los cuales afectaran desfavorablemente 
+                            la entidad a largo plazo. Estos cambios incluyen el hecho de 
+                            que el activo esté ocioso, los planes de discontinuación o 
+                            restructuración de la operación  a la que pertenece el activo, 
+                            los planes para disponer el activo antes de la fecha prevista y 
+                            el cambio de la vida útil de un activo de indefinida a finita. <span id="activeEvaluation" onclick="descriptionModal(this)" >Nota* </span>
+                        </p>
+                        <br/>
+                        <select name="evaluation" id="evaluation" required class="form-control">
+                            <option value="" selected>Seleccione...</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </li>
 
-                <li class="li_formulario">
-                    <p class="etiquetas">
-                        Observaci&oacute;n*. 
-                    </p>
-                    <br>
-                    <textarea name="observationConstruction" id="observationConstruction" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
-                </li>
+                    <li class="li_formulario">
+                        <p class="etiquetas">
+                            Observaci&oacute;n*. 
+                        </p>
+                        <br>
+                        <textarea name="observationEvaluation" id="observationEvaluation" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                    </li>
 
-                <li class="li_formulario">
-                    <p class="etiquetas">
-                        Se dispone de información procedente de informes internos que indican
-                        que la capacidad del activo para suministrar bienes o servicios ha 
-                        disminuido o va a ser inferior a la esperada. <span id="activeInformation" onclick="descriptionModal(this)" >Nota* </span>
-                    </p>
-                    <br/>
-                    <select name="information" id="information" required class="form-control">
-                        <option value="" selected>Seleccione...</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
-                    </select>
-                </li>
+                    <li class="li_formulario">
+                        <p class="etiquetas">
+                            Se decide detener la construcción del activo antes de su finalización
+                            o de su puesta en condiciones de funcionamiento, salvo que exista 
+                            evidencia objetiva de que se reanudará la construcción en el futuro próximo.<span id="constructionActive" onclick="descriptionModal(this)" >Nota* </span>
+                        </p>
+                        <br/>
+                        <select name="construction" id="construction" required class="form-control">
+                            <option value="" selected>Seleccione...</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </li>
 
-                <li class="li_formulario">
-                    <p class="etiquetas">
-                        Observaci&oacute;n*.  
-                    </p>
-                    <br>
-                    <textarea name="observationInformation" id="observationInformation" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
-                </li>
+                    <li class="li_formulario">
+                        <p class="etiquetas">
+                            Observaci&oacute;n*. 
+                        </p>
+                        <br>
+                        <textarea name="observationConstruction" id="observationConstruction" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                    </li>
 
+                    <li class="li_formulario">
+                        <p class="etiquetas">
+                            Se dispone de información procedente de informes internos que indican
+                            que la capacidad del activo para suministrar bienes o servicios ha 
+                            disminuido o va a ser inferior a la esperada. <span id="activeInformation" onclick="descriptionModal(this)" >Nota* </span>
+                        </p>
+                        <br/>
+                        <select name="information" id="information" required class="form-control">
+                            <option value="" selected>Seleccione...</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </li>
+
+                    <li class="li_formulario">
+                        <p class="etiquetas">
+                            Observaci&oacute;n*.  
+                        </p>
+                        <br>
+                        <textarea name="observationInformation" id="observationInformation" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
+                    </li>
+                </div>
+                <input type="hidden" name="vidaUtil" id="vidaUtil">
             </div>
         </div>
     </form>

@@ -183,6 +183,26 @@
             return $result->rowCount(); 
         }
 
+
+        public function queryLifeIntangible($codIntangible){
+            $resultado=null;
+            $modelo =  new Conexion();
+            $conexion = $modelo->conectarse();
+
+            $sql = "SELECT pregunta20 FROM x_intangibles_preguntas WHERE cod_intangible=:cod";
+
+            $result = $conexion->prepare($sql);
+
+            $result -> bindParam(':cod',$codIntangible);
+
+            $result-> execute();
+            while($f=$result->fetch()){
+              $resultado []=$f;
+
+            }
+            return $resultado;
+        }
+
     }
 
 ?>

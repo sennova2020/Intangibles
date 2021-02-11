@@ -110,6 +110,8 @@ if(enabledOperations() === false)
                         <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-080__FORMATO_RECONOCIMIENTO__ACTIVOS_INTANGIBLES_DESARROLLADOS.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-080">GRF-F-080</span></a>
 
                         <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=GRF-F-081_FORMATO_MEDICION_ACTIVOS_INTANGIBLES_EN_DESARROLLO.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="GRF-F-081">GRF-F-081</span></a>
+
+                        <a href="../controladores/encuestaIntangible/downloadDocumenst.php?document=Estudio_de_mercado_Intangible.xlsx" class="documents ml-3"><span onclick="descargarFormatos(this)" id="estudioMercado">Estudio de Mercado</span></a>
                     </div>
                     <label for="documento" class="col-12 col-md-3 text-md-right col-form-label">Fecha limite:</label>
                     <div class="col-12 col-md-7">
