@@ -10,9 +10,9 @@
     $different = trim($_POST['different']);
     $observationDifferent = trim($_POST['observationDifferent']);
     $datoAmortizacion = trim($_POST['datoAmortizacion']);
-    $ruta = '../../documentos/upload/DocumentdRevMetdAmortización/';
+    $ruta = '../../documentos/upload/DocumentdRevMetdAmortizacion/';
     $cod = trim($_POST['cod']);
-    $document = 'documentos/upload/DocumentdRevMetdAmortización/'.$cod;
+    $document = 'documentos/upload/DocumentdRevMetdAmortizacion/'.$cod;
 
     $errores = '';
     if (($different == 'si' || $different == 'no') && strlen($different) > 0) {
