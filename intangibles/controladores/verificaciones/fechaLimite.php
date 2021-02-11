@@ -46,9 +46,13 @@ function deleteIntangibleLimitDate($number)
         {
             
             foreach ($documentDelete as $key) {
-                if (file_exists($salir.$key['pregunta37'])) {
-                    //Borrar los documentos de los intagibles sin terminar su registro,  guardados en el servidor
-                    deleteDirectory($salir.$key['pregunta37']);
+                if($key['pregunta37']!=''){
+
+                
+                    if (file_exists($salir.$key['pregunta37'])) {
+                        //Borrar los documentos de los intagibles sin terminar su registro,  guardados en el servidor
+                        deleteDirectory($salir.$key['pregunta37']);
+                    }
                 }
             }
             
@@ -60,13 +64,22 @@ function deleteIntangibleLimitDate($number)
 }
 
 //Funcion para borrar archivos y carpetas 
-function deleteDirectory($dir) {
-    $files = glob($dir.'/'); //obtenemos todos los nombres de los ficheros
-    foreach($files as $file){
-        if(is_file($file))
-        unlink($file); //elimino el fichero
-    }
-    rmdir($dir);
+function deleteDirectory($paths) {
+   $path=$paths.'/';
+        $dir = opendir($path);
+        // Leo todos los ficheros de la carpeta
+        while ($elemento = readdir($dir)){
+            // Tratamos los elementos . y .. que tienen todas las carpetas
+            if( $elemento != "." && $elemento != ".."){
+                // Si es una carpeta
+                if( is_dir($path.$elemento) ){
+                } else {
+                    // Muestro el fichero
+                    unlink($path.$elemento);
+                }
+            }
+        }
+    rmdir($paths);
 }
 
 ?>

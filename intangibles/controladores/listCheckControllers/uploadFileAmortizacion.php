@@ -7,7 +7,7 @@ require_once '../../modelo/fechaLimite.php';
 require_once '../../library/class.upload.php';
 liderRol(2);
 $document = $_FILES['document'];
-$ruta = 'documentos/upload/DocumentdRevMetdAmortización/';
+$ruta = 'documentos/upload/DocumentdRevMetdAmortizacion/';
 $cod = $_POST['cod_intangible'];
 
 if(isset($_FILES['document'])){
