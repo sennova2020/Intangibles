@@ -8,7 +8,7 @@ class fechaLimite
         $model = new Conexion();
         $conexion = $model -> conectarse();
 
-        $sql ="INSERT INTO fechalimite (fechaLimite,motivo,usuario,created_at) VALUES (:fecha,:motivo,:user,now())";
+        $sql ="INSERT INTO intangibles_fecha_limite (fechaLimite,motivo,usuario,created_at) VALUES (:fecha,:motivo,:user,now())";
 
         $result = $conexion ->prepare($sql);
 
@@ -32,7 +32,7 @@ class fechaLimite
         $resultado = null;
         $model = new Conexion();
         $conexion = $model -> conectarse();
-        $sql ="SELECT * FROM fechalimite ORDER BY id DESC LIMIT 1";
+        $sql ="SELECT * FROM intangibles_fecha_limite ORDER BY id DESC LIMIT 1";
 
         $result = $conexion ->prepare($sql);
         $result -> execute();
