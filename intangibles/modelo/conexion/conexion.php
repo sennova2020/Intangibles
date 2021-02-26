@@ -9,7 +9,7 @@
 				$this->ruta       ="localhost";
 				$this->usuario    ="root"; 
 				$this->contrasena ="1842"; 
-				$this->baseDatos  ="formulario";
+				$this->baseDatos  ="sennova_formulario";
 			}
 
 			function conectarse(){
