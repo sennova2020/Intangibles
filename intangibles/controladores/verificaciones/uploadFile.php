@@ -1,6 +1,6 @@
 <?php
 
-public function iploadFile($document,$ruta,$cod)
+function iploadFile($document,$ruta,$cod)
 {
     
 
@@ -22,10 +22,10 @@ public function iploadFile($document,$ruta,$cod)
                 //di fue procesada con exito la reubicación iniciar la lectura del excel
             
         }else{
-            modalAlert('Debe seleccionar el archivo a importar',$url,'info',3); 
+           // modalAlert('Debe seleccionar el archivo a importar',$url,'info',3); 
         } 
     }else{
-        modalAlert('Debe seleccionar el archivo a importar',$url,'info',3); 
+       // modalAlert('Debe seleccionar el archivo a importar',$url,'info',3); 
     }
 
     

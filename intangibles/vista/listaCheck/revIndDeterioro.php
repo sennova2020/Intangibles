@@ -159,8 +159,7 @@
 
                 <li class="li_formulario">
                         <p class="etiquetas">
-                            Valor del estudio del mercado (si no se puede estimar el costo
-                            del valor del mercado, escribir el costo de reposición)
+                            Valor del estudio del mercado; solo si no se puede establecer el costo a través de un estudio de mercado, tocaría por el costo de reposición. 
                         </p>
 
                         <br/>
@@ -185,15 +184,7 @@
                         <input type="number" class="form-control" required placeholder="Digite el costo de reposición" name="reposicion" id="reposicion"> 
                 </li>
 
-                <li class="li_formulario">
-                        <p class="etiquetas">
-                            Valor de reposición del activo intangible.
-                        </p>
-
-                        <br/>
-                        
-                        <input type="number" class="form-control" required placeholder="Digite el valor de reposición del activo " name="reposicionIntangible" id="reposicionIntangible"> 
-                </li>
+                
 
                 <div id="dependencia" style="display:none;">
                     <li class="li_formulario">

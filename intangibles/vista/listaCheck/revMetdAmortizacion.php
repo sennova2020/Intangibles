@@ -126,7 +126,7 @@
 
                     <li class="li_formulario">
                         <p class="etiquetas">
-                            Indique como llegó al dato de la amortización y adjunte el documento soporte para para esta determinación. 
+                            Indique como llegó al dato de la amortización y adjunte el documento soporte para esta determinación. 
                         </p>
 
                         

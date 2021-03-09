@@ -67,7 +67,6 @@ function envioDatos(){
         var nameIntangible = $("#nameIntangible").val();
         var value = $("#value").val();
         var reposicion = $("#reposicion").val();
-        var reposicionIntangible = $("#reposicionIntangible").val();
         var evidencia = $("#evidencia").val();
         var rehabilitaciones = $("#rehabilitaciones").val();
         var evaluation = $("#evaluation").val();
@@ -95,7 +94,6 @@ function envioDatos(){
                             'nameIntangible':nameIntangible,
                             'value':value,
                             'reposicion':reposicion,
-                            'reposicionIntangible':reposicionIntangible,
                             'evidencia':evidencia,
                             'rehabilitaciones':rehabilitaciones,
                             'evaluation':evaluation,
@@ -185,7 +183,6 @@ function envioDatos(){
         var nameIntangible = $("#nameIntangible").val();
         var value = $("#value").val();
         var reposicion = $("#reposicion").val();
-        var reposicionIntangible = $("#reposicionIntangible").val();
         var evidencia = $("#evidencia").val();
         var rehabilitaciones = $("#rehabilitaciones").val();
         var evaluation = $("#evaluation").val();
@@ -229,61 +226,50 @@ function envioDatos(){
 
         if (value=== '') {
             results += '6) No digito el valor del estudio del mercado. <br>';
-        
         }else {
             value = parseFloat(value);
     
-                if (!Number.isInteger(value) || (value < 0)) {
-                    results += "6)El valor del estudio del mercado, debe ser un n&uacute;mero entero y positivo.<br><br>";
-                
-                }
+            if (!Number.isInteger(value) || (value < 0)) {
+                results += "6) El valor del estudio del mercado, debe ser un n&uacute;mero entero y positivo.<br><br>";
+            
+            }
         }
 
-        if (reposicion=== '') {
+        if (reposicion === '') {
             results += '7) No digito el costo de reposición del activo intangible. <br>';
             
         }else {
             reposicion = parseFloat(reposicion);
     
                 if (!Number.isInteger(reposicion) || (reposicion < 0)) {
-                    results += "7)El costo de reposición del activo intangible, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                    results += "7) El costo de reposición del activo intangible, debe ser un n&uacute;mero entero y positivo.<br><br>";
                     
                 }
         }
 
 
-        if (reposicionIntangible=== '') {
-            results += '8) No digito el valor de reposición del activo intangible. <br>';
-            
-        }else {
-            reposicionIntangible = parseFloat(reposicionIntangible);
-    
-                if (!Number.isInteger(reposicionIntangible) || (reposicionIntangible < 0)) {
-                    results += "8)El valor de reposición del activo intangible, debe ser un n&uacute;mero entero y positivo.<br><br>";
-                    
-                }
-        }
+        
     
         if(vidaUtil=='finita'){
 
             
 
             if (evidencia === '') {
-                results += '9) No selecciono sí dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
+                results += '8) No selecciono sí dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
             } else if(evidencia !== 'si' && evidencia !== 'no'){
-                results += '9) La respuesta seleccionada a sí se dispone de evidencia sobre la obsolescencia o daño del activo, no corresponde a SI o NO. <br>';
+                results += '8) La respuesta seleccionada a sí se dispone de evidencia sobre la obsolescencia o daño del activo, no corresponde a SI o NO. <br>';
             }
 
             if (evidencia == 'si') {
             
                 if ( rehabilitaciones=== '') {
-                    results += '10) Sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
+                    results += '9) Sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
                 
                 }else {
                     rehabilitaciones = parseFloat(rehabilitaciones);
             
                         if (!Number.isInteger(rehabilitaciones) || (rehabilitaciones < 0)) {
-                            results += "10)No digito, el valor de las rehabilitaciones, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                            results += "9)No digito, el valor de las rehabilitaciones, debe ser un n&uacute;mero entero y positivo.<br><br>";
                             
                         }
                 }
@@ -292,34 +278,34 @@ function envioDatos(){
             
 
             if (evaluation === '') {
-                results += '11) No aclaro sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
+                results += '10) No aclaro sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
             } else if(evaluation !== 'si' && evaluation !== 'no'){
-                results += '11) La respuesta seleccionada a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita., no corresponde a SI o NO. <br>';
+                results += '10) La respuesta seleccionada a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita., no corresponde a SI o NO. <br>';
             }
 
             if (observationEvaluation === '') {
-                results += '12) No digito la observación, a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
+                results += '11) No digito la observación, a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
             }
 
             if (construction === '') {
-                results += '13) No selecciono una repuesta, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
+                results += '12) No selecciono una repuesta, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
             } else if(construction !== 'si' && construction !== 'no'){
-                results += '13) La respuesta seleccionada, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo., no corresponde a SI o NO. <br>';
+                results += '12) La respuesta seleccionada, a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo., no corresponde a SI o NO. <br>';
             }
 
             if (observationConstruction === '') {
-                results += '14) No digito la observación, de sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
+                results += '13) No digito la observación, de sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
             }
 
             if (information === '') {
-                results += '15) No selecciono una repuesta, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
+                results += '14) No selecciono una repuesta, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
             } else if(information !== 'si' && information !== 'no'){
-                results += '15) La respuesta seleccionada, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada, no corresponde a SI o NO. <br>';
+                results += '14) La respuesta seleccionada, a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada, no corresponde a SI o NO. <br>';
             }
 
             if (observationInformation === '') {
-                results += '16) No digito la observación, de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
+                results += '15) No digito la observación, de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
             }
-    }
+        }
         return results;
     }

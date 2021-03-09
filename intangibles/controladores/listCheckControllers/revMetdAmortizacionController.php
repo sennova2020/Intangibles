@@ -18,25 +18,33 @@
     if (($different == 'si' || $different == 'no') && strlen($different) > 0) {
         
         if (true) {
-
-            if (strlen($datoAmortizacion) > 0) {
-
-                if(enabledOperations() === false)
-                {
-                    echo 'LimitDate';
-                }else{
-                    
-                    $modelo = new listCheck();
-                    $consulta = $modelo->createRevMetdAmortizacion($different,$observationDifferent,$datoAmortizacion,$document,$cod);
-                    
-                    $errores = $consulta === true ? '' : 'Error';
-                }
-                    
+            if ($different == 'no') {
+                $modelo = new listCheck();
+                $consulta = $modelo->createRevMetdAmortizacion($different,$observationDifferent,$datoAmortizacion,'',$cod);
                 
-                
+                $errores = $consulta === true ? '' : 'Error';
             } else {
-                $errores = '3) No digito la observación de como llegó al dato de la amortización y adjunte el documento soporte para para esta determinación. <br>';
+                if ($different == 'si'  && strlen($datoAmortizacion) > 0) {
+
+                    if(enabledOperations() === false)
+                    {
+                        echo 'LimitDate';
+                    }else{
+                        
+                        $modelo = new listCheck();
+                        $consulta = $modelo->createRevMetdAmortizacion($different,$observationDifferent,$datoAmortizacion,$document,$cod);
+                        
+                        $errores = $consulta === true ? '' : 'Error';
+                    }
+                        
+                    
+                    
+                } else {
+                    $errores = '3) No digito la observación de como llegó al dato de la amortización y adjunte el documento soporte para para esta determinación. <br>';
+                }
             }
+            
+            
             
         } else {
             $errores = '2) No digito la observación de la aclaración sí para esta pregunta, la respuesta fue SI, entonces identifique el nuevo método de amortización que se debera utilizar de acuerdo al patron de consumo determinado. <br>';

@@ -43,7 +43,19 @@ function envioDatos(){
                     .done(function(respuesta) {
                         if (respuesta == '') {
                             
-                            $("#miForm").submit();
+                            if (document != '') {
+                                $("#miForm").submit();
+                            } else {
+                                $.redirect(
+                                    'revIndDeterioro.php',
+                                    {
+                                        'id': cod
+                                        
+                                    }, 
+                                    "GET"
+                                );
+                            }
+                            //
 
                         } else {
                             if (respuesta == 'Error') {
@@ -133,15 +145,17 @@ function envioDatos(){
                 results += '2)No digito, sí la respuesta fue SI, entonces identifique el nuevo método de amortización que se debera utilizar de acuerdo al patron de consumo determinado. <br>';
             }
             
+            if (datoAmortizacion === '') {
+                results += '3) No digito como llegó al dato de la amortización y adjunte el documento soporte para para esta determinación. <br>';
+            }
+    
+            if (document === '') {
+                results += '4) No adjunto el documento <br>';
+            }
+
         }
     
-        if (datoAmortizacion === '') {
-            results += '3) No digito como llegó al dato de la amortización y adjunte el documento soporte para para esta determinación. <br>';
-        }
-
-        if (document === '') {
-            results += '4) No adjunto el documento <br>';
-        }
+        
     
         return results;
     }

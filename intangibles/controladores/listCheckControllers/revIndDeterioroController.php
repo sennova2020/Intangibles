@@ -16,7 +16,7 @@ $observationReduction = trim($_POST['observationReduction']);
 $nameIntangible = trim($_POST['nameIntangible']);
 $value = trim($_POST['value']);
 $reposicion = trim($_POST['reposicion']);
-$reposicionIntangible = trim($_POST['reposicionIntangible']);
+$reposicionIntangible = '';
 $evidencia = trim($_POST['evidencia']);
 $rehabilitaciones = trim($_POST['rehabilitaciones']);
 $evaluation = trim($_POST['evaluation']);
@@ -47,86 +47,81 @@ if (($changes == 'si' || $changes == 'no') && strlen($changes) > 0) {
                 
                         if (($reduction == 'no' && $reposicion > 0) || ($reduction == 'si')) {
 
-                           if ($reposicionIntangible > 0) {
-
-                                if ($vidaUtil=='indefinida') {
-                                    $modelo = new listCheck();
-                                    $consulta = $modelo->createRevIndDeterioro($changes,$observationChanges,$reduction,$observationReduction,$nameIntangible,$value,$reposicion,$reposicionIntangible,$evidencia,$rehabilitaciones,$evaluation,$observationEvaluation,$construction,$observationConstruction,$information,$observationInformation,$cod);
-                                    
-                                    $errores = $consulta === true ? '' : 'Error';
-
-                                } else {
-                                    # code...    
+                            if ($vidaUtil=='indefinida') {
+                                $modelo = new listCheck();
+                                $consulta = $modelo->createRevIndDeterioro($changes,$observationChanges,$reduction,$observationReduction,$nameIntangible,$value,$reposicion,$reposicionIntangible,$evidencia,$rehabilitaciones,$evaluation,$observationEvaluation,$construction,$observationConstruction,$information,$observationInformation,$cod);
                                 
-                                    if (($evidencia == 'si' || $evidencia == 'no') && strlen($evidencia) > 0) {
-                                    
-                                        if (($evidencia == 'si' && $rehabilitaciones > 0) || ($evidencia == 'no')) {
-                                            
-                                            if (($evaluation == 'si' || $evaluation == 'no') && strlen($evaluation) > 0) {
-                                                
-                                                if (strlen($observationEvaluation) > 0) {
-                                                    
-                                                    if (($construction == 'si' || $construction == 'no') && strlen($construction) > 0) {
-                                                        
-                                                        if (strlen($observationConstruction)>0) {
-                                                        
-                                                            if (($information == 'si' || $information == 'no') && strlen($information) > 0) {
-                                                        
-                                                                if (strlen($observationInformation)>0) {
+                                $errores = $consulta === true ? '' : 'Error';
 
-                                                                    if(enabledOperations() === false)
-                                                                    {
-                                                                        echo 'LimitDate';
-                                                                    }else{
+                            } else {
+                                # code...    
+                            
+                                if (($evidencia == 'si' || $evidencia == 'no') && strlen($evidencia) > 0) {
+                                
+                                    if (($evidencia == 'si' && $rehabilitaciones > 0) || ($evidencia == 'no')) {
+                                        
+                                        if (($evaluation == 'si' || $evaluation == 'no') && strlen($evaluation) > 0) {
+                                            
+                                            if (strlen($observationEvaluation) > 0) {
+                                                
+                                                if (($construction == 'si' || $construction == 'no') && strlen($construction) > 0) {
+                                                    
+                                                    if (strlen($observationConstruction)>0) {
+                                                    
+                                                        if (($information == 'si' || $information == 'no') && strlen($information) > 0) {
+                                                    
+                                                            if (strlen($observationInformation)>0) {
+
+                                                                if(enabledOperations() === false)
+                                                                {
+                                                                    echo 'LimitDate';
+                                                                }else{
+                                                                
+                                                                    $modelo = new listCheck();
+                                                                    $consulta = $modelo->createRevIndDeterioro($changes,$observationChanges,$reduction,$observationReduction,$nameIntangible,$value,$reposicion,$reposicionIntangible,$evidencia,$rehabilitaciones,$evaluation,$observationEvaluation,$construction,$observationConstruction,$information,$observationInformation,$cod);
                                                                     
-                                                                        $modelo = new listCheck();
-                                                                        $consulta = $modelo->createRevIndDeterioro($changes,$observationChanges,$reduction,$observationReduction,$nameIntangible,$value,$reposicion,$reposicionIntangible,$evidencia,$rehabilitaciones,$evaluation,$observationEvaluation,$construction,$observationConstruction,$information,$observationInformation,$cod);
-                                                                        
-                                                                        $errores = $consulta === true ? '' : 'Error';
-                                                                    }
-                                                                    
-                                                                } else {
-                                                                    $errores.='16) No digito la observación de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
+                                                                    $errores = $consulta === true ? '' : 'Error';
                                                                 }
                                                                 
                                                             } else {
-                                                                $errores.='15) No selecciono una repuesta a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
+                                                                $errores.='16) No digito la observación de sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
                                                             }
                                                             
                                                         } else {
-                                                            $errores.='14) No digito la observación de sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
+                                                            $errores.='15) No selecciono una repuesta a sí se dispone de información procedente de informes internos que indican que la capacidad del activo para suministrar bienes o servicios ha disminuido o va a ser inferior a la esperada. <br>';
                                                         }
                                                         
                                                     } else {
-                                                        $errores.='13) No selecciono una repuesta a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
+                                                        $errores.='14) No digito la observación de sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
                                                     }
                                                     
-
                                                 } else {
-                                                    $errores .= '12) No digito la observación a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
+                                                    $errores.='13) No selecciono una repuesta a sí se decide detener la construcción del activo antes de su finalización o de su puesta en condiciones de funcionamiento, salvo que exista evidencia objetiva de que se reanudará la construcción en el futuro próximo. <br>';
                                                 }
                                                 
 
                                             } else {
-                                                $errores .= '11) No aclaro sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
+                                                $errores .= '12) No digito la observación a sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
                                             }
                                             
+
                                         } else {
-                                            $errores .= '10) Sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
+                                            $errores .= '11) No aclaro sí durante el periodo, han tenido lugar, o se espera que tengan lugar en un futuro inmediato, cambios significativos en el grado de utilización  o la manera como se usa o se espera usar el activo, los cuales afectaran desfavorablemente la entidad a largo plazo. Estos cambios incluyen el hecho de que el activo esté ocioso, los planes de discontinuación o restructuración de la operación  a la que pertenece el activo, los planes para disponer el activo antes de la fecha prevista y el cambio de la vida útil de un activo de indefinida a finita. <br>';
                                         }
                                         
-
                                     } else {
-                                        $errores .= '9) No selecciono sí se dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
+                                        $errores .= '10) Sí su respuesta fue afirmativa se debe calcular el valor de dichas rehabilitaciones. <br>';
                                     }
                                     
-                                
-                                }
 
-                           } else {
-                            $errores .= '8) No digito el valor de reposición del activo intangible. <br>';
-                           }
-                           
+                                } else {
+                                    $errores .= '9) No selecciono sí se dispone de evidencia sobre la obsolescencia o daño del activo. <br>';
+                                }
+                                
+                            
+                            }
+
+                        
                         } else {
                             $errores .= '7) Su respuesta es negativa, pero no indico el costo de reposición, que es el valor que se incurriría si se tuviera que reponer el bien que se encuentra evaluando, en las mismas condiciones en que se encuentra. Para esto realice la siguiente pregunta, si tuviera que adquirir este elemento que se encuentra evaluando,¿cuál sería su costo o valor en el mercado?, ¿ese valor en el que tuviera que incurrir es muy inferior al valor reflejado como VALOR DEL BIEN?. <br>';
                         }
