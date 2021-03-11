@@ -13,9 +13,9 @@
             $projectExist = $modeloPreguntas->existProject($item['proyecto_consecutivo']);
             $resultado.=
                 '<tr>
-                    <td>'.$item['proyecto_consecutivo'].'</td>
-                    <td>'.$item['proyecto_titulo'].'</td>
-                    <td>'.$item['centro_nombre'].'</td>
+                    <td>'.utf8_encode($item['proyecto_consecutivo']).'</td>
+                    <td>'.utf8_encode($item['proyecto_titulo']).'</td>
+                    <td>'.utf8_encode($item['centro_nombre']).'</td>
                     <td>
                         <a href="intangiblesPorProyecto.php?project='.$item['proyecto_consecutivo'].'" class="col-12 text-center" style="margin-top:15px">
                             <button type="submit" class="btn btn-primary">Detalle</button>

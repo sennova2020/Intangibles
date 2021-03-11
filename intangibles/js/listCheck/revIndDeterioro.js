@@ -221,16 +221,16 @@ function envioDatos(){
         
 
         if (nameIntangible=== '') {
-            results += '5) No adjunto evidencias del estudio realizado. <br>';
+            results += '6) No adjunto evidencias del estudio realizado. <br>';
         }
 
         if (value=== '') {
-            results += '6) No digito el valor del estudio del mercado. <br>';
+            results += '5) No digito el valor del estudio del mercado. <br>';
         }else {
             value = parseFloat(value);
     
             if (!Number.isInteger(value) || (value < 0)) {
-                results += "6) El valor del estudio del mercado, debe ser un n&uacute;mero entero y positivo.<br><br>";
+                results += "5) El valor del estudio del mercado, debe ser un n&uacute;mero entero y positivo.<br><br>";
             
             }
         }

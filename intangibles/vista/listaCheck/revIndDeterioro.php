@@ -151,20 +151,21 @@
                     <textarea name="observationReduction" id="observationReduction" required cols="30" rows="8" class="w-100 form-control" placeholder="Justifique su respuesta"  maxlength="1000"></textarea>
                         
                 </li>
-                <li class="li_formulario">
-                            <p class="etiquetas">Adjunte evidencias del estudio realizado</p>
-                            <br />
-                            <input type="file" class="form-control" required placeholder="Adjunte el documento" name="nameIntangible" id="nameIntangible">
-                        </li>
-
+                
                 <li class="li_formulario">
                         <p class="etiquetas">
-                            Valor del estudio del mercado; solo si no se puede establecer el costo a través de un estudio de mercado, tocaría por el costo de reposición. 
+                            Valor del estudio del mercado, (si no se puede estimar el costo del valor del mercado, escribir el costo de reposición). 
                         </p>
 
                         <br/>
                         
                         <input type="number" class="form-control" required placeholder="Digite el valor del estudio del mercado" name="value" id="value"> 
+                </li>
+
+                <li class="li_formulario">
+                    <p class="etiquetas">Adjunte evidencias del estudio realizado</p>
+                    <br />
+                    <input type="file" class="form-control" required placeholder="Adjunte el documento" name="nameIntangible" id="nameIntangible">
                 </li>
 
                 <li class="li_formulario">
