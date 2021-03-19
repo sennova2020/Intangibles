@@ -87,6 +87,9 @@
                     <strong>Objectivo: </strong> Anualmente hay que revisar si dicha estimación ha cambiado.
 
                 </p>
+                <p>
+                <strong>Reconocimiento:</strong>  Se reconocerán como activos intangibles los recursos identificables, de carácter no monetario y sin apariencia física, sobre los cuales la entidad tiene el control, espera obtener beneficios económicos futuros o potencial de servicio, y puede realizar mediciones fiables. Estos activos se caracterizan porque no se espera venderlos en el curso de las actividades de la entidad y se prevé usarlos durante más de 12 meses., de acuerdo a lo estipulado en la resolución 425 del 2019. 
+                </p>
             </div>
             <!-- Importante no borrar este div de cierre-->
         </div>

@@ -88,6 +88,9 @@
                     <strong>Objectivo: </strong> Al aplicar la siguiente lista de chequeo, se verificará si ha cambiado o se piensa cambiar, el periodo durante el cual se va utilizar el bien intangible.
 
                 </p>
+                <p>
+                    <strong>Medición inicial:</strong>   Se realiza la medición del costo del intangible. Los intangibles que fueron adquiridos, el costo corresponde al valor que se pagó por su adquisición en los términos establecidos. El valor de los intangibles desarrollados y que están en fase de desarrollo, corresponde a la sumatoria de todos los desembolsos, pagos, contratos, facturas y demás acciones que se hayan realizado para su obtención, es así que los activos intangibles se medirán al costo, el cual dependerá de si estos son adquiridos o desarrollados. 
+                </p>
             </div>
             <!-- Importante no borrar este div de cierre-->
         </div>

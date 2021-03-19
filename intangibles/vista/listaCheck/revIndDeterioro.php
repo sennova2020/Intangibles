@@ -88,6 +88,17 @@
                     <strong>Objectivo: </strong> La aplicación de esta lista de chequeo de “Indicios de deterioro”, sirve a la entidad para identificar aquellos elementos bienes intangibles que se puedan encontrar en posibles condiciones de deterioro. En este apartado se aconseja leer el Instructivo de medición posterior de bienes intangibles (GRF-I-009).
 
                 </p>
+                <p>
+                    <strong>Medición posterior:</strong>   Las variables con que se realiza la medición posterior se deben revisar cada año, para que se siga cumpliendo con las medición y cualidades de la información, como son la oportunidad, comparabilidad, comprensibilidad, verificabilidad y información fiel, es así que se debe tener en cuenta: 
+
+                    <br><br>
+
+                    *La aplicación de la lista de chequeo de indicios de deterioro a los bienes intangibles con vida útil finita. 
+
+                    <br>
+
+                    *Aplicación de indicios de deterioro y prueba de deterioro para aquellos que den positivo en indicios y aquellos con vida útil indefinida. 
+                </p>
             </div>
             <!-- Importante no borrar este div de cierre-->
         </div>
