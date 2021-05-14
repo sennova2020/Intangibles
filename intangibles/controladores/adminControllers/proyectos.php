@@ -13,9 +13,9 @@
             $projectExist = $modeloPreguntas->existProject($item['proyecto_consecutivo']);
             $resultado.=
                 '<tr>
-                    <td>'.utf8_encode($item['proyecto_consecutivo']).'</td>
-                    <td>'.utf8_encode($item['proyecto_titulo']).'</td>
-                    <td>'.utf8_encode($item['centro_nombre']).'</td>
+                    <td>'.utf8_decode($item['proyecto_consecutivo']).'</td>
+                    <td>'.utf8_decode($item['proyecto_titulo']).'</td>
+                    <td>'.utf8_decode($item['centro_nombre']).'</td>
                     <td>
                         <a href="intangiblesPorProyecto.php?project='.$item['proyecto_consecutivo'].'" class="col-12 text-center" style="margin-top:15px">
                             <button type="submit" class="btn btn-primary">Detalle</button>
@@ -24,7 +24,7 @@
                     <td>';
                         if ($projectExist > 0) {
                             $resultado.='
-                            <a href="../../controladores/adminControllers/reportes.php?rep=2&proj='.$item['proyecto_consecutivo'].'" class="col-12 text-center" style="margin-top:15px">
+                            <a href="../../controladores/adminControllers/excel2.php?rep=2&proj='.$item['proyecto_consecutivo'].'" class="col-12 text-center" style="margin-top:15px">
                                 <button type="submit" class="btn btn-primary">Descargar</button>
                             </a>
                             ';

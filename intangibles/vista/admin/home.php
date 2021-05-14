@@ -128,7 +128,7 @@ if(enabledOperations() === false)
                     </div>
                     <div class="col-12 col-sm-12 col-md-2">
                         <br>
-                        <a href="../../controladores/adminControllers/reportes.php?rep=1">
+                        <a href="../../controladores/adminControllers/excel.php?rep=1">
                             <button class="btn btn-primary">Descargar informe</button>
                         </a>
                     </div>
