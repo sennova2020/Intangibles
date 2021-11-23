@@ -73,6 +73,13 @@ function descargarFormatos(e){
         archivo='Estudio_de_mercado_Intangible.xlsx';
     }
 
+    if(id == 'guiaIntangibles')
+    {
+        titulo ='Guía de Usuario lista de chequeo medicion incial - Intangibles';
+        contenido = 'Guía para mayor entendimiento de cómo justificar las repsuestas de la lista de chequeo';
+        archivo='Guía de Usuario lista de chequeo medicion incial - Intangibles.pdf';
+    }
+
     swal({
         title: titulo,
         text: contenido
