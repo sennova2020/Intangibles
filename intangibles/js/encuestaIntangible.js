@@ -91,7 +91,7 @@
                 var allSelect = resourceControl+potencial+reliably+identification+isMonetary+duration+buyActivity+physicalAppearance;
 
                 if (allSelect.includes('no')==true) {
-                  var negativo = 0;
+                  var negativo = 1;
                 } else {
                     var negativo = 1;
                 }
