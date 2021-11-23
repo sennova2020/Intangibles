@@ -136,6 +136,7 @@
                             .done(function(respuesta) {
                                 if (respuesta.includes('INT-') == true) {
 
+                                    if (state == 1 && negativo == 1) {
                                       
                                         $.confirm({
                                             title: 'Registro exitoso.',
@@ -161,7 +162,31 @@
                                             }
                                         });
 
-                                    
+                                    } else {
+
+                                        if(state == 0)
+                                        {
+                                            titulo='Registro temporal exitoso';
+                                            contenido= 'Recuerde que solo podra registrarlo oficialemente hasta la fecha limite';
+                                        }else{
+                                            titulo='Registro exitoso';
+                                            contenido =  '¿Desea agregar un nuevo intangible?<br><br>Tiene una respuesta con valor "No", por lo tanto el registro no se considera intangible.';
+                                        }
+                                      
+                                        $.confirm({
+                                            title: titulo,
+                                            content:contenido,
+                                            buttons: {
+                                                Agregar: function() {
+                                                    $('#formulario_principal')[0].reset();
+                                                },
+                                                Finalizar: function () {
+                                                    $.redirect('../../index.php')
+                                                }
+                                            }
+                                        });
+
+                                    }
                                     
                                 } else {
                                     if (respuesta == 'false') {
